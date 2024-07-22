@@ -12,8 +12,9 @@ class Users {
     private string $statut;
     private string $cle;
     private int $actif;
+    private DateTime $createdAt;
 
-    public function __construct(?int $id, string $email, string $password, string $prenom, ?int $age, int $avatar, int $message, int $newsletter, string $statut, string $cle, int $actif) {
+    public function __construct(?int $id, string $email, string $password, string $prenom, ?int $age, int $avatar, int $message, int $newsletter, string $statut, string $cle, int $actif, DateTime $createdAt ) {
         $this->id = $id;
         $this->email = $email;
         $this->password = $password;
@@ -25,6 +26,7 @@ class Users {
         $this->statut = $statut;
         $this->cle = $cle;
         $this->actif = $actif;
+        $this->createdAt = $createdAt;
     }
 
     public function getId(): ?int {
@@ -70,6 +72,10 @@ class Users {
     public function getActif(): int {
         return $this->actif;
     }
+    
+    public function getCreatedAt(): DateTime {
+        return $this->createdAt;
+    }
 
     public function setId(?int $id): void {
         $this->id = $id;
@@ -114,5 +120,9 @@ class Users {
     public function setActif(int $actif): void {
         $this->actif = $actif;
     }
+    
+    public function setCreatedAt(DateTime $createdAt): void {
+        $this->createdAt = $createdAt;
+    } 
 }
 ?>
