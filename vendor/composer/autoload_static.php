@@ -83,10 +83,16 @@ class ComposerStaticInit3905c7dd87cbd6957be0a96a4b042d4c
         'AbstractController' => __DIR__ . '/../..' . '/controllers/AbstractController.php',
         'AbstractManager' => __DIR__ . '/../..' . '/managers/AbstractManager.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+        'Avatars' => __DIR__ . '/../..' . '/models/Avatars.php',
+        'CategorieJeux' => __DIR__ . '/../..' . '/models/CategorieJeux.php',
+        'ColoriageCategories' => __DIR__ . '/../..' . '/models/ColoriageCategories.php',
+        'Coloriages' => __DIR__ . '/../..' . '/models/Coloriages.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Histoires' => __DIR__ . '/../..' . '/models/Histoires.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+        'Users' => __DIR__ . '/../..' . '/models/Users.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     );
 
