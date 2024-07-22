@@ -80,6 +80,8 @@ class ComposerStaticInit3905c7dd87cbd6957be0a96a4b042d4c
     );
 
     public static $classMap = array (
+        'AbstractController' => __DIR__ . '/../..' . '/controllers/AbstractController.php',
+        'AbstractManager' => __DIR__ . '/../..' . '/managers/AbstractManager.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
