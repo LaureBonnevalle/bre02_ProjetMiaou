@@ -18,4 +18,6 @@ abstract class AbstractController
     {
         echo $this->twig->render($template, $data);
     }
+    
+    
 }

@@ -18,7 +18,7 @@ Ma page
         
     </section>
     <section class="form">
-        <form action="index.php?route=check-login" method="POST">
+        <form action="index.php?route=check-register" method="POST">
             <fieldset>
                 <label hidden for="email">
                     Email
@@ -57,6 +57,12 @@ Ma page
             </fieldset>-->
             <fieldset class="avatar">
                 <label for=avatar> Choisir un avatar</label>
+                {#{% for avatar in avatars %}#}
+                {#    <div>#}
+                {#        <input type="radio" id="{{ avatar["name"] }}" name="avatar" value="{{ avatar["id"] }}" checked />#}
+                {#        <label for="{{ avatar["name"] }}"><img src="{{ avatar["source"] }}" alt="{{ avatar["description"] }}"></img></label>#}
+                {#    </div>#}
+                {#{% endfor %}#}
                 <div>
                     <input type="radio" id="KimonoChat" name="avatar" value="1" checked />
                     <label for="KimonoChat"><img src="../assets/img/avatars/KimonoChat.png"></img></label>

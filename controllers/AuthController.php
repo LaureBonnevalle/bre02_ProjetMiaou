@@ -1,10 +1,12 @@
 <?php
 
+
+
 class AuthController extends AbstractController
 {
     public function __construct()
     {
-
+        parent::__construct();
     }
 
     public function login() : void
@@ -47,9 +49,11 @@ class AuthController extends AbstractController
 
     public function register() : void
     {
-        $template = "register";
-
-        require "templates/layout.phtml";
+        //TODO : récupération des données concernant les avatars (appel à AvatarManager)
+       
+        $this->render("register.html.twig", []);
+        // $template = "register";
+        // require "templates/layout.phtml";
     }
 
     public function checkRegister() : void

@@ -1,5 +1,7 @@
 <?php
 
+require_once("controllers/DefaultController.php");
+require_once("controllers/AuthController.php");
 
 class Router
 {
