@@ -1,0 +1,104 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+Ma page
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+<main>
+    <section class="titre">
+        <h1>
+            Pour vous inscrire
+            <br> Remplissez et validez le formulaire
+        </h1>
+    
+            <button class="close" type="button"><img classe="close" src="../assets/img/Miaou/croixclosew.png"></button>
+       
+        
+    </section>
+    <section class="form">
+        <form action="index.php?route=check-login" method="POST">
+            <fieldset>
+                <label hidden for="email">
+                    Email
+                </label>
+                <input type="email" id="email" name="email" placeholder="Email">
+            </fieldset>
+            <fieldset>
+                <label hidden for="password">
+                    Mot de passe
+                </label>
+                <input type="password" id="password" name="password" placeholder="Mot de passe"/>
+            </fieldset>
+            <fieldset>
+                <label hidden for="confirm-password">
+                    Confirmer mot de passe
+                </label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer le mot de passe"/>
+            </fieldset>
+             <fieldset>
+                <label hidden for="prenom">
+                    Prénom
+                </label>
+                <input type="text" id="prenom" name="prenom" placeholder="Prénom"/>
+            </fieldset>
+            <fieldset>
+                <label hidden for="age">
+                    Age de l'enfant
+                </label>
+                <input type="number" id="age" name="age" placeholder="Âge de l'enfant"/>
+            </fieldset>
+            <!--<fieldset>
+                <label for="avatar">
+                    Choisir un avatar
+                </label>
+                <input type="file" id="avatar" name="avatar" accept ="image/png,image/jpeg/">
+            </fieldset>-->
+            <fieldset class="avatar">
+                <label for=avatar> Choisir un avatar</label>
+                <div>
+                    <input type="radio" id="KimonoChat" name="avatar" value="1" checked />
+                    <label for="KimonoChat"><img src="../assets/img/avatars/KimonoChat.png"></img></label>
+                </div>
+                <div>
+                    <input type="radio" id="ChatExplorateur" name="avatar" value="2"  />
+                    <label for="ChatExplorateur"><img src="../assets/img/avatars/ChatExplorateur.png"></img></label>
+                </div>
+                <div>
+                    <input type="radio" id="ChatMarinière" name="avatar" value="3"  />
+                    <label for="ChatMariniere"><img src="../assets/img/avatars/ChatMariniere.png"></img></label>
+                </div>
+                <div>
+                    <input type="radio" id="ChatChevalier" name="avatar" value="4" />
+                    <label for="ChatChevalier"><img src="../assets/img/avatars/ChatChevalier.png"></img></label>
+                </div>
+                <div>
+                    <input type="radio" id="ChatLunettes" name="avatar" value="5" checked />
+                    <label for="ChatLunettes"><img src="../assets/img/avatars/ChatLunettes.png"></img></label>
+                </div>
+                <div>
+                    <input type="radio" id="ChatRoi" name="avatar" value="6" checked />
+                    <label for="ChatRoi"><img src="../assets/img/avatars/ChatRoi.png"></img></label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <!--<legend>Veuillez sélectionner vos intérêts</legend>-->
+                <div class="news">
+                    <label for="newsletter">Newsletter</label>
+                <input type="checkbox" id="newsletter" name="newletter" value="newsletter" checked />
+                </div>
+            </fieldset>
+            <fieldset hidden>
+                <label for="tokenCSRF">
+                    Token
+                </label>
+                <input type="token" id="token" name="token" >
+            </fieldset>
+                <div class="button">
+                    <button class="submit" type="submit">Valider</button>
+                </div>
+        </section>   
+        </form>
+</main>
+{% endblock %}
