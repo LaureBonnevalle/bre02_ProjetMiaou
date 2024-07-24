@@ -13,7 +13,7 @@ Ma page
             <br> Remplissez et validez le formulaire
         </h1>
     
-            <button class="close" type="button"><img classe="close" src="../assets/img/Miaou/croixclosew.png"></button>
+            <button class="close" type="button"><img classe="close" src="./assets/img/Miaou/croixclosew.png"></button>
        
         
     </section>
@@ -56,37 +56,43 @@ Ma page
                 <input type="file" id="avatar" name="avatar" accept ="image/png,image/jpeg/">
             </fieldset>-->
             <fieldset class="avatar">
+                
                 <label for=avatar> Choisir un avatar</label>
-                {#{% for avatar in avatars %}#}
-                {#    <div>#}
-                {#        <input type="radio" id="{{ avatar["name"] }}" name="avatar" value="{{ avatar["id"] }}" checked />#}
-                {#        <label for="{{ avatar["name"] }}"><img src="{{ avatar["source"] }}" alt="{{ avatar["description"] }}"></img></label>#}
-                {#    </div>#}
-                {#{% endfor %}#}
-                <div>
+                <ul>
+                
+                {% for avatar in avatars %}
+                    <li>
+                        <div>
+                            <input type="radio" id="{{ avatar.name }}" name="avatar" value="{{ avatar.id }}" checked />
+                            <label for="{{ avatar.name }}"><img src="{{ avatar.source }}" alt="{{ avatar.description }}"/></label>
+                       </div>
+                   </li>
+                {% endfor %}
+                </ul>
+                <!--<div>
                     <input type="radio" id="KimonoChat" name="avatar" value="1" checked />
-                    <label for="KimonoChat"><img src="../assets/img/avatars/KimonoChat.png"></img></label>
+                    <label for="KimonoChat"><img src="./assets/img/avatars/KimonoChat.png"></img></label>
                 </div>
                 <div>
                     <input type="radio" id="ChatExplorateur" name="avatar" value="2"  />
-                    <label for="ChatExplorateur"><img src="../assets/img/avatars/ChatExplorateur.png"></img></label>
+                    <label for="ChatExplorateur"><img src="./assets/img/avatars/ChatExplorateur.png"></img></label>
                 </div>
                 <div>
                     <input type="radio" id="ChatMarinière" name="avatar" value="3"  />
-                    <label for="ChatMariniere"><img src="../assets/img/avatars/ChatMariniere.png"></img></label>
+                    <label for="ChatMariniere"><img src="./assets/img/avatars/ChatMariniere.png"></img></label>
                 </div>
                 <div>
                     <input type="radio" id="ChatChevalier" name="avatar" value="4" />
-                    <label for="ChatChevalier"><img src="../assets/img/avatars/ChatChevalier.png"></img></label>
+                    <label for="ChatChevalier"><img src="./assets/img/avatars/ChatChevalier.png"></img></label>
                 </div>
                 <div>
                     <input type="radio" id="ChatLunettes" name="avatar" value="5" checked />
-                    <label for="ChatLunettes"><img src="../assets/img/avatars/ChatLunettes.png"></img></label>
+                    <label for="ChatLunettes"><img src="./assets/img/avatars/ChatLunettes.png"></img></label>
                 </div>
                 <div>
                     <input type="radio" id="ChatRoi" name="avatar" value="6" checked />
-                    <label for="ChatRoi"><img src="../assets/img/avatars/ChatRoi.png"></img></label>
-                </div>
+                    <label for="ChatRoi"><img src="./assets/img/avatars/ChatRoi.png"></img></label>
+                </div>-->
             </fieldset>
             <fieldset>
                 <!--<legend>Veuillez sélectionner vos intérêts</legend>-->

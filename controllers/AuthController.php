@@ -50,8 +50,12 @@ class AuthController extends AbstractController
     public function register() : void
     {
         //TODO : récupération des données concernant les avatars (appel à AvatarManager)
+        $am = new AvatarManager();
+        $avatars = $am->findAll();
+        
+        // var_dump($avatars);
        
-        $this->render("register.html.twig", []);
+        $this->render("register.html.twig", ["avatars"=>$avatars]);
         // $template = "register";
         // require "templates/layout.phtml";
     }

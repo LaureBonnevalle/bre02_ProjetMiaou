@@ -7,6 +7,10 @@ class UserManager extends AbstractManager
     {
         parent::__construct();
     }
+    public function getDb() : PDO
+    {
+        return $this->db;
+    }
 
    
     

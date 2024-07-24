@@ -1,6 +1,6 @@
 <?php
 
-class AvatarsManager extends AbstractManager {
+class AvatarManager extends AbstractManager {
     
    public function __construct()
     {
@@ -81,17 +81,35 @@ class AvatarsManager extends AbstractManager {
     }
 
     // Récupérer tous les avatars
-    public function getAll(): array {
-        $query = $this->db->query("
-            SELECT * FROM avatars
-        ");
+    //public function getAll(): array {
+    //   $query = $this->db->query("
+    //       SELECT * FROM avatars
+    //    ");
 
+    //    $avatars = [];
+    //    while ($avatars = $query->fetchAll()) {
+    //        $avatars[] = new Avatars($data['id'], $data['name'], $data['source'], $data['description'], $data['caracteristique'], $data['qualite']);
+    //    }
+
+    //   return $avatars;
+    //}
+    
+    public function findAll() : array
+    {
+        $query = $this->db->prepare('SELECT * FROM avatars');
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
         $avatars = [];
-        while ($data = $query->fetch()) {
-            $avatars[] = new Avatars($data['id'], $data['name'], $data['source'], $data['description'], $data['caracteristique'], $data['qualite']);
+
+        foreach($result as $item)
+        {
+            $avatar = new Avatars($item["id"],$item["name"],$item["source"],$item["description"],$item["caracteristique"],$item["qualite"]);
+            
+            $avatars[] = $avatar;
         }
 
         return $avatars;
     }
+    
 }
 ?>
