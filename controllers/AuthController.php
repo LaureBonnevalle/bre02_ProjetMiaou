@@ -11,9 +11,7 @@ class AuthController extends AbstractController
 
     public function login() : void
     {
-        $template = "login";
-
-        require "templates/layout.phtml";
+        $this->render("home-perso.html.twig", []);
     }
 
     public function checkLogin() : void
@@ -66,52 +64,101 @@ class AuthController extends AbstractController
         
         
 
-        if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["prenom"]))
+        if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm-password"]) && isset($_POST["prenom"]))
         {
-            $password = password_hash($_POST["password"], PASSWORD_BCRYPT);
-            $cle = md5(microtime(TRUE)*100000);
-            $email = $_POST['email'];
-            $age = $_POST['age'];
-            $message = 0;
-            $dessin = 0;
-            $statut = "user";
-            $actif = 0;
+            //fonction pour verif si mail existe deja
+            //if ($_POST["email"]=)
             
-            
-            
-            
-            if (isset($_POST["newsletter"]))
+           // on verif le token
+            $tokenManager = new CSRFTokenManager();
+            if(isset($_POST["csrf-token"]) && $tokenManager->validateCSRFToken($_POST["csrf-token"]))
             {
-                $_POST["newsletter"]=1;
                 
+                if($_POST["password"] === $_POST["confirm-password"])
+                {
+                    $um = new UserManager();
+                        $user = $um->findByEmail($_POST["email"]);
+                        
+                        if($user === null)
+                        {// si user n'existe pas et il rempli les champs et nettoie les champs pour securite (enlmever les morceaux de codes qui pourraient etre introduits)
+                        
+                    $password_pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/";
+                 
+                 
+                 
+                    if (preg_match($password_pattern, $_POST['password'])===1)
+                    {
+                
+                
+                        $password = password_hash($_POST["password"], PASSWORD_BCRYPT);
+                        $cle = md5(microtime(TRUE)*100000);
+                        $email = htmlspecialchars($_POST['email']);
+                        $age = $_POST['age'];
+                        $message = 0;
+                        $dessin = 0;
+                        $statut = "user";
+                        $actif = 0;
+                        
+                        
+                        
+                        
+                        if (isset($_POST["newsletter"]))
+                        {
+                            $_POST["newsletter"]=1;
+                            
+                        }
+                        else
+                        {
+                            $_POST["newsletter"]=0;
+                        }
+                        
+                        if(isset($_POST['avatar']))
+                        {
+                            switch($_POST['avatar']){
+                                case "1":  
+                                    $_POST["avatar"]= 1;
+                                break;
+                                case "2":  
+                                    $_POST["avatar"]= 2;
+                                break;
+                                case "3":  
+                                    $_POST["avatar"]= 3;
+                                break;
+                                case "4":  
+                                    $_POST["avatar"]= 4;
+                                break;
+                                case "5":  
+                                    $_POST["avatar"]= 5;
+                                break;
+                                case "6":  
+                                    $_POST["avatar"]= 6;
+                                break;
+                        }
+                        else
+                        {// si utilisateur deja existant avec son username et/ou son mail opn redirige vers la page login
+                            $this->render("index.php?route=login", ['error'=>"Vous avez déjà un compte merci de vous connectez"]);
+                        }
+                        
+                    }
+                    else 
+                    {//si le password n'a pas les caracteristiques demandées on redirige vers formulaire inscription
+                        $this->render("index.php?route=register",["error"=>"le mot de passe n'est pas assez fort"]);
+                    }
+                }
+                else
+                {// si password n'est pas verif on redirige vers formulaire inscription
+                    $this->render("index.php?route=register", ['error'=>"les mots de àpasse ne correspondent pas"]);
+                }
             }
             else
-            {
-                $_POST["newsletter"]=0;
+            { // si token pas verif on redirige vers le formulaire d insciptio
+                $this->render("index.php?route=register", ['error'=>"token non valide"]);
             }
-            
-            if(isset($_POST['avatar']))
-            {
-                switch($_POST['avatar']){
-                    case "1":  
-                        $_POST["avatar"]= 1;
-                    break;
-                    case "2":  
-                        $_POST["avatar"]= 2;
-                    break;
-                    case "3":  
-                        $_POST["avatar"]= 3;
-                    break;
-                    case "4":  
-                        $_POST["avatar"]= 4;
-                    break;
-                    case "5":  
-                        $_POST["avatar"]= 5;
-                    break;
-                    case "6":  
-                        $_POST["avatar"]= 6;
-                    break;
-            }
+        }
+        else
+        {// si champs pas remplis erreur on redirige vers le formulaire d'inscription
+            $this->render("index.php?route=register", ['error'=>"Tous les champs ne sont pas remplis"]);
+        }
 
             $user = new Users(null, $email, $password, $_POST["prenom"], $age, $_POST["avatar"], $message, $_POST["newsletter"], $dessin, $statut, $cle, $actif, new DateTime());
             
