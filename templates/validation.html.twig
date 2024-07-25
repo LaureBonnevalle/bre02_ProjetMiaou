@@ -1,0 +1,13 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+Ma page
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <h1>Pour activer votre compte, veuillez cliquer sur le lien ci-dessous
+                ou copier/coller dans votre navigateur Internet.</h1>
+                
+    <a href='http://https://laurebonnevalle.sites.3wa.io/Projet_ApprendreAvecMiaou/bre02_ProjetMiaou/index.php?route=validate'.urlencode($email).'&cle='.urlencode($cle)>activer le compte</a>
+{% endblock %}

@@ -14,7 +14,7 @@ class Users {
     private int $actif;
     private DateTime $createdAt;
 
-    public function __construct(?int $id, string $email, string $password, string $prenom, ?int $age, int $avatar, int $message, int $newsletter, string $statut, string $cle, int $actif, DateTime $createdAt ) {
+    public function __construct(?int $id, string $email, string $password, string $prenom, ?int $age, int $avatar, ?int $message, ?int $newsletter, ?int $dessin, ?string $statut, string $cle, ?int $actif, DateTime $createdAt ) {
         $this->id = $id;
         $this->email = $email;
         $this->password = $password;
@@ -23,6 +23,7 @@ class Users {
         $this->avatar = $avatar;
         $this->message = $message;
         $this->newsletter = $newsletter;
+        $this->dessin = $dessin;
         $this->statut = $statut;
         $this->cle = $cle;
         $this->actif = $actif;
@@ -53,13 +54,17 @@ class Users {
         return $this->avatar;
     }
 
-    public function getMessage(): int {
+    public function getMessage(): ?int {
         return $this->message;
     }
 
-    public function getNewsletter(): int {
+    public function getNewsletter(): ?bool {
         return $this->newsletter;
     }
+    public function getDessin(): ?int {
+        return $this->dessin;
+    }
+    
 
     public function getStatut(): string {
         return $this->statut;
@@ -69,7 +74,7 @@ class Users {
         return $this->cle;
     }
 
-    public function getActif(): int {
+    public function getActif(): ? int {
         return $this->actif;
     }
     
@@ -105,10 +110,13 @@ class Users {
         $this->message = $message;
     }
 
-    public function setNewsletter(int $newsletter): void {
+    public function setNewsletter(?int $newsletter): void {
         $this->newsletter = $newsletter;
     }
-
+    
+    public function setDessin(?int $dessin): void {
+        $this->dessin = $dessin;
+    }
     public function setStatut(string $statut): void {
         $this->statut = $statut;
     }

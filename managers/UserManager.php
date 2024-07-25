@@ -15,11 +15,12 @@ class UserManager extends AbstractManager
    
     
     //créer un user
-    public function createUser(User $user) : void
+    public function createUser(Users $user) : void
     {
         $createdAt = date('Y-m-d H:i:s');
+        $cle = 
 
-        $query = $this->db->prepare("INSERT INTO users (email, password, prenom, age, avatar, message, newsletter, statut, cle, actif) VALUES (:email, :password, :prenom, :age, :avatar, :message, :newsletter, :statut, :cle, :actif, createdAt : created_at)");
+        $query = $this->db->prepare("INSERT INTO users (email, password, prenom, age, avatar, message, newsletter, dessin, statut, cle, actif, created_at) VALUES (:email, :password, :prenom, :age, :avatar, :message, :newsletter, :dessin, :statut, :cle, :actif, : created_at)");
         $parameters = [
             "email" => $user->getEmail(),
             "password" => $user->getPassword(),
@@ -27,7 +28,12 @@ class UserManager extends AbstractManager
             "age"=> $user->getAge(),
             "avatar"=> $user->getAvatar(),
             "message"=> $user->getMessage(),
-            "created_at" => $createdAt(),
+            "newsletter"=>$user->getNewsletter(),
+            "dessin"=>$user->getDessin(),
+            "statut"=>$user->getStatut(),
+            "cle"=>$user->getCle(),
+            "actif"=>$user->getActif(),
+            "created_at" => $createdAt
         ];
 
         $query->execute($parameters);
@@ -80,14 +86,17 @@ class UserManager extends AbstractManager
     public function update(Users $user): User
     {
         
-        $query = $this->db->prepare("UPDATE users SET email = :email, password = :password, prenom = :prenom, age = :age, avatar = :avatar, message = :message, newsletter = :newsletter, statut = :statut, cle = :cle, actif = :actif");
+        $query = $this->db->prepare("UPDATE users SET email = :email, password = :password, prenom = :prenom, age = :age, avatar = :avatar, message = :message, newsletter = :newsletter, statut = :statut, actif = :actif");
         $parameters = [
             "email" => $user->getEmail(),
             "password" => $user->getPassword(),
             "prenom" => $user->getPrenom(),
             "age"=> $user->getAge(),
             "avatar"=> $user->getAvatar(),
-            "message"=> $user->getMessage()
+            "message"=> $user->getMessage(),
+            "newsletter"=>$user->getNewsletter(),
+            "statut"=>$user->gestStatut(),
+            "actif"=>$user->getActif()
             
         ];
 
@@ -126,6 +135,7 @@ class UserManager extends AbstractManager
         $data = $query->fetch(PDO::FETCH_ASSOC);
        ;
     }
+    
     
     
     

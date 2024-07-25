@@ -31,6 +31,15 @@ class Router
         {
             $ac->checkRegister();
         }
+        //page test validateEmail
+        else if (isset($get["route"]) && $get["route"] === "validation")
+        {
+            $ac->checkRegister();
+        }
+        else if(isset($get["route"]) && $get["route"] === "validate")
+        {
+            $ac->validateMail();
+        }
         else if(isset($get["route"]) && $get["route"] === "logout")
         {
             $ac->logout();
