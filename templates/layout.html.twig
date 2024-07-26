@@ -15,6 +15,28 @@
         <img src="./assets/img/Miaou/chatFiligranne.png"></img>
         <h1>Apprendre avec Miaou</h1>
         {% endblock %}
+        {% block nav %}
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.php?route=homepage">Page Accueil</a>
+                    </li>
+                    
+                    <li>
+                        <a href="index.php?route=login">Login</a>
+                    </li>
+                    <li>
+                        <a href="index.php?route=register">Register</a>
+                    </li>
+                    <li>
+                        <a href="index.php?route=homepage-user">Profile</a>
+                    </li>
+                    <li>
+                        <a href="index.php?route=logout">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        {% endblock %}
         {% block content %}
         {% endblock %}
     </body>

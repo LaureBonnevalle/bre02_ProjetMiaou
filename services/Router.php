@@ -15,7 +15,11 @@ class Router
         $dc = new DefaultController();
         $ac = new AuthController();
 
-        if(isset($get["route"]) && $get["route"] === "login")
+        if (isset($get["route"]) && $get["route"] === "homepage")
+        {
+            $dc->homepage();
+        }
+        else if(isset($get["route"]) && $get["route"] === "login")
         {
             $ac->login();
         }
@@ -31,7 +35,7 @@ class Router
         {
             $ac->checkRegister();
         }
-        //page test validateEmail
+       //page test validateEmail
         else if (isset($get["route"]) && $get["route"] === "validation")
         {
             $ac->checkRegister();
@@ -46,11 +50,11 @@ class Router
         }
         else if(isset($get["route"]) && $get["route"] === "homepage-user")
         {
-            $dc->profile();
+            $dc->homepageUser();
         }
         else if(!isset($get["route"]))
         {
-            $dc->home();
+            $dc->homepage();
         }
         else
         {

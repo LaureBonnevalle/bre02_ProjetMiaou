@@ -1,0 +1,33 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+Ma page
+{{ parent() }}
+{% endblock %}
+{% block nav %}
+{{ parent() }}
+{% endblock %}
+{% block content %}
+<main>
+    <h2 class="">Login</h2>
+
+    <form action="index.php?route=check-login" method="post">
+        <input type="hidden" name="csrf-token" id="csrf-token" value="<?= $_SESSION["csrf-token"] ?>" />
+        <fieldset class="my-1">
+            <label for="email" class="form-label">
+                Email
+            </label>
+            <input type="email" name="email" id="email" class="form-control"/>
+        </fieldset>
+        <fieldset class="my-1">
+            <label for="password" class="form-label">
+                Password
+            </label>
+            <input type="password" name="password" id="password" class="form-control" />
+        </fieldset>
+        <fieldset>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </fieldset>
+    
+</main>
+{%endblock%}

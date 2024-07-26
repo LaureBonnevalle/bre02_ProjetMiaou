@@ -2,34 +2,32 @@
 
 class DefaultController extends AbstractController
 {
-    public function __construct()
+    /*public function __construct()
     {
 
-    }
+    }*/
     
-    public function home() : void
+    public function homepage() : void
     {
-        header("Location: index.php?route=login");
+        $this->render("homepage.html.twig", []);
     }
     
-    public function profile() : void
+    public function homepageUser() : void
     {
         if(isset($_SESSION["user"]))
         {
-            $template = "profile";
+            
             $user = $_SESSION["user"];
 
-            require "templates/layout.phtml";
+            $this->render("homepage-user.html.twig", ['connect' => $_SESSION['user']]);
         }
         else
         {
-            header("Location: index.php?route=login");
+            $this->render("login.html.twig", []);
         }
     }
     public function _404() : void
     {
-        $template = "404";
-
-        require "templates/layout.phtml";
+        $this->render("404.html.twig", ['connect' => $_SESSION['user']]);
     }
 }
