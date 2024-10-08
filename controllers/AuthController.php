@@ -2,8 +2,7 @@
 
 
 
-class AuthController extends AbstractController
-{
+class AuthController extends Database {
     public function __construct()
     {
         parent::__construct();
@@ -33,16 +32,35 @@ class AuthController extends AbstractController
             
                 $um = new UserManager(); // recup utilisateur par son mail
                 $user = $um->findByEmail($email);
+                
+                var_dump($user);
+                die;
 
                     if($user !== null)
                     {  // si user exist avec son mail on verif son password
                         if(password_verify($password, $user->getPassword()))
-                        {   // si password verif on ouvre une session et on recup id de utilisateur
-                            $_SESSION["user"] = $user->getId();
-                            //permet d enlever les messages d'eerreur à la tentative de connexion suivante
-                            unset($_SESSION["error-message"]);
-    
-                            $this->render("homepage-perso.html.twig", ['mess'=> " vous êtes connecté"]); // on redirige vers la page d'acceuil
+                        {  // si password verify ok
+                            if($active === 1)
+                            {
+                                // si password verif et active verif on ouvre une session et on recup id de utilisateur
+                                $_SESSION["user"] = $user->getId();
+                                $_SESSION["user"] = $user->getPrenom();
+                                $_SESSION["user"] = $user->getActif();
+                                
+                                var_dump($_SESSION['user']);
+                                die;
+                                
+                                //permet d enlever les messages d'erreur à la tentative de connexion suivante
+                                unset($_SESSION["error-message"]);
+        
+                                $this->render("homepage-user.html.twig", ['mess'=> "Bonjour".$_SESSION["prenom"]."Bienvenue sur ta page Personnelle"]); // on redirige vers la page d'acceuil
+                            }
+                            else
+                            {// si active === 0 on redirarige vers la page d'activation du mail
+                            $_SESSION["error-message"] = 'vous devez activer votre compte pour vous connecter';
+                            $this->render("validation.html.twig", ['error'=> $_SESSION['error-message']]);
+                            
+                            }
                         }
                         else
                         {// si password pas verif
@@ -168,17 +186,18 @@ class AuthController extends AbstractController
                                 $um->createUser($user);  
                                 
                                 
-                                    if($user->getId() !== null && $active === 1)
+                                    if($user->getId() !== null && $user->getActif() === 1)
                                     {
                                            //$_SESSION["user"] = $user;
                                             //echo "Vous êtes déjà inscrits vous pouvez vous connecter";
                                         $this->render("login.html.twig", ['active'=>"Vous êtes déjà inscrit vous pouvez vous connecter"]);
                                     }
-                                    else if ($user->getId() !== null && $active == 0)
+                                    else if ($user->getId() !== null && $user->getActif() == 0)
                                     {
                                             //echo "Votre compte n'est pas activé";
                                             //header("Location: index.php?route=validation");
-                                        $this->render("validation.html.twig", ['activation'=> "Votre compte n'est pas encore activé"]);
+                                            $um->validateMail($email, $cle);
+                                            $this->render("validation.html.twig", ['activation'=> "Votre compte n'est pas encore activé"]);
                                     }
                                     else
                                     {   //echo "Vous n'êtes pas encore inscrit"
@@ -253,11 +272,11 @@ class AuthController extends AbstractController
 
 
         
-        public function validateMail($mail,$cle ) : void 
+        public function validateMail($email,$cle ) : void 
         {
             $um = new UserManager();
             
-            $data = $this->$um->findByEmail($email);
+            $data = $this->um->findByEmail($email);
          
             $clebdd = $data['cle'];    // Récupération de la clé
             $actif = $data['actif']; // $actif contiendra alors 0 ou 1
@@ -273,14 +292,16 @@ class AuthController extends AbstractController
             {
                     if($cle == $clebdd) // On compare nos deux clés    
                     { 
-                      // Si elles correspondent on active le compte !    
-                      //return $activate= "Votre compte a bien été activé !";
-                      $this->render("login.html.twig", ['activate'=>"Votre compte a bien été activé !"]);
+                      
              
                       // La requête qui va passer notre champ actif de 0 à 1
                       $query = $this->db->prepare("UPDATE membres SET actif = 1 WHERE email like :email ");
                       $query->bindParam(':email', $email);
                       $query->execute();
+                      
+                      // Si elles correspondent on active le compte !    
+                      //return $activate= "Votre compte a bien été activé !";
+                      $this->render("login.html.twig", ['activate'=>"Votre compte a bien été activé vous pouvez vous connectez !"]);
                     }
                     else // Si les deux clés sont différentes on provoque une erreur...
                     {

@@ -1,14 +1,14 @@
 <?php
 
-session_start();
+require('Router.php');
 
-// charge l'autoload de composer
-require "vendor/autoload.php";
 
-// charge le contenu du .env dans $_ENV
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-require('services/Router.php');
+
+// "local" :    Local working environment
+// "network" :  Network working environment
+    
+// Create an instance of the Router class
 $router = new Router();
 
-$router->handleRequest($_GET);
+// Call the handleRoute method to handle the routing logic
+$router->handleRoute();

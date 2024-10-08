@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+	    <meta name="description" content="Site de jeux et d'activités pour jeune enfants">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+        <link rel="stylesheet" href="assets/styles/css/style.css" type="text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/3c515cc4da.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+        <title> {% block title %}| Apprendre avec Miaou{% endblock %}</title>
+    </head>
+    <body>
+    
+        {% block header%}
+        <section id="header">
+        
+        <img class="avatar" name={{avatar.name}} src={{ avatar.url }} alt={{avatar.description}}></img>
+        <h1> {{session.user.firstname}} joue avec Miaou</h1>
+        <div>
+        <button class="action-button"><a href="?route=logout">Se déconnecter</a></button>
+        <!--<button class="action-button"><a href="?route=login">S'inscrire</a></button>-->
+        </div>
+        
+        </section>
+        {% endblock %}
+        
+        {% block nav %}
+        {% include "subpages/_nav.html.twig" %}
+        {% endblock %}
+        
+
+    {% block error %}
+        {% if success_message is defined %}
+            <p>{{ success_message }}</p>
+        {% endif %}
+        {% if error_message is defined %}
+            <p>{{ error_message }}</p>
+        {% endif %}
+    {% endblock %}
+    {% block sessionMessage %}
+        {% if app.session.get('error_message') %}
+            <p>{{ app.session.get('error_message') }}</p>
+        {% endif %}
+        {% if app.session.get('success_message') %}
+            <p>{{ app.session.get('success_message') }}</p>
+        {% endif %}
+    {% endblock %}
+
+
+        {% block content %}
+        {% endblock %}
+{% block footer %}
+   {% include "subpages/_footer.html.twig" %} 
+    {% block javascriptGlobal %}
+      <script> src="../assets/js/common.js"</script>
+      <script> src="../assets/js/home.js"</script>
+    {% endblock %}
+{% endblock %}
+    </body>
+</html>

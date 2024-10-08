@@ -1,0 +1,111 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+Ma page
+{{ parent() }}
+{% endblock %}
+{% block header%}
+        <section id="header">
+        
+        <img class="avatar" name={{avatar.name}} src={{ avatar.url }} alt={{avatar.description}}></img>
+        <h1> {{session.user.firstname}} joue avec Miaou</h1>
+        <div>
+        <button class="action-button"><a href="?route=logout">Se déconnecter</a></button>
+        <!--<button class="action-button"><a href="?route=login">S'inscrire</a></button>-->
+        </div>
+        
+        </section>
+        
+{% endblock %}
+{% block nav%}
+<nav>
+    <ul>
+        <li>
+            <a href="index.php?route=homepage">Page Accueil</a>
+        </li>
+        <li>
+            <a href="index.php?route=login">Login</a>
+        </li>
+        <li>
+            <a href="index.php?route=register">Register</a>
+        </li>
+      {# {% if app.session.get('connected') and  app.session.get('statut') == 1  and app.session.get('role') == 1 or app.session.get('role') == 2 %} #}
+            <li>
+                <a href="index.php?route=homepage-user">Profile</a>
+            </li>
+            <li>
+                <a href="index.php?route=logout">Logout</a>
+            </li>
+            <li>
+                <a href="index.php?route=displayModify">Modifier le mot de passe</a>
+            </li>
+            <li>
+                <a href="index.php?route=games">Jeux</a>
+            </li>
+            <li>
+                <a href="index.php?route=coloriages">Coloriages</a>
+            </li>
+            <li>
+                <a href="index.php?route=stories">Histoires</a>
+            </li> 
+       {# {% endif %} #}
+        {% if app.session.get('connected') and app.session.get('statut') == 1 and app.session.get('role') == 2 %}
+            <li>
+                <a href="index.php?route=dashboard">Dasboard</a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endblock %}
+
+
+      
+       
+{% block error %}
+{{ parent() }}
+{% endblock %}   
+{% block content %}
+    <main>
+    <h1> Ma page Coloriage </h1> 
+    
+   <section class=ChoixCategorie> 
+    <form>
+        <label for="categorie">Choisissez une catégorie :</label>
+        <select id="categorie" name="categorie">
+            {% for categorie in categories %}
+                <option value="{{ categorie.id }}">{{ categorie.categorie }}</option>
+            {% endfor %}
+        </select>
+    </form>
+    </section>
+    <section>
+    <ul>
+    {% for coloriage in coloriages %}
+    <li> {{ coloriage.nom }} </li>
+    </div>
+    {% endfor %}
+    </section>
+    <section></section>
+    
+<!--affiche l'apercu du pdf-->
+<label  for     = "imag_article">Image principale : </label>
+        <input  type    = "file"
+                accept  = "image/"
+                name    = "imag_article"
+                id      = "imag_article"
+                class   = "flyover">
+        <small class="form-text text-muted">Sélectionnez une image : Formats ['jpg', 'jpeg', 'gif', 'png'].</small></br>
+        <small class="form-text text-muted">Dimensions de l'image : [500px 531px].</small>
+        
+        <section>
+         <h2>Choisis un coloriage pour pouvoir le télécharger et l'imprimer</h2>
+                <article>Categories de coloriages</article> 
+                <article>Choisis ton coloriage</article> 
+        </section>
+        <section>
+                <article>apercu</article> 
+                <article>télécharger</article> 
+         </section> 
+        </main>
+        
+{% endblock %}

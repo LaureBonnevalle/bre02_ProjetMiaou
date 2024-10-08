@@ -1,0 +1,120 @@
+<section id="footer"> 
+        <article class = "foot-box">
+        <div class = "timer">
+            
+            
+            <p>Temps écoulé:  <span id="time">00:00:00</span></p>
+            {% include "subpages/_catcss.html.twig" %}
+            
+        </div>
+        <div class = "retour-haut">
+            <img id="backToTopButton" class = "topButton " src = "assets/img/Miaou/retourHautPage.png">
+        </div>
+        </article>
+        <article class = "foot-content">
+        <div class="footer-flex-container">
+        <div class="footer-top">
+            <a href="index.php?route=accueil"><img src="assets/img/Miaou/JouerAvecMiaouLogo.png" alt="Logo chat"></a>
+            
+            <div class="footer-address">
+            <p></p>
+                <p>9 La Guermonnais</p>
+                <p >35720 Mesnil-Roc'h</p>
+                <div class="footer-tel-container">
+                    <i class="fa-sharp fa-solid fa-phone"></i>
+                    <p >06.21.03.27.13</p>
+                </div>
+                <div class="footer-mail-container">
+                    <i class="fa-solid fa-envelope"><a href="mailto:apprendreavecmiaou@gmail.com>"></i>
+                    <p >Contact</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-separation"></div>
+            <div class="footer-bottom">
+                <div class="footer-nav">
+                    <p>Vous êtes sur la page {{titre}}</p>
+                    <ul>
+                        <li><a href="?route=homepage">Accueil</a></li>
+                        <li><a href="?route=drawing">Coloriages</a></li>
+                        <li><a href="?route=games">Jeux</a></li>
+                        <li><a href="?route=stories">Histoires</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-rs-legal">
+                    <ul>
+                        <li><a href=""></a>Politique de confidentialité</li>
+                        <li><a href=""></a>Conditions générales de vente</li>
+                        <li><a href=""></a>Mentions légales</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </article>
+        <article class="copyright">
+        <div>
+        <p>&copy; 2024 Apprendre avec Miaou - Laure Bonnevalle</p>
+        </div>
+        </article>
+    </section>
+    <script>
+    function startTimer(startTime, display) {
+        setInterval(function () {
+            let now = Date.now();
+            let elapsed = Math.floor((now - startTime) / 1000);
+            let hours = Math.floor(elapsed / 3600);
+            let minutes = Math.floor((elapsed % 3600) / 60);
+            let seconds = elapsed % 60;
+
+            hours = hours < 10 ? "0" + hours : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = hours + ":" + minutes + ":" + seconds;
+
+            if (elapsed === 600) { // 10 minutes
+                alert("Attention, il s'est écoulé 10 minutes");
+            } else if (elapsed === 900) { // 15 minutes
+                alert("Attention, il s'est écoulé 15 minutes");
+            } else if (elapsed === 1200) { // 20 minutes
+                alert("Attention, il s'est écoulé 20 minutes");
+            }
+        }, 1000);
+    }
+
+    window.onload = function () {
+        let startTime = localStorage.getItem('startTime');
+        if (!startTime) {
+            startTime = Date.now();
+            localStorage.setItem('startTime', startTime);
+        } else {
+            startTime = parseInt(startTime, 10);
+        }
+        let display = document.querySelector('#time');
+        startTimer(startTime, display);
+    };
+
+    document.getElementById('logout').addEventListener('click', function() {
+        localStorage.removeItem('startTime');
+        // Rediriger vers la page de déconnexion
+        window.location.href = '/logout';
+    });
+    
+    
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+    var button = document.getElementById("backToTopButton");
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        button.style.display = "block";
+    } else {
+        button.style.display = "none";
+    }
+    }
+
+    document.getElementById('backToTopButton').addEventListener('click', function() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+});
+</script>

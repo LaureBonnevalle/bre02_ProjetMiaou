@@ -1,0 +1,97 @@
+#header {
+    .rectangle {
+        
+        background-color: coral;
+        height : 40vh;
+        width: 100vw;
+    }
+    box-sizing : border-box;
+    position: relative;
+    background-image: url("../../img/Miaou/backgroundHeader.jpg");
+    background-position : center ;
+    background-size: cover;
+    margin: 1.5rem;
+    display: flex;
+    height: 30vh;
+    width: 97vw;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+   
+    cover: fit-cover;
+    //background-image: center/cover no-repeat;
+    border: 3px solid #000;
+    border-radius: 30px;
+
+    article {
+        display: flex;
+        
+        align-items: center;
+        justify-content: space-between;
+        //background-image: url("Miaou/backgroundHeader.jpg");
+    }
+    .avatar {
+        height: 90%;
+    }
+    
+    h1 {
+        font-family: "Jua", sans-serif;
+        font-size: 3.5em;
+        font-weight: normal;
+    }
+    
+    div {
+        display: flex;
+        flex-direction: column;
+        margin-right : 1.5rem;
+    }
+        
+
+    
+
+    .action-button {
+    background-color : #d998fa;
+    color: white;
+    padding: 2px 25px;
+    margin-bottom: 1rem;
+    margin-top :1rem;
+    border-radius: 8px;
+    font-family : 'Jua', sans-serif;
+    font-size: 1.1em;
+    border: none;
+    border-bottom: 12px solid #B239ED;
+    border-left: 5px solid #B239ED;
+    text-shadow : 0px -2px #B239ED;
+    transition : all 0.1s;
+    -webkit-transition: all 0.1s;
+    border-radius: 30px;
+
+        a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 40px;
+            text-decoration: none;
+            color: #fff;
+            
+            border-radius: 30px;
+        }
+        
+        &:hover{
+            
+        cursor: pointer;
+        
+        
+        &:active{
+    cursor: pointer;
+    transform: translate(0, 12px);
+    -webkit-transform: translate(0, 12px);
+    border-bottom: 1px solid #B239ED;
+    border-left: 1px;
+    float: left;
+    margin-bottom : 1.8rem;
+    }
+}
+}
+}

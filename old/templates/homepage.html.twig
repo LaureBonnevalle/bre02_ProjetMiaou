@@ -1,0 +1,39 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+{{ parent() }}
+{% endblock %}
+{% block header %}
+{{ parent() }}
+{% endblock %}
+{% block nav%}
+{{ parent() }}
+{% endblock %}
+{% block content %}
+<main>
+ <h1>page Accueil<h1>
+{% block error %}
+{{ parent() }}
+{% endblock %}
+ {% if success_message is defined %}
+        <p>{{ success_message }}</p>
+    {% endif %}
+    {% if error_message is defined %}
+        <p>{{ error_message }}</p>
+    {% endif %}
+</main>
+
+<script>localStorage.removeItem('startTime');</script>
+{% endblock %}
+{% block footer %}
+{% include "subpages/_footer.html.twig" %} 
+
+ 
+
+
+    {% block javascriptGlobal %}
+      <script> src="../assets/js/common.js"</script>
+      <script> src="../assets/js/home.js"</script>
+{% endblock %}
+{% endblock %}
+ 

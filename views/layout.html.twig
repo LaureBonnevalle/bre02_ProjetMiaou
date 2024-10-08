@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+	    <meta name="description" content="Site de jeux et d'activités pour jeune enfants">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+        <link rel="stylesheet" href=".assets/styles/css/style.css" type="text/css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+        <title> {% block title %}| Apprendre avec Miaou{% endblock %}</title>
+    </head>
+    <body>
+        {% block header%}
+        <img src="./assets/img/Miaou/chatFiligranne.png"></img>
+        <h1>Apprendre avec Miaou</h1>
+        {% endblock %}
+        {% block nav %}
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.php?route=homepage">Page Accueil</a>
+                    </li>
+                    
+                    <li>
+                        <a href="index.php?route=login">Login</a>
+                    </li>
+                    <li>
+                        <a href="index.php?route=register">Register</a>
+                    </li>
+                    <li>
+                        <a href="index.php?route=homepage-user">Profile</a>
+                    </li>
+                    <li>
+                        <a href="index.php?route=logout">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        {% endblock %}
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

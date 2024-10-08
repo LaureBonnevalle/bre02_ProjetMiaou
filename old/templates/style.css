@@ -1,0 +1,150 @@
+@font-face {
+    font-family: 'Inter';
+    font-weight: normal;
+    font-style: normal;
+    src:url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+}
+
+html {
+    font-size: 62.5%; /* 1rem = 10px (la formule est 10/16*100) la taille par défaut étant 16px */
+}
+
+
+
+.titre {
+    background-color : #5C5454;
+    color : white;
+    font-family : Inter;
+    font-size : 1.5rem;
+    width: 510px;
+    height: 50px;
+    text-align : center;
+    vertical-align :center;
+    border-radius: 20px 20px 0 0;
+    
+    margin : auto;
+    display : flex;
+    align-items: stretch baseline;
+}
+
+h1 {
+    
+   text-align : center;
+}
+
+.close button {
+    background-color :#5C5454;
+    border: 15px solid #5C5454;
+    width : 30px;
+    height : 30px;
+    padding-left:30px;
+    background-image: url("../assets/img/Miaou/croixclosew.png");
+    background-size : cover;
+   
+    
+}
+
+.close img {
+    width : 40px;
+    height : 40px;
+    background-color :#5C5454;
+    
+}
+
+/*#close-btn {
+    position: absolute; 
+    width: 20px;
+    height: 20px;
+    top: 0px;
+    left: 278px;
+    cursor : pointer;
+    z-index: 220;
+    background-image: url('../ assets/img/Miaou/croixclosew.png');
+}*/
+    
+
+form {
+    box-sizing: border-box;
+    margin : auto;
+    width: 510px;
+    height: 600px;
+    background-image: url("../assets/img/Miaou/ChatInscription.jpg"); 
+    background-repeat : no-repeat;
+    background-size : contain;
+    background-position: center;
+    background-clip : content-box;
+    border: 8px solid #5C5454;
+    border-radius : 0 0 20px 20px;
+}
+
+fieldset {
+    border : 0px solid black;
+    margin: auto;
+    
+   
+}
+input {
+    
+    margin : auto;
+    
+    margin: auto;
+    padding : 0.5em;
+    background : rgba(255,255,255,0.75);
+    border-radius : 20px;
+    color : rgba(0,0,0,1);
+    border : 0.5px solid black;
+    width: 350px;
+    box-shadow : inset -5px -5px 5px  grey;
+    text-align: center;
+}
+
+label {
+    font-size : 1.5em;
+    font-family : Inter;
+}
+
+
+.button {
+    padding : 2em;
+    position : center;
+    text-align : center;
+    
+}
+
+
+.avatar {
+    border : 1px solid black;
+    border-radius : 20px;
+    box-shadow : inset -5px -5px 5px  grey;
+    background : rgba(255,255,255,0.75);
+    height : 250px;
+    display : block;
+    
+    width:80%;
+}
+    
+.avatar label {
+    font-size : 1.5em;
+    font-family : Inter;
+}   
+    
+
+.avatar input {
+    box-shadow : none ;
+    text-align: center;
+    
+    
+}
+
+.avatar img {
+    opacity : 100%;
+     height : 50px;
+   aspect-ratio: 1;
+  
+}
+
+
+.radio {
+    
+    flex-direction : row;
+}

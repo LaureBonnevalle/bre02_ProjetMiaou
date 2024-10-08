@@ -1,0 +1,66 @@
+
+
+ body {
+    margin: 150px;
+
+@mixin button-styles($type) {
+    background-color : #d998fa;
+    color: white;
+    padding: 15px 70px;
+    border-radius: 20px;
+    font-family : 'Inter';
+    font-size: 50px;
+    border: none;
+    border-bottom: 12px solid #B239ED;
+    border-left: 5px solid #B239ED;
+    text-shadow : 0px -2px #B239ED;
+    transition : all 0.1s;
+    -webkit-transition: all 0.1s;
+
+
+&::hover {
+    
+cursor: pointer;
+  
+  }
+
+.action-button:active {
+    cursor: pointer;
+    transform: translate(0, 12px);
+    -webkit-transform: translate(0, 12px);
+    border-bottom: 1px solid #B239ED;
+    border-left: 1px;
+    float: left;
+}
+
+  @media #{$small} {
+    // Petits appareils (téléphones en mode paysage, 576px et plus)
+    font-size: 1.6rem; 
+  }
+    
+  @media #{$medium} {
+  // Appareils moyens (tablettes, 768px et plus)
+    font-size: 1.8rem;
+  }
+
+  @media #{$large} {
+  // Grands appareils (ordinateurs de bureau, 992px et plus)
+    font-size: 2rem;
+  }
+    
+@if $type == 'action' {
+    background-color: $chi_Gong;
+    color: $white;
+    border: 1px solid $chi_Gong;
+
+    &:hover {
+      background-color: $white;
+      color: $chi_Gong;
+    }
+      
+     &:active {
+     } 
+  
+  }
+}
+}

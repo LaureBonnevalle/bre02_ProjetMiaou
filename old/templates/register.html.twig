@@ -1,0 +1,101 @@
+{% extends "layout.html.twig" %}
+
+{% block title %} Inscription {{ parent() }} {% endblock %}
+{% block nav %}
+{{ parent() }}
+{% endblock %}
+{% block content %}
+<main>
+
+    <section class="titre">
+        <h1>
+            Pour vous inscrire
+            <br> Remplissez et validez le formulaire
+        </h1>
+    
+     
+        
+    
+            <!--<button class="close" type="button"><img classe="close" src="./assets/img/Miaou/croixclosew.png"></button>-->
+       
+        
+    </section>
+    <section  id="form" class="form">
+        <form method="post" action="?route=check-register" class ="register-form">
+
+                <?php require_once('./views/subpages/_messages.phtml'); ?>
+
+                <fieldset>
+                        <legend>Merci de renseigner les informations suivantes :</legend>
+
+                         <label  for        = "email">Email :</label>
+                        <input  type        = "email"
+                                id          = "email"
+                                name        = "email"
+                                aria-label  = "Email field"
+                                value       = "">
+                        <div class = "error-message" id = "error-email"></div>
+
+                        <label  for     = "firstname">Prénom :</label>
+                        <input  type    = "text"
+                                id      = "firstname"
+                                name    = "firstname"
+                                aria-label = "Firstname field"
+                                value   = "">
+                        <div class = "error-message" id = "error-firstname"></div>                      
+                        
+                        <label  for     = "age">Age de l'enfant :</label>
+                        <input  type    = "number"
+                                id      = "age"
+                                name    = "age"
+                                aria-label = "age field"
+
+                        <div class = "error-message" id = "error-age"></div>  
+                        
+                        <fieldset class="avatar">
+                        <label for=avatar> Choisir un avatar</label>
+                            <ul>
+                            
+                            {% for avatar in avatars %}
+                                <li>
+                                    <div>
+                                        <input type="radio" id="{{ avatar.name }}" name="avatar" value= {{ avatar.id }} checked />
+                                        <label for="{{ avatar.name }}"><img src="{{ avatar.url }}" alt="{{ avatar.description }}"/></label>
+                                   </div>
+                               </li>
+                            {% endfor %}
+                            </ul>
+                        </fieldset>
+                        <div class="error-message" id="error-avatar"></div>
+                        
+                        <fieldset>
+                        <!--<legend>Veuillez sélectionner vos intérêts</legend>-->
+                            <div class="news">
+                                <label for="newsletter">Newsletter</label>
+                            <input type="checkbox" id="newsletter" name="newsletter" value= 1 checked />
+                            </div>
+                        </fieldset>
+
+                        <input  type    = "hidden"
+                                name    = "csrf_token"
+                                id      = "token"
+                                value   = "{{ token }}">
+                                <div class = "error-message" id = "error-token"></div>
+
+                        <fieldset class="submit-btn">
+                            <button type="submit" class="register-btn">Créer un compte</button>
+                        </fieldset>
+                
+            
+            
+            
+         
+        </form>
+         </section> 
+         {% if scripts is defined %}
+            {% for script in scripts %}
+                <script src ="{{ script }}"></script>
+            {% endfor %}
+        {% endif %}
+</main>
+{% endblock %}
