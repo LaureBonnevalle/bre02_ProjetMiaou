@@ -1,0 +1,17 @@
+<nav id="nav">
+    <ul>
+        <li class="action-button"><a href="index.php?route=homepage-user">Ma Page</a></li>
+        <!--<li class="action-button"><a href="index.php?route=login">Login</a></li>-->
+       <!-- <li class="action-button"><a href="index.php?route=register">Register</a></li>-->
+        {#{% if isConnected and isValidate and (isAdmin or isUser) %}#}
+            
+            
+            <li class="action-button"><a href="index.php?route=games">Jeux</a></li>
+            <li class="action-button"><a href="index.php?route=coloriages">Coloriages</a></li>
+            <li class="action-button"><a href="index.php?route=stories">Histoires</a></li>
+        {#{% endif %}#}
+        {#{%  if isConnected and isValidate and isAdmin %}
+            <li class="action-button"><a href="index.php?route=dashboard">Dashboard</a></li>
+        {% endif %}#}
+    </ul>
+</nav>

@@ -57,5 +57,39 @@ class HistoiresManager extends AbstractManager {
         }
         return $histoires;
     }
+    
+    public function getHistoiresByCriteria($personnageId, $lieuId, $objetId) {
+        $query = $this->db->prepare(
+            "SELECT h.*, p.nom AS personnage, l.nom AS lieu, o.nom AS objet
+            FROM histoires h
+            JOIN personnages p ON h.personnage_id = p.id
+            JOIN lieux l ON h.lieu_id = l.id
+            JOIN objets o ON h.objet_id = o.id
+            WHERE h.personnage_id = :personnageId AND h.lieu_id = :lieuId AND h.objet_id = :objetId"
+        );
+       
+        $query->execute([
+            ':personnageId' => $personnageId,
+            ':lieuId' => $lieuId,
+            ':objetId' => $objetId
+        ]);
+       
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    public function getImageUrl($personnageId, $lieuId, $objetId) {
+        $query = $this->db->prepare(
+            "SELECT image_url
+            FROM histoires
+            WHERE personnage_id = :personnageId AND lieu_id = :lieuId AND objet_id = :objetId"
+        );
+        $query->execute([
+            ':personnageId' => $personnageId,
+            ':lieuId' => $lieuId,
+            ':objetId' => $objetId
+        ]);
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return $result ? $result['image_url'] : null;
+    }
 }
 ?>

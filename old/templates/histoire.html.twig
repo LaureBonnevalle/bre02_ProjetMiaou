@@ -1,0 +1,90 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+Ma page
+{{ parent() }}
+{% endblock %}
+{% block header%}
+        <section id="header">
+        
+        <img class="avatar" name={{avatar.name}} src={{ avatar.url }} alt={{avatar.description}}></img>
+        <h1> {{session.user.firstname}} joue avec Miaou</h1>
+        <div>
+        <button class="action-button"><a href="?route=logout">Se déconnecter</a></button>
+        <!--<button class="action-button"><a href="?route=login">S'inscrire</a></button>-->
+        </div>
+        
+        </section>
+        
+{% endblock %}
+{% block nav%}
+<section id="nav">
+<nav>
+    <ul>
+        <li>
+            <a href="index.php?route=homepage">Page Accueil</a>
+        </li>
+        <li>
+            <a href="index.php?route=login">Login</a>
+        </li>
+        <li>
+            <a href="index.php?route=register">Register</a>
+        </li>
+      {# {% if app.session.get('connected') and  app.session.get('statut') == 1  and app.session.get('role') == 1 or app.session.get('role') == 2 %} #}
+            <li>
+                <a href="index.php?route=homepage-user">Profile</a>
+            </li>
+            <li>
+                <a href="index.php?route=logout">Logout</a>
+            </li>
+            <li>
+                <a href="index.php?route=displayModify">Modifier le mot de passe</a>
+            </li>
+            <li>
+                <a href="index.php?route=games">Jeux</a>
+            </li>
+            <li>
+                <a href="index.php?route=coloriages">Coloriages</a>
+            </li>
+            <li>
+                <a href="index.php?route=stories">Histoires</a>
+            </li> 
+       {# {% endif %} #}
+        {% if app.session.get('connected') and app.session.get('statut') == 1 and app.session.get('role') == 2 %}
+            <li>
+                <a href="index.php?route=dashboard">Dasboard</a>
+            </li>
+</section>
+        {% endif %}
+    </ul>
+</nav>
+{% endblock %}
+{% block error %}
+{{ parent() }}
+{% endblock %}   
+{% block content %}
+    <main>
+    <form id="histoire-form">
+    <select name="personnage_id">
+        {% for personnage in personnages %}
+            <option value="{{ personnage.id }}">{{ personnage.nom }}</option>
+        {% endfor %}
+    </select>
+    <select name="lieu_id">
+        {% for lieu in lieux %}
+            <option value="{{ lieu.id }}">{{ lieu.nom }}</option>
+        {% endfor %}
+    </select>
+    <select name="objet_id">
+        {% for objet in objets %}
+            <option value="{{ objet.id }}">{{ objet.nom }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Afficher l'histoire</button>
+</form>
+
+<section id="story-section">
+    <!-- L'histoire sera affichée ici -->
+</section>
+    </main>
+{% endblock %}

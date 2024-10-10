@@ -14,16 +14,17 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
         <title> {% block title %}| Apprendre avec Miaou{% endblock %}</title>
     </head>
-    <body>
     
+    <body>
+    <div class="rect">
         {% block header%}
-        <section id="header">
+        <section class="container" id="header">
         
         <img class="avatar" name={{avatar.name}} src={{ avatar.url }} alt={{avatar.description}}></img>
         <h1> {{session.user.firstname}} joue avec Miaou</h1>
         <div>
-        <button class="action-button"><a href="?route=logout">Se déconnecter</a></button>
-        <!--<button class="action-button"><a href="?route=login">S'inscrire</a></button>-->
+        <button class="action-button"><a href="?route=login">Se Connecter</a></button>
+        <button class="action-button"><a href="?route=register">S'inscrire</a></button>
         </div>
         
         </section>
@@ -33,7 +34,10 @@
         {% include "subpages/_nav.html.twig" %}
         {% endblock %}
         
-
+        {% block content %}
+    <main>
+    
+    </div>
     {% block error %}
         {% if success_message is defined %}
             <p>{{ success_message }}</p>
@@ -42,6 +46,12 @@
             <p>{{ error_message }}</p>
         {% endif %}
     {% endblock %}
+    {% block errorjava %}
+        -
+        {% if error-message is defined %}
+            <p>{{ error_message }}</p>
+        {% endif %}
+        {% endblock %}
     {% block sessionMessage %}
         {% if app.session.get('error_message') %}
             <p>{{ app.session.get('error_message') }}</p>
@@ -51,15 +61,20 @@
         {% endif %}
     {% endblock %}
 
-
-        {% block content %}
+</main>
+        
         {% endblock %}
+
 {% block footer %}
    {% include "subpages/_footer.html.twig" %} 
     {% block javascriptGlobal %}
-      <script> src="../assets/js/common.js"</script>
-      <script> src="../assets/js/home.js"</script>
+      {% if scripts is defined %}
+          {% for script in scripts %}
+          <script src="{{ script }}"></script>
+          {% endfor %}
+          {% endif %}
     {% endblock %}
 {% endblock %}
+
     </body>
 </html>

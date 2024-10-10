@@ -16,3 +16,14 @@ document.getElementById('backToTopButton').addEventListener('click', function() 
     document.documentElement.scrollTop = 0;
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const footer = document.getElementById('footer');
+    footer.addEventListener('click', function() {
+        if (footer.style.bottom === '-400px') {
+            footer.style.bottom = '0';
+        } else {
+            footer.style.bottom = '-400px';
+        }
+    });
+});
+

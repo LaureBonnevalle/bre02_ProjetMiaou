@@ -1,6 +1,9 @@
 <?php
-class ColoriagesManager extends AbstractManager 
-{public function __construct()
+require_once('models/ColoriageCategories.php');
+require_once('models/Coloriages.php');
+
+class ColoriageManager extends AbstractManager {
+public function __construct()
     {
         parent::__construct();
     }
@@ -19,7 +22,7 @@ class ColoriagesManager extends AbstractManager
         $query->execute([$id]);
         $data = $query->fetch();
         if ($data) {
-            return new Coloriages($data['id'], $data['categorie_dessin'], new DateTime($data['dessin_DateHeure']), $data['fichier']);
+            return new Coloriages($data['id'], $data['categorie_coloriage'],  $data['url']);
         }
         return null;
     }
@@ -46,11 +49,24 @@ class ColoriagesManager extends AbstractManager
         
     }
      
-    public function getAllColoriagesByCategorie { 
-        $sql = $this->db->prepare('SELECT c.* FROM coloriage c
-        INNER JOIN coloriage_categorie cc ON c.categorie_coloriage = cc.id
-        WHERE cc.id = :categorie_id');
+    
+    public function getAllColoriagesByCategorie(int $categorieId): array { 
+    $sql = $this->db->prepare('SELECT c.* FROM coloriage c
+    INNER JOIN coloriage_categories cc ON c.categorie_coloriage = cc.id
+    WHERE cc.id = :categorie_id');
 
-        $result = $this->db->prepare($sql);
-        $coloriages = $result->fetchAll();
+    $sql->execute(['categorie_id' => $categorieId]);
+    $coloriages = $sql->fetchAll(PDO::FETCH_ASSOC);
+    return $coloriages;
+    }
+    
+    public function jSON($categorieId)
+{
+    $coloriageManager = new ColoriageManager();
+    $coloriages = $this->getAllColoriagesByCategorie($categorieId);
+
+    header('Content-Type: application/json');
+    echo json_encode($coloriages);
+    exit;
+}
 }

@@ -1,6 +1,6 @@
 <?php
 
-class PersonnagesManager extends AbstractManager {
+class PersonnageManager extends AbstractManager {
     
    public function __construct()
     {
@@ -75,14 +75,17 @@ class PersonnagesManager extends AbstractManager {
     }
 
     // Récupérer tous les personnages
-    public function getAll(): array {
-        $query = $this->db->query("
+    public function getAllPersonnages(): array {
+        $query = $this->db->prepare("
             SELECT * FROM personnages
         ");
+        $result =$query->execute();
+        
+        //return $result->fetch(PDO::FETCH_ASSOC);
 
         $personnages = [];
-        while ($data = $query->fetch()) {
-            $personnages[] = new Personnages($data['id'], $data['perso_name'], $data['perso_description']);
+        while ($result = $query->fetch()) {
+            $personnages[] = new Personnages($result['id'], $result['perso_name'], $result['perso_description']);
         }
 
         return $personnages;

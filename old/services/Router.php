@@ -7,6 +7,7 @@ require_once("services/Functionality.php");
 require_once("controllers/DashboardController.php");
 require_once("controllers/GameController.php");
 require_once("controllers/ColoriageController.php");
+require_once("controllers/StoryController.php");
 
 class Router {
     public function __construct()
@@ -22,6 +23,7 @@ class Router {
         $dash = new DashboardController();
         $gm = new GameController();
         $cc = new ColoriageController();
+        $sc = new StoryController();
 
         $route = isset($get["route"]) ? $get["route"] : "homepage";
 
@@ -60,8 +62,11 @@ class Router {
             case "coloriages":
                 $cc->displayDraw();
                 break;
+            case "coloriagesListe":
+                $cc->getColoriagesByCategorieJson();
+                break;
             case "stories":
-                $hc->displayStories();
+                $sc->displayStories();
                 break;
             case "logout":
                 $ac->logout();

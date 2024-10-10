@@ -15,12 +15,12 @@
         
 {% endblock %}
 {% block nav %}
-        {% include "subpages/_navUser.html.twig" %}
+        {% include "subpages/_navAdmin.html.twig" %}
         {% endblock %}
 
 {% block content %}
  <main>      
-      <h2> Ma page User </h2>  
+      <h2> Page Administarteur </h2>  
 {% block error %}
 {{ parent() }}
 {% endblock %} 
@@ -30,28 +30,3 @@
     {% if error_message is defined %}
         <p>{{ error_message }}</p>
     {% endif %}   
-   <section>
-    <h3> Bonjour {{session.user.firstname}} !</h3>
-    
-    <p>Tu es connecté au site Apprendre Avec Miaou</p>
-    <p> Tu peux maintenant accéder aux jeux et activitédu site.</p>
-    <p> Que veux tu faire maintenant ?</p>
-      <section class="cards">
-      </section>  
-        
-        
-        <a href="?route=displayModify" > Modifier mon mot de passe </a>
-</main>
-{% endblock %}
-{% block footer %}
-{% include "subpages/_footer.html.twig" %} 
-
- 
-
-
-    {% block javascriptGlobal %}
-      <script> src="../assets/js/common.js"</script>
-      <script> src="../assets/js/home.js"</script>
-{% endblock %}
-{% endblock %}
-

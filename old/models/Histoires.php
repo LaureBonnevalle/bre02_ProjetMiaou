@@ -8,6 +8,7 @@ class Histoires {
     private int $objet;
     private int $lieu;
     private string $histoire_content;
+    private string $url;
     private string $audio;
 
     public function __construct(?int $id, string $histoire_titre, int $categorie, int $personnage, int $objet, int $lieu, string $histoire_content, string $audio) {
@@ -18,6 +19,7 @@ class Histoires {
         $this->objet = $objet;
         $this->lieu = $lieu;
         $this->histoire_content = $histoire_content;
+        $this->url = $url;
         $this->audio = $audio;
     }
 
@@ -49,6 +51,10 @@ class Histoires {
         return $this->histoire_content;
     }
 
+    public function getUrl(): string {
+        return $this->url;
+    }
+    
     public function getAudio(): string {
         return $this->audio;
     }
@@ -81,6 +87,10 @@ class Histoires {
         $this->histoire_content = $histoire_content;
     }
 
+    public function setUrludio(string $url): void {
+        $this->url = $url;
+    }
+    
     public function setAudio(string $audio): void {
         $this->audio = $audio;
     }

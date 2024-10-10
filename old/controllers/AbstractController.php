@@ -23,7 +23,7 @@ abstract class AbstractController
         
         //$infoNav = $this->infosNav();
         
-        echo $this->twig->render($template, $data, ['elapsed_time' => (new TimesModels())->getElapsedTime()],[$this->getDefaultScripts()]);
+        echo $this->twig->render($template, $data, ['elapsed_time' => (new TimesModels())->getElapsedTime()],$data);
         exit();
     }
     

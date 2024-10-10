@@ -26,7 +26,7 @@ class AuthController extends AbstractController {
         $am = new AvatarManager();
         
         $_SESSION['error_message'] = "";      
-        $this->render("login.html.twig", ["token" => $tm->generateCSRFToken(),"avatar" => $am->getById(4)], []);
+        $this->render("login.html.twig", ["token" => $tm->generateCSRFToken(),"avatar" => $am->getById(4)], $scripts);
         return;
         // $template = "register";
         // require "templates/layout.phtml";
@@ -90,10 +90,15 @@ class AuthController extends AbstractController {
                             ];
                             
     
-                            if($result['statut'] === 1)
+                            if($result['statut'] === 1 || $result['statut'] === 2)
                             {
                                 
-                                $_SESSION["connected"] = true;
+                                $isConnected = $_SESSION["connected"] = true;
+                                $isValidate = $_SESSION['user']['statut']=1;
+                                $isUser =$_SESSION['user']['statut'] = 1;
+                                $isAdmin =$_SESSION['user']['role'] = 2;
+                                
+                                
                                 //permet d enlever les messages d'erreur à la tentative de connexion suivante
                                 unset($_SESSION["error-message"]);
                                 unset($_SESSION["success-message"]);
@@ -130,33 +135,39 @@ class AuthController extends AbstractController {
                                 
                             } else {
                             $_SESSION["error-message"] = 'votre compte a été banni';
-                            $this->render("homepage.html.twig", ['error'=> $_SESSION['error-message']],[]);
+                            //$this->render("homepage.html.twig", ['error_message'=> $_SESSION['error-message']],[]);
+                            $this->redirectTo('homepage');
                             
                             }
                         }
                         else
                         {// si password pas verif
                             $_SESSION["error-message"] = "Mot de passe invalide";
-                            $this->render("login.html.twig", ["error"=> $_SESSION['error-message']],['common.js']);
+                            //$this->render("login.html.twig", ["error_message"=> $_SESSION['error-message']],['common.js']);
+                            $this->redirectTo('login');
                         }
                     }
                     else
                     { // si user pas trouvé avec son mail
-                            $avatars = (new AvatarManager())->findAllAvatars();
+                            $avatar = (new AvatarManager())->getById(4);
+                            $avatars =(new AvatarManager())->findAllAvatars();
                             $_SESSION["error-message"] = "Il n'existe pas de compte avec ce mail";
-                            $this->render("register.html.twig", ["avatars" => $avatars,"error"=> $_SESSION['error-message']],[]);
+                            $this->redirectTo('register');
+                            //$this->render("register.html.twig", ["error_message"=> $_SESSION['error-message'],"avatars"=> $avatars, "avatar" => $avatar,"error"=> $_SESSION['error-message']],[]);
                     }
             }
             else
             {// si user n'existe pas
                 $_SESSION["error-message"] = "Invalide CSRF token";
-                $this->render("login.html.twig", ["error_message"=> $_SESSION['error-message']],[]);
+                //$this->render("login.html.twig", ["error_message"=> $_SESSION['error-message'], $token],[]);
+                $this->redirectTo('login');
             }
         }
         else
         {// si les champs du login sont vides
             $_SESSION["error-message"] = "Champs vides";
-            $this->render("login.html.twig", ["error"=> $_SESSION['error-message']],[$this->getDefaultScripts()]);
+            //$this->render("login.html.twig", ["error"=> $_SESSION['error-message']],[$this->getDefaultScripts()]);
+            $this->redirectTo('login');
         }
     }  
 }
@@ -168,19 +179,23 @@ class AuthController extends AbstractController {
         
         $am = new AvatarManager();
         $avatars = $am->findAllAvatars();
-        $scripts = $this->addScripts(['assets/js/formController.js','assets/js/formFunction.js']);
+        $scripts = $this->addScripts(['assets/js/formController.js','assets/js/formFunction.js', 'assets/js/formController.js']);
         
         //var_dump($avatars);
         // Générer le token pour le mettre dans le vue, dans l'input de type hidden
         $tm = new CSRFTokenManager();
+        $scripts= $this->addScripts([
+            'assets/js/formController.js',
+            ]);
         
         $_SESSION['error_mesage'] = "";      
-        $this->render("register.html.twig", [ "avatars" => $avatars, "token" => $tm-> generateCSRFToken()],[$scripts]);
+        $this->render("register.html.twig", [ "avatars" => $avatars, "token" => $tm-> generateCSRFToken()],$scripts);
         // $template = "register";
         // require "templates/layout.phtml";
     }
 
     public function checkRegister() : void {
+        
         
         
         if(isset($_SESSION['error_message'])) {
@@ -325,7 +340,10 @@ class AuthController extends AbstractController {
         
                                 $_SESSION['success_message'] = "Un email de validation vient de vous être envoyé";
                                 //$this->redirectTo("homepage");
-                                $this->render("homepage.html.twig", ['success_message'=> $_SESSION['success_message']], [$scripts]);
+                                
+                                $scripts= $this->addScripts(['assets/js/formController.js',]);
+
+                                $this->render("homepage.html.twig", ['success_message'=> $_SESSION['success_message']], $scripts);
                                 exit();
                            
                             
@@ -350,15 +368,16 @@ class AuthController extends AbstractController {
                             } catch (Exception $e) {
                                 // Handle any errors that occur during user insertion
                                 $_SESSION['error_message'] = "Erreur dans l'envoi du formulaire";           // An error occurred while sending the form !
-                            }*/
+                            }
                                 $this->redirect('index.php?route=register');
                                 $this->render("homepage.html.twig", ['error_message'=> $_SESSION['error_message']],[$scripts]);
-                                exit();
+                                exit();}*/
                         }
                         else
                         {
                             $_SESSION['error_message'] = "Un compte existe déjà avec cette adresse.";
-                            $this->render("homepage.html.twig", ['error_message'=> $_SESSION['error_message']],[$scripts]);
+                            //$this->render("homepage.html.twig", ['error_message'=> $_SESSION['error_message']],[$scripts]);
+                            $this->redirectTo('login');
                                 exit();
                         }
                     }
@@ -372,14 +391,16 @@ class AuthController extends AbstractController {
                 else
                 {
                     $_SESSION['error_message'] = "Tous les champs sont obligatoires.";
-                    $this->render("homepage.html.twig", ['error_message'=> $_SESSION['error_message']],[$scripts]);
+                    //$this->render("homepage.html.twig", ['error_message'=> $_SESSION['error_message']],[$scripts]);
+                    $this->redirectTo('register');
                                 exit();
                 }
             }
         
         else {
            $_SESSION['error_message'] = "Les champs n'existent pas";
-            $this->render("homepage.html.twig", ['error_message'=> $_SESSION['error_message']],[$scripts]);
+            //$this->render("homepage.html.twig", ['error_message'=> $_SESSION['error_message']],[$scripts]);
+            $this->redirectTo('homepage');
                         exit(); 
         }    
         
@@ -390,7 +411,9 @@ class AuthController extends AbstractController {
     public function displayModify() : void
     {
         //TODO : récupération des données concernant les avatars (appel à AvatarManager)
-        
+        $scripts= $this->addScripts([
+            'assets/js/formController.js', 'assets/formFunction.js'
+            ]);
         //$am = new AvatarManager();
        // $avatars = $am->findAllAvatars();
         $scripts = $this->addScripts(['assets/js/common.js','assets/js/formController.js','assets/js/formFunction.js']);
@@ -505,11 +528,13 @@ class AuthController extends AbstractController {
                     }    
                 } else {
                     $errors[] = $errorMessages[38]; // Il y a des erreur sur le formulaire.....
-                    $this->render("displayModify.html.twig", ['error_message'=> $_SESSION['error_message']],[$this->getDefaultScript()]); // on redirige
+                    //$this->render("ModifyPassword.html.twig", ['error_message'=> $_SESSION['error_message']],$data); // on redirige
+                    $this->redirectTo('displayModify');
                 }  
         } else {
             $errors[] = $errorMessages[0];
-            $this->render("homepage.html.twig", ['error_message'=> $_SESSION['error_message']],[$this->getDefaultScript()]); // on redirige
+            //$this->render("homepage.html.twig", ['error_message'=> $_SESSION['error_message']],[$this->getDefaultScript()]); // on redirige
+            $this->redirectTo('homepage');
         }
             
            

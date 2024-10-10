@@ -1,6 +1,6 @@
 <?php
 
-class ObjetsManager extends AbstractManager {
+class ObjetManager extends AbstractManager {
     
    public function __construct()
     {

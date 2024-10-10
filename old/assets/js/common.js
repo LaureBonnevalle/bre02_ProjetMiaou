@@ -1,8 +1,3 @@
-/* This script is used to toggle the menu on smaller screens.
- * It toggles the 'open' class on the burger toggler element,
- * which triggers CSS styles to show/hide the menu links.
- */
-
 document.addEventListener('DOMContentLoaded', function() {
     // Get the burger toggler element and the nav links container
     const burgerToggler = document.getElementById('menu-toggle');
@@ -26,20 +21,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // that calls the toggleNav function when clicked
     burgerToggler.addEventListener('click', toggleNav);
 
-    // Add a click event listener to the main and footer element
-    // that calls the closeNav function when clicked
     main.addEventListener('click', closeNav);
     footer.addEventListener('click', closeNav);
 
-    // Add a scroll event listener to the window element
-    // that calls the closeNav function when scrolled
     window.addEventListener('scroll', closeNav);
-
-    // This code uses the ResizeObserver API to detect when the screen size changes.
-    // It adjusts the transition property of the navLinksContainer element and toggles the 'open' class on the burger toggler element when the screen size is less than 992 pixels.
-    // The navLinksContainer element slides in and out smoothly using CSS transitions.
-    // When the screen size is greater than or equal to 992 pixels, the transition property is set to 'none' to disable transitions, the 'open' class is removed from the burger toggler element, and the 'open' class is removed from the navLinksContainer element. 
-    // This code is commented out because it is not currently being used.
 
     new ResizeObserver(entries => {
         if(entries[0].contentRect.width >= 992) {
@@ -48,17 +33,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }).observe(document.body);
 
-
-
-    
-    // This code allows users to toggle the visibility of password inputs on multiple pages. 
-    // When the user clicks on an eye icon next to a password input field, the password is 
-    // either shown or hidden. After 10 seconds, the password will automatically be hidden again.
-
-    // Selects all elements with the class "eyes" (the eye icons)
+    // Handle password visibility toggle
     document.querySelectorAll(".eyes").forEach(eye => {
-
-        // For each eye icon, we add a click event listener
         eye.addEventListener("click", function(e) {
             e.preventDefault(); // Prevents the default click behavior (in case it's a link or button)
 
@@ -95,5 +71,19 @@ document.addEventListener('DOMContentLoaded', function() {
         fas.removeAttribute('style'); // Remove any inline styling (e.g., red color)
     }
 
-    
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        var button = document.getElementById("backToTopButton");
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            button.style.display = "block";
+        } else {
+            button.style.display = "none";
+        }
+    }
+
+    document.getElementById('backToTopButton').addEventListener('click', function() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    });
 });

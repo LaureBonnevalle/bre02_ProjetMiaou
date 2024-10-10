@@ -4,7 +4,16 @@
 {{ parent() }}
 {% endblock %}
 {% block header %}
-{{ parent() }}
+<section id="header">
+        
+        <img class="avatar" name= "logo" src="assets/img/Miaou/chatFiligranne.png" alt="logo du site : chat tout mignon"></img>
+        <h1> {{session.user.firstname}} joue avec Miaou</h1>
+        <div>
+        <button class="action-button"><a href="?route=register">S'inscrire</a></button>
+        <button class="action-button"><a href="?route=login">Se Connecter</a></button>-->
+        </div>
+        
+        </section>
 {% endblock %}
 {% block nav%}
 {{ parent() }}
@@ -22,18 +31,18 @@
         <p>{{ error_message }}</p>
     {% endif %}
 </main>
-
-<script>localStorage.removeItem('startTime');</script>
-{% endblock %}
+{%endblock %}
 {% block footer %}
 {% include "subpages/_footer.html.twig" %} 
 
- 
-
+ {% block java%}
+    <script>localStorage.removeItem('startTime');</script>
+ {% endblock %}
 
     {% block javascriptGlobal %}
       <script> src="../assets/js/common.js"</script>
       <script> src="../assets/js/home.js"</script>
+      <script> src="../assets/js/global.js"</script>
 {% endblock %}
 {% endblock %}
  

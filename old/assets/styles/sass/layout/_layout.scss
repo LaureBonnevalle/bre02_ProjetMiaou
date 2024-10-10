@@ -19,8 +19,21 @@ html {
 }
 
 body {
-    background-color: coral;
-    width:100vw;
+    padding-top: 0;
+  max-width : 1200px;
+    background-color:black;
+    
+    .rect {position:absolute;
+       left :-5px;
+       top: -5px;
+       max-widthwidth : 1200px;
+       height: 25%;
+       background-color: #000;
+       margin: 0
+   }
 }
+
+.content {
+    max-width: 1200px;
 
 

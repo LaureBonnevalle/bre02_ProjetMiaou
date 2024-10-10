@@ -15,11 +15,11 @@ class DefaultController extends AbstractController {
         
         
         $scripts = $this->addScripts([
-            'assets/js/formController.js',
+            
             ]);
             
         $avatar= (new AvatarManager())->getByName("Miaou");
-            $this->render("homepage.html.twig", ['avatar'=>$avatar],[$scripts]);
+            $this->render("homepage.html.twig", ['avatar'=>$avatar],$scripts);
             
     }
     
@@ -39,7 +39,7 @@ class DefaultController extends AbstractController {
         }
         else
         {
-            $this->render("login.html.twig", [],[$scripts]);
+            $this->redirectTo('login');
         }
     }
     public function _404() : void
@@ -47,7 +47,8 @@ class DefaultController extends AbstractController {
         $scripts = $this->addScripts([
             'assets/js/formController.js',
             ]);
-        $this->render("404.html.twig", [],[$scripts]);
+        $this->render("404.html.twig", [],$scripts);
+        //$this->redirectTo('_404');
     }
     
     

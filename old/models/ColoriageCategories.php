@@ -1,5 +1,11 @@
 <?php
 
+require_once('managers/ColoriageManager.php');
+require_once('managers/ColoriageCategoriesManager.php');
+
+
+
+
 class ColoriageCategories {
     private ?int $id;
     private string $categorie_name;
@@ -16,23 +22,23 @@ class ColoriageCategories {
     }
 
     public function getCategorieName(): string {
-        return $this->categorie_name;
+        return $this->categorieName;
     }
 
     public function getCategorieDescription(): string {
-        return $this->categorie_description;
+        return $this->categorieDescription;
     }
 
     public function setId(?int $id): void {
         $this->id = $id;
     }
 
-    public function setCategorieName(string $categorie_name): void {
-        $this->categorie_name = $categorie_name;
+    public function setCategorieName(string $categorieName): void {
+        $this->categorieName = $categorieName;
     }
 
-    public function setCategorieDescription(string $categorie_description): void {
-        $this->categorie_description = $categorie_description;
+    public function setCategorieDescription(string $categorieDescription): void {
+        $this->categorieDscription = $categorieDescription;
     }
 }
 ?>

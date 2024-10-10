@@ -18,6 +18,7 @@ Ma page
         
 {% endblock %}
 {% block nav%}
+<section id="nav">
 <nav>
     <ul>
         <li>
@@ -53,6 +54,7 @@ Ma page
             <li>
                 <a href="index.php?route=dashboard">Dasboard</a>
             </li>
+</section>
         {% endif %}
     </ul>
 </nav>
@@ -66,39 +68,56 @@ Ma page
 {% endblock %}   
 {% block content %}
     <main>
-    <h1> Ma page Coloriage </h1> 
+    <h2> Ma page Coloriage </h2> 
     
    <section class=ChoixCategorie> 
-    <form>
-        <label for="categorie">Choisissez une catégorie :</label>
-        <select id="categorie" name="categorie">
-            {% for categorie in categories %}
-                <option value="{{ categorie.id }}">{{ categorie.categorie }}</option>
-            {% endfor %}
-        </select>
-    </form>
-    </section>
+   <article>
+        <h3>Choisissez un catégorie de coloriage</h3>
+            <select name="categorie_id" id="categorie-select">
+                {% for categorie in categories %}
+                <option value="{{ categorie.id }}">{{ categorie.categorie_name }}</option>
+                {% endfor %}
+            </select>
+            <button type="button" id="fetch-coloriages">Afficher</button>
+            {#<button type="submit">Afficher la liste de coloriages</button>#}
+        </form>
+    </article>
+    <article>
+    <div>
+    <h3>Choisis un coloriage pour pouvoir le télécharger et l'imprimer</h2>/
+        {#{% if coloriages is not empty %}
+        <ul id="coloriages-list">
+            {% for coloriage in coloriages %}
+            <li data-id="{{ coloriage.id }}" data-url="{{ coloriage.url }}">{{ coloriage.name }}</li>
+            {% endfor %}</ul>
+        {% endif %}#}
+        <ul id="coloriages-list"></ul>
+</div>
+
+
+        
+    </article>
     <section>
-    <ul>
-    {% for coloriage in coloriages %}
-    <li> {{ coloriage.nom }} </li>
-    </div>
-    {% endfor %}
+        <h3>Aperçu</h3>
+        <div id="preview-section">
+    <!-- The preview and download button will be dynamically inserted here -->
+ </div>
+    {#<img src="{{ coloriage.thumbnail_url }}" alt="{{ coloriage.name }}">
+    <div id="coloriages-container"></div>#}
     </section>
-    <section></section>
     
 <!--affiche l'apercu du pdf-->
-<label  for     = "imag_article">Image principale : </label>
+<<!--<label  for     = "imag_article">Image principale : </label>
         <input  type    = "file"
                 accept  = "image/"
                 name    = "imag_article"
                 id      = "imag_article"
                 class   = "flyover">
         <small class="form-text text-muted">Sélectionnez une image : Formats ['jpg', 'jpeg', 'gif', 'png'].</small></br>
-        <small class="form-text text-muted">Dimensions de l'image : [500px 531px].</small>
+        <small class="form-text text-muted">Dimensions de l'image : [500px 531px].</small>-->
         
         <section>
-         <h2>Choisis un coloriage pour pouvoir le télécharger et l'imprimer</h2>
+         
                 <article>Categories de coloriages</article> 
                 <article>Choisis ton coloriage</article> 
         </section>
