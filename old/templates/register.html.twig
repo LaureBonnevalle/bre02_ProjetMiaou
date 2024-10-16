@@ -1,32 +1,33 @@
 {% extends "layout.html.twig" %}
 
-{% block title %} Inscription {{ parent() }} {% endblock %}
-{% block header%}
-        <section id="header">
-        
-        <img class="avatar" name= "logo" src="assets/img/Miaou/chatFiligranne.png" alt="logo du site : chat tout mignon"></img>
-        <h1> {{session.user.firstname}} joue avec Miaou</h1>
-        <div>
-        <button class="action-button"><a href="?route=register">Se déconnecter</a></button>
-        <button class="action-button"><a href="?route=login">S'inscrire</a></button>-->
-        </div>
-        
-        </section>
-        {% endblock %}
-{% block nav %}
-{{ parent() }}
+{% block description %}
+    {{ parent() }}
+    {% block title %}
+    |Page Utilisateur 
 {% endblock %}
+{% endblock %}
+
+
+
+{% block body %}
+
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+
 {% block error %}
-{{ parent() }}
-{% endblock %}
+    {{ parent() }}
+{% endblock %} 
+
 {% block content %}
-<main>
+<main id='register'>
 
     <section class="titre">
-        <h1>
+        <h2>
             Pour vous inscrire
             <br> Remplissez et validez le formulaire
-        </h1>
+        </h2>
     
      
         
@@ -35,7 +36,7 @@
        
         
     </section>
-    <section  id="form" class="form">
+    <section  id="form-register" class="form">
         <form method="post" action="?route=check-register" class ="register-form">
 
                 <?php require_once('./views/subpages/_messages.phtml'); ?>
@@ -43,7 +44,7 @@
                 <fieldset>
                         <legend>Merci de renseigner les informations suivantes :</legend>
 
-                         <label  for        = "email">Email :</label>
+                        <label  for        = "email">Email :</label>
                         <input  type        = "email"
                                 id          = "email"
                                 name        = "email"
@@ -67,7 +68,8 @@
 
                         <div class = "error-message" id = "error-age"></div>  
                         
-                        <fieldset class="avatar">
+                </fielset>
+                <fieldset class="avatar">
                         <label for=avatar> Choisir un avatar</label>
                             <ul>
                             
@@ -80,37 +82,39 @@
                                </li>
                             {% endfor %}
                             </ul>
-                        </fieldset>
+                </fieldset>
                         <div class="error-message" id="error-avatar"></div>
                         
-                        <fieldset>
+                <fieldset>
                         <!--<legend>Veuillez sélectionner vos intérêts</legend>-->
-                            <div class="news">
-                                <label for="newsletter">Newsletter</label>
-                            <input type="checkbox" id="newsletter" name="newsletter" value= 1 checked />
-                            </div>
-                        </fieldset>
-
+                        <div class="news">
+                        <label for="newsletter">Newsletter</label>
+                        <input type="checkbox" id="newsletter" name="newsletter" value= 1 checked />
+                        </div>
+                </fieldset>
                         <input  type    = "hidden"
                                 name    = "csrf_token"
                                 id      = "token"
                                 value   = "{{ token }}">
-                                <div class = "error-message" id = "error-token"></div>
+                        <div class = "error-message" id = "error-token"></div>
 
-                        <fieldset class="submit-btn">
-                            <button type="submit" class="register-btn">Créer un compte</button>
-                        </fieldset>
-                
-            
-            
-            
-         
+                <fieldset class="submit-btn">
+                    <button type="submit" class="register-btn">Créer un compte</button>
+                </fieldset>
         </form>
          </section> 
-         {% if scripts is defined %}
-            {% for script in scripts %}
-                <script src ="{{ script }}"></script>
-            {% endfor %}
-        {% endif %}
-</main>
+         </main>
+{% endblock %}
+        
+            
+           
+        
+        {% block footer %}
+            {{ parent() }}
+        {% endblock %}
+        
+    
+        {% block java%}
+          {{ parent() }}
+        {% endblock %}
 {% endblock %}

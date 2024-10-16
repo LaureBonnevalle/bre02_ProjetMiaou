@@ -4,6 +4,8 @@ class Personnages {
     private ?int $id;
     private string $perso_name;
     private string $perso_description;
+    private string $url;
+    private string $alt;
 
     public function __construct(?int $id, string $perso_name, string $perso_description) {
         $this->id = $id;
@@ -25,6 +27,12 @@ class Personnages {
     public function getPersoName(): string {
         return $this->perso_name;
     }
+    public function getUrl(): string {
+        return $this->url;
+    }
+    public function getAlt(): string {
+        return $this->alt;
+    }
 
     // Setter pour perso_name
     public function setPersoName(string $perso_name): void {
@@ -39,6 +47,12 @@ class Personnages {
     // Setter pour perso_description
     public function setPersoDescription(string $perso_description): void {
         $this->perso_description = $perso_description;
+    }
+    public function setUrl(string $url): void {
+        $this->url = $url;
+    }
+    public function setalt(string $alt): void {
+        $this->alt = $alt;
     }
 }
 ?>

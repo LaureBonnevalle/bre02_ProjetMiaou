@@ -59,11 +59,11 @@ abstract class AbstractController
     
     protected function getDefaultScripts(): array {
         
-        return $data =  [
-                            'assets/js/common.js',
-                            'assets/js/home;js',
-                            'assets/js/global.js',
-                        ];
+        return [
+            'assets/js/common.js',
+            'assets/js/home.js',
+            'assets/js/global.js',
+        ];
         
     }
     
@@ -107,43 +107,7 @@ abstract class AbstractController
     }
 
 
-    /**
-     * Public method to perform disconnection tasks.
-     *
-     * @param  void
-     * @return void
-     */
-    public function disconnected() {
-
-        $session = INTEGRAL_CONFIG['sessionName'];
-
-        // Set the 'connected' session variable to false
-        $_SESSION['connected'] = false;
-
-        // Clear the 'user' session variable
-        $_SESSION[$session] = [];
-
-        // Destroy the entire session, including all session data
-        session_destroy();
-        
-        //echo "<script>localStorage.removeItem('startTime');</script>";
-        
-        session_start();
-        
-        $_SESSION['error_message'] = "Déconnexion effectuée !";
-
-        // Redirect to the default 'home' route if the 'route' parameter is not set
-        $this->redirectTo('homepage');
-    }
-
-
-    /**
-     * Render function to display a view within a layout.
-     *
-     * @param string $viewName   - The name of the view file (without extension) to render.
-     * @param string $layoutName - The name of the layout file (without extension) to use.
-     * @param array  $data       - An associative array containing data to pass to the view.
-     */
+ 
     function getElapsedTime() {
     if (isset($_SESSION['start_time'])) {
         $elapsed = time() - $_SESSION['start_time'];

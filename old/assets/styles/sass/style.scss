@@ -2,11 +2,26 @@
 @import "abstracts/_mixins";
 @import "abstracts/_varcolors";
 @import "components/_catcss";
-@import "layout/_header";
-@import "layout/_footer";
+@import "components/_header";
+@import "components/_footer";
+@import "components/_headerUser";
+@import "components/_navUser";
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
-@import "layout/_main";
+@import "components/_home";
+@import "components/_homeUser";
 @import "components/_nav";
+@import "components/_login";
+@import "components/_modifyPassword";
+@import "components/_coloriage";
+@import "components/_histoire";
+@import "components/_register";
+@import "layout/_homepage";
+@import "layout/_homepageUser";
+@import "layout/_modifyPasswordpage";
+@import "layout/_coloriagespage";
+@import "layout/_histoirepage";
+@import "layout/_registerpage";
+
 
 
 
@@ -19,18 +34,12 @@
 .custom-cursor {
   cursor: url('"../../img/Miaou/customCursor.png'), auto;
   height :2rem;
+}
     
-.rect {position:absolute;
-       left:0;
-       top: 0;
-       width : 100%;
-       height: 25%;
-       background-color: #000;
-   }
 
 //* {
   //  box-sizing: border-box;
-    font-size: 2rem;
+    //font-size: 2rem;
 //}
 
 
@@ -39,5 +48,30 @@ h1 {
 }
 
 
+#cat404 {
+    width: 120vh;
+    margin: auto;
+    margin-top : 7vh;
+    display: flex;
+    flex-direction: column;
+    
+    div{
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+img {
+    width: 100vh;
+    margin: auto;
+    //margin-left: 5vw;
+    }
+
+a {
+    
+   font-size: 3vh;
+   text-align: center;
+   margin: auto;
 }
+}
+    
 

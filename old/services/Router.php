@@ -8,6 +8,7 @@ require_once("controllers/DashboardController.php");
 require_once("controllers/GameController.php");
 require_once("controllers/ColoriageController.php");
 require_once("controllers/StoryController.php");
+require_once("controllers/UserController.php");
 
 class Router {
     public function __construct()
@@ -24,6 +25,7 @@ class Router {
         $gm = new GameController();
         $cc = new ColoriageController();
         $sc = new StoryController();
+        $uc = new UserController();
 
         $route = isset($get["route"]) ? $get["route"] : "homepage";
 
@@ -44,11 +46,14 @@ class Router {
             case "check-register":
                 $ac->checkRegister();
                 break;
+            case "modifyPassword":
+                $ac->modifyPassword();
+                break;
             case "homepageUser":
                 $dc->homepageUser();
                 break;
-            case "modifyPassword":
-                $ac->modifyPassword();
+            case "profile":
+                $dc->homepageUser();
                 break;
             case "displayModify":
                 $ac->displayModify();
@@ -68,15 +73,21 @@ class Router {
             case "stories":
                 $sc->displayStories();
                 break;
-            case "logout":
-                $ac->logout();
-                break;
+            case "getImage":               
+                $sc->getImage();
+            break;  
+            case "getHistoire":               
+                $sc->getHistoire();
+            break; 
             case "displayGame":
                 $gm->displayGame();
                 break;
             case "displayPixelArt":
                 $gm->displayPixelArt();
                 break;
+            case "logout":
+                $ac->logout();
+                break;   
             case "dashboard":
                 if (!$func->isAdmin()) {
                     $this->redirectTo("homepage");

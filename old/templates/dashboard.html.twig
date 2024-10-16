@@ -1,8 +1,14 @@
 {% extends "layout.html.twig" %}
 
-
+{% block description %}
+{{ parent() }}
+{% block title %} |Page Histoire {% endblock %}
+{% endblock %}
+{% block body %}
+    body>
+    <div class="rect">
 {% block header%}
-        <section id="header">
+        <section class = container id="header">
         
         <img class="avatar" name={{avatar.name}} src={{ avatar.url }} alt={{avatar.description}}></img>
         <h1> {{session.user.firstname}} joue avec Miaou</h1>
@@ -12,14 +18,13 @@
         </div>
         
         </section>
-        
+     {% block nav %}
+{% include "subpages/_navAdmin.html.twig" %}
+{% endblock %}  
 {% endblock %}
-{% block nav %}
-        {% include "subpages/_navAdmin.html.twig" %}
-        {% endblock %}
 
 {% block content %}
- <main>      
+ <main id="main">      
       <h2> Page Administarteur </h2>  
 {% block error %}
 {{ parent() }}
@@ -30,3 +35,31 @@
     {% if error_message is defined %}
         <p>{{ error_message }}</p>
     {% endif %}   
+<section>
+    <h2> Bonjour Admin !</h2>
+    <section id="dashboard">
+
+    <h2>Panneau d'administration</h2>
+    
+    <a href="?route=allUsers" type="button">Recherche utilisateur</a>
+ 
+    <a href="?route=messagerie" type="button">
+        <?php if($nbrMessages >= 1): ?>
+            <span class="notification-badge"></span>
+        <?php endif; ?>Messagerie 
+    </a>     
+
+    <a href="?route=actuality" type="button">Actualité</a>
+
+</section>
+    
+</section>
+</main>
+{% endblock %}
+{% block footer %}
+{{ parent() }}
+{% endblock %}
+{% block javascriptGlobal %}
+{{ parent() }}
+</body>
+{% endblock %}

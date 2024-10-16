@@ -1,0 +1,59 @@
+<section id="messagerie">
+    
+    <h2>Contenu du message</h2> 
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date de réception</th>
+                <th>Identité</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <!-- Affiche la date de réception formatée -->
+                <td>{{ message[0].receptedDate|date('d/m/Y H:i:s') }}</td>
+                <!-- Affiche le prénom de l'expéditeur -->
+                <td>{{ message[0].firstname|e }}</td>
+                <!-- Affiche l'email de l'expéditeur -->
+                <td>{{ message[0].email|e }}</td>
+                <!-- Lien pour supprimer le message -->
+                <td><a href="?route=deleteMessage&id={{ message[0].id|e }}">Supprimer</a></td>
+            </tr>
+            <tr>
+                <!-- Affiche le contenu du message en conservant les sauts de ligne -->
+                <td colspan="4">{{ message[0].content|e|nl2br }}</td>
+            </tr>   
+        </tbody>
+    </table>
+
+</section>
+
+<section id="form">
+    <h3>Formulaire de réponse !</h3>
+
+    <!-- Formulaire pour répondre au message -->
+    <form method="POST" action="?route=response&id={{ message[0].id|e }}" enctype="multipart/form-data">
+
+        <!-- Inclusion d'un sous-template pour afficher des messages -->
+        {% include "subpages/_messages.twig" %}
+
+        <fieldset>
+            <legend>Répondre au message :</legend>
+            <textarea id="subject" name="subject" rows="5" cols="33" aria-describedby="Suggestions">{{ subject is defined ? subject|e('html_attr') : '' }}</textarea>
+            <div class="error-message" id="error-subject"></div>
+            <!-- Champ pour saisir le contenu de la réponse -->
+            <textarea id="content" name="content" rows="5" cols="33" aria-describedby="Suggestions">{{ content is defined ? content|e('html_attr') : '' }}</textarea>
+            <div class="error-message" id="error-content"></div>
+
+            <!-- Champ caché pour le token CSRF -->
+            <input type="hidden" name="token" id="token" value="{{ token }}">
+            <div class="error-message" id="error-token"></div>
+
+            <!-- Bouton pour soumettre le formulaire -->
+            <input type="submit" name="soumettre" value="Envoyer">
+        </fieldset>
+    </form>
+</section>

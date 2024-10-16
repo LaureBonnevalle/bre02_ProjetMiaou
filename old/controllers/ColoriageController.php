@@ -12,9 +12,8 @@ class ColoriageController extends AbstractController
         $timesModels = new TimesModels();
         $cm = new ColoriageCategoriesManager();
         $categories= $cm->getAllCategoriesColoriages();
-        $this->addScripts([
-            'assets/js/formFunction.js',
-            'assets/js/ajaxColoriage.js']);
+        //var_dump($categories);
+        $scripts = $this->addScripts(['assets/js/ajaxColoriage.js']);
         
         //var_dump($categories);
         //var_dump($_SESSION);
@@ -22,7 +21,6 @@ class ColoriageController extends AbstractController
         $avatar = $avatarManager->getById($_SESSION['user']['avatar']);
         $errorMessage = $_SESSION['error_message'];
         $elapsedTime = $timesModels->getElapsedTime();
-        $scripts = $this->getDefaultScripts(['ajaxColoriage.js',]);
         
         //var_dump($categories, $avatar);
         
@@ -53,16 +51,26 @@ class ColoriageController extends AbstractController
     }
     
     public function getColoriagesByCategorieJson(){
-    $coloriageManager = new ColoriageManager();
-    $coloriages = $coloriageManager->getAllColoriagesByCategorie($categorieId);
+        
+        ob_clean(); // Clean the output buffer
 
-    header('Content-Type: application/json');
-    echo json_encode($coloriages);
-    exit;
-    }
+        $content = file_get_contents("php://input");
+        $data = json_decode($content, true);
+        
+        $coloriageManager = new ColoriageManager();
+        $coloriages = $coloriageManager->getAllColoriagesByCategorie($data['id']);        
     
+        header('Content-Type: application/json');
+        echo json_encode($coloriages);
+        
+        exit;
+    }
+   
     
     function createThumbnailFromPDF($pdfFilePath, $thumbnailPath) {
+        
+        $pdfFilePath = "assets/img/coloriages/";
+        $thumbnailPath = "assets/img/coloriages/thumbnails/";
     $imagick = new \Imagick();
     $imagick->setResolution(150, 150);
     $imagick->readImage($pdfFilePath . '[0]');

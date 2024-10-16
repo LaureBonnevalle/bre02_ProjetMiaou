@@ -1,6 +1,7 @@
 <nav id="nav">
-    <ul>
-        <li class="action-button"><a href="index.php?route=homepage">Accueil</a></li>
+    <ul id='nav-links-container'>
+        <li id="homepageTime" class="action-button"><a href="index.php?route=homepage">Accueil</a></li>
+        <li class="action-button"><a href="index.php?route=contact">Contact</a></li>
        {# <!--<li class="action-button"><a href="index.php?route=login">Login</a></li>-->
        <!-- <li class="action-button"><a href="index.php?route=register">Register</a></li>-->
         {% if isConnected and isValidate and (isAdmin or isUser) %}

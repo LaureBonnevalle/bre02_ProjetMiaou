@@ -1,5 +1,7 @@
 <?php
 
+require_once("models/Objets.php");
+
 class ObjetManager extends AbstractManager {
     
    public function __construct()
@@ -54,7 +56,7 @@ class ObjetManager extends AbstractManager {
     }
 
     // Récupérer un objet par son ID
-    public function getById(int $id): ?Objets {
+    public function getById(int $id) {
         $query = $this->db->prepare("
             SELECT * FROM objets 
             WHERE id = :id
@@ -65,17 +67,17 @@ class ObjetManager extends AbstractManager {
         ];
 
         $query->execute($parameters);
-        $data = $query->fetch();
+        return $query->fetch();
 
-        if ($data) {
+        /*if ($data) {
             return new Objets($data['id'], $data['objet_name'], $data['objet_description']);
         }
 
-        return null;
+        return null;*/
     }
 
     // Récupérer tous les objets
-    public function getAll(): array {
+    public function getAllObjets(): array {
         $query = $this->db->query("
             SELECT * FROM objets
         ");

@@ -1,0 +1,24 @@
+<section id="headerUser">
+    <section class="container" id="headerUser">
+        <img class="avatar" name={{avatar.name}} src={{ avatar.url }} alt={{avatar.description}}></img>
+        {% block header_title %}
+        <h1> {{session.user.firstname}} joue avec Miaou</h1>
+        {% endblock %}
+        <div>
+         <div class="button">
+        {% block button %}
+        <button id="logout" class="action-button"><a href="?route=logout">Se déconnecter</a></button> 
+        <button class="action-button"><a href="?route=profile">Profil</a></button>
+        {% endblock %}
+        </div>
+        <button id="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+               
+        <div>
+    </section>
+{% block javascript %}
+    {% if scripts is defined %}
+          {% for script in scripts %}
+              <script src="{{ script }}"></script>
+          {% endfor %}
+    {% endif %}
+{% endblock %}

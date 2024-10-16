@@ -1,0 +1,166 @@
+@import "_nav";
+
+
+#header {
+    position: fixed;
+    top: 2vh;
+    left: 1.5vw;
+    width: 100%;
+    z-index: 1000; // Pour s'assurer que le header reste au-dessus des autres éléments
+
+    .container {
+    
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    }
+    
+    /*.rectangle {
+        
+        background-color: coral;
+        height : 40vh;
+        width: 100vw;
+    }*/
+    box-sizing : border-box;
+    //position: relative;
+    background-image: url("../../img/Miaou/backgroundHeader.jpg");
+    background-repeat: no-repeat;
+    background-position : center ;
+    background-size: cover;
+    margin: 1.5rem;
+    display: flex;
+    height: 20vh;
+    width: 97vw;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+   
+    cover: fit-cover;
+    //background-image: center/cover no-repeat;
+    border: 4px solid #FF33FF ;
+    border-radius: 30px;
+
+    article {
+        display: flex;
+        
+        align-items: center;
+        justify-content: space-between;
+        //background-image: url("Miaou/backgroundHeader.jpg");
+    }
+    .avatar {
+        height: 90%;
+    }
+    
+    h1 {
+        font-family: "Jua", sans-serif;
+        font-size: 4vw;
+        font-weight: normal;
+    }
+    
+    div {
+        display: flex;
+        flex-direction: column;
+        margin-right : 2vw;
+    }
+        
+
+    
+
+    .action-button {
+    text-align: center;
+    color: white;
+    padding: 0.2vh 0.5vh 0.5vh 0.5vh;
+    margin-bottom: 1.5vh;
+    margin-top: 1.5vh;
+    border-radius: 8px;
+    font-family: 'Jua', sans-serif;
+    font-size: 3vh;
+    box-shadow: -2px 2px 1px rgba(50, 50, 50, 0.9);
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+    border-radius: 30px;
+
+    // Style pour le premier bouton
+    &:first-of-type {
+        border: none;
+        background-color: #FD1616;
+        border-bottom: 1vh solid #B71B10;
+        border-left: 1vh solid #B71B10;
+    
+    &:hover {
+        cursor: pointer;
+    }
+        
+        
+        &:active{
+    cursor: pointer;
+    transform: translate(0, 12px);
+    -webkit-transform: translate(0, 12px);
+    border-bottom: 1px solid #B239ED;
+    border-left: 1px;
+    float: left;
+    margin-bottom : 2vh;
+    box-shadow : none;
+    }
+    }
+
+    // Style pour le deuxième bouton
+    &:nth-of-type(2) {
+        border: none;
+        background-color: #FF7438;
+        border-bottom: 1vh solid #DC6835;
+        border-left: 1vh solid #DC6835;
+    
+    &:hover {
+        cursor: pointer;
+    }
+        
+        
+        &:active{
+    cursor: pointer;
+    transform: translate(0, 12px);
+    -webkit-transform: translate(0, 12px);
+    border-bottom: 1px solid #B239ED;
+    border-left: 1px;
+    float: left;
+    margin-top : 1.75vh;
+    box-shadow : none;
+    }
+    }
+
+    // Styles pour les liens à l'intérieur des boutons
+    a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 5vh;
+        text-decoration: none;
+        color: #fff;
+        margin-top: 0.2vw;
+        padding-left: auto;
+        padding-right: auto;
+        border-radius: 30px;
+    }
+
+    // Styles pour le survol des boutons
+    
+    
+    .rect {
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    
+    #nav {
+        
+        position: fixed;
+        top : 0;
+        left: 0;
+        
+        
+        
+        
+    }
+}
+}

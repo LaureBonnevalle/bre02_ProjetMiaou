@@ -1,57 +1,66 @@
 {% extends "layout.html.twig" %}
 
-
-{% block header%}
-        <section id="header">
-        
-        <img class="avatar" name={{avatar.name}} src={{ avatar.url }} alt={{avatar.description}}></img>
-        <h1> {{session.user.firstname}} joue avec Miaou</h1>
-        <div>
-        <button class="action-button"><a href="?route=logout">Se déconnecter</a></button>
-        <!--<button class="action-button"><a href="?route=login">S'inscrire</a></button>-->
-        </div>
-        
-        </section>
-        
+{% block description %}
+    {{ parent() }}
+    {% block title %}
+    |Page Utilisateur 
 {% endblock %}
-{% block nav %}
+{% endblock %}
+
+
+
+{% block body %}
+
+{% block header %}
+{{ parent() }}
+       {% block header_title %}
+        <h1> {{session.user.firstname}} Joue avec Miaou</h1>
+        {% endblock %}
+        {% block button %}
+        <button class="action-button"><a href="?route=logout">Se Déconnecter</a></button>
+        <button class="action-button"><a href="?route=profile">Profil</a></button>
+        {% endblock %}
+        {% block nav %}
         {% include "subpages/_navUser.html.twig" %}
         {% endblock %}
-
-{% block content %}
- <main>      
-      <h2> Ma page User </h2>  
-{% block error %}
-{{ parent() }}
-{% endblock %} 
- {% if success_message is defined %}
-        <p>{{ success_message }}</p>
-    {% endif %}
-    {% if error_message is defined %}
-        <p>{{ error_message }}</p>
-    {% endif %}   
-   <section>
-    <h3> Bonjour {{session.user.firstname}} !</h3>
+{% endblock %}
+        
+        {% block content %}
+        <main id="homepageUser">
+            <section class ="homepageUser-content">
+                <h2>Bonjour {{ session.user.firstname }}!</h2>  
+                    <p>Tu es connecté au site Apprendre Avec Miaou</p>
+                    <p>Tu peux maintenant accéder aux jeux et activités du site.</p>
+                    <p>Que veux-tu faire maintenant?</p>
+                    
+                    <section class="cards">
+                        <article></article>
+                    </section>  
+                    <a href="index.php?route=displayModify">Modifier mon mot de passe</a>
+            </section>
+        {#{% block error %}
+            {{ parent() }}
+            {% endblock %}#}
+        {#{% if success_message is defined %}
+            <p>{{ success_message }}</p>
+        {% endif %}
+        {% if error_message is defined %}
+            <p>{{ error_message }}</p>
+        {% endif %}#}
+        </main>
+        {% endblock %}
+        
+            
+           
+        
+        {% block footer %}
+            {{ parent() }}
+        {% endblock %}
+        
     
-    <p>Tu es connecté au site Apprendre Avec Miaou</p>
-    <p> Tu peux maintenant accéder aux jeux et activitédu site.</p>
-    <p> Que veux tu faire maintenant ?</p>
-      <section class="cards">
-      </section>  
-        
-        
-        <a href="?route=displayModify" > Modifier mon mot de passe </a>
-</main>
+        {% block java%}
+          {{ parent() }}
+        {% endblock %}
 {% endblock %}
-{% block footer %}
-{% include "subpages/_footer.html.twig" %} 
 
- 
-
-
-    {% block javascriptGlobal %}
-      <script> src="../assets/js/common.js"</script>
-      <script> src="../assets/js/home.js"</script>
-{% endblock %}
-{% endblock %}
 

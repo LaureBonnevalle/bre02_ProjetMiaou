@@ -1,0 +1,49 @@
+<section id="form">
+        
+        <h2>Formulaire de contact</h2>
+
+        <form method="POST" action="?route=contactUs" enctype="multipart/form-data">
+
+                <?php require_once('./views/subpages/_messages.phtml'); ?>
+
+                <fieldset>
+                        <legend>Merci de renseigner les informations suivantes :</legend>
+
+                        <label  for        = "lastname">Nom/Prénom :</label>
+                        <input  type       = "text"
+                                id         = "lastname"
+                                name       = "lastname"
+                                aria-label = "Lastname field"
+                                value      = "<?= isset($identity) ? $this->e($identity, ENT_QUOTES) : '' ?>">
+                        <div class="error-message" id="error-lastname"></div>
+
+                        <label  for        = "email">Email :</label>
+                        <input  type       = "email"
+                                id         = "email"
+                                name       = "email"
+                                aria-label = "Email field"
+                                value      = "<?= isset($email) ? $this->e($email, ENT_QUOTES) : '' ?>">
+                        <div class="error-message" id="error-email"></div>
+
+                        <label for="story">Suggestions / Questions / Observations / Remarques / Difficultés :</label>
+                        <textarea       id               = "story" 
+                                        name             = "story" 
+                                        rows             = "5" 
+                                        cols             = "33"
+                                        aria-describedby = "Suggestions"><?= isset($story) ? $this->e($story, ENT_QUOTES) : '' ?></textarea>
+                        <div class="error-message" id="error-story"></div>
+
+                        <?php require_once('./views/subpages/_captcha.phtml'); ?>
+
+                        <input  type    = "hidden"
+                                name    = "token"
+                                id      = "token"
+                                value   = "<?= $token ?>">
+                        <div class="error-message" id="error-token"></div>                        
+
+                        <input  type    = "submit"
+                                name    = "soumettre"
+                                value   = "Envoyer">
+                </fieldset>
+        </form>
+</section>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% block description %}
 <html>
     <head>
         <meta charset="UTF-8">
@@ -8,34 +9,41 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/3c515cc4da.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-        <title> {% block title %}| Apprendre avec Miaou{% endblock %}</title>
+        {% block title %} Miaou |{% endblock %}
     </head>
-    
+{% endblock %}
+{% block body %}
     <body>
     <div class="rect">
         {% block header%}
         <section class="container" id="header">
         
         <img class="avatar" name={{avatar.name}} src={{ avatar.url }} alt={{avatar.description}}></img>
-        <h1> {{session.user.firstname}} joue avec Miaou</h1>
+        {% block header_title %}
+        <h1> {{session.user.firstname}} Apprendre avec</h1>
+        {% endblock %}
         <div>
+        {% block button %}
         <button class="action-button"><a href="?route=login">Se Connecter</a></button>
         <button class="action-button"><a href="?route=register">S'inscrire</a></button>
-        </div>
+        {% endblock %}
+    
         
         </section>
-        {% endblock %}
-        
+    </div>
         {% block nav %}
         {% include "subpages/_nav.html.twig" %}
         {% endblock %}
+        {% endblock %}
+     </div>   
+        
         
         {% block content %}
-    <main>
+    <main id="content">
     
     </div>
     {% block error %}
@@ -67,14 +75,15 @@
 
 {% block footer %}
    {% include "subpages/_footer.html.twig" %} 
-    {% block javascriptGlobal %}
+    
+{% endblock %}
+{% block java%}
       {% if scripts is defined %}
           {% for script in scripts %}
           <script src="{{ script }}"></script>
           {% endfor %}
           {% endif %}
     {% endblock %}
-{% endblock %}
-
     </body>
+{% endblock %}
 </html>

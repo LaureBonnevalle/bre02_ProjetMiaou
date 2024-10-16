@@ -205,7 +205,7 @@ public function validation()
         $this->execute($query, $parameters);
     }
     
-    public function changePassword(Users $user):void {
+    /*public function changePassword(Users $user):void {
                 
         $query = "UPDATE users SET password = :password WHERE id = :id";
  
@@ -216,7 +216,7 @@ public function validation()
 
         $this->execute($query, $parameters);
         
-    }
+    }*/
     
     
     public function changePasswordAndStatut(Users $user):void {
@@ -244,5 +244,16 @@ public function validation()
         $this->execute($query, $parameters);
     }
     
+    public function changePassword(Users $user, string $password):void {
+        
+        $query = "UPDATE users SET password = :password WHERE id = :id";
+        
+        $parameters = [
+            'id' => $user->getId(),
+            'password' => $password
+        ];
+            
+        $this->execute($query, $parameters);
+    }
     
 }

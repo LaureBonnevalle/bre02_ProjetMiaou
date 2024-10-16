@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Get the burger toggler element and the nav links container
+   /* // Get the burger toggler element and the nav links container
     const burgerToggler = document.getElementById('menu-toggle');
     const navLinksContainer = document.getElementById('nav-links-container');
-    const main = document.querySelector('main');
+    const main = document.querySelector('content');
     const footer = document.querySelector('footer');
 
     // Define the toggleNav function, which toggles the 'open' class
@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
             navLinksContainer.classList.remove('open');
         }
     }).observe(document.body);
+    
+    */
 
     // Handle password visibility toggle
     document.querySelectorAll(".eyes").forEach(eye => {
@@ -57,9 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             // Automatically close the eye and hide the password again after 10 seconds
-            window.setTimeout(function() {
+           /* window.setTimeout(function() {
                 closeEyes(password, fas); // Call the function to reset the eye icon and hide the password
-            }, 10000); // Delay of 10,000 milliseconds (10 seconds)
+            }, 10000); // Delay of 10,000 milliseconds (10 seconds)*/
         });
     });
 
@@ -71,19 +73,4 @@ document.addEventListener('DOMContentLoaded', function() {
         fas.removeAttribute('style'); // Remove any inline styling (e.g., red color)
     }
 
-    window.onscroll = function() {scrollFunction()};
-
-    function scrollFunction() {
-        var button = document.getElementById("backToTopButton");
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            button.style.display = "block";
-        } else {
-            button.style.display = "none";
-        }
-    }
-
-    document.getElementById('backToTopButton').addEventListener('click', function() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-    });
 });

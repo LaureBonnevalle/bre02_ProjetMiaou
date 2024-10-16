@@ -1,9 +1,24 @@
 <section id="header">
-<div class ="rectangle"></div>
-        <img class="avatar" name={{avatar.name}} src={{ avatar.url }} alt={{avatar.description}}></img>
-        <h1>Apprendre avec Miaou</h1>
+        <div class ="rect">
+                <img class="avatar" name={{avatar.name}} src={{ avatar.url }} alt={{avatar.description}}></img>
+                {% block header_title %}
+                <h1>Apprendre avec Miaou</h1>
+                {% endblock %}
+                </div>
+                <div class="button">
+                {% block button %}
+                <button class="action-button"><a href="?route=login">Se connecter</a></button>
+                <button class="action-button"><a href="?route=register">S'inscrire</a></button>
+                {% endblock %}
+                </div>
+                <button id="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+               
         <div>
-        <button class="action-button"><a href="?route=login">Se connecter</a></button>
-        <button class="action-button"><a href="?route=register">S'inscrire</a></button>
-        </div>
-</div>
+</section>
+{% block javascript %}
+    {% if scripts is defined %}
+          {% for script in scripts %}
+              <script src="{{ script }}"></script>
+          {% endfor %}
+    {% endif %}
+{% endblock %}

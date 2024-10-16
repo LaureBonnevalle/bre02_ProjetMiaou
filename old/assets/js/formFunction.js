@@ -24,17 +24,6 @@ export function validateText(text, minLength, maxLength) {
 }
 
 /**
- * Validate a matricule.
- * 
- * @param {string} matricule    - The matricule to validate.
- * @returns {boolean} True if the matricule is valid, false otherwise.
- */
-export function validateMatricule(matricule) {
-    const re = /^\d{6,7}$/;
-    return re.test(matricule);
-}
-
-/**
  * Validate a password.
  * 
  * @param {string} password     - The password to validate.
@@ -56,16 +45,7 @@ export function validateConfirmPassword(password, confirmPassword) {
     return password === confirmPassword;
 }
 
-/**
- * Validate a captcha.
- * 
- * @param {string} captcha    - The captcha to validate.
- * @returns {boolean} True if the captcha is valid, false otherwise.
- */
-export function validateCaptcha(captcha) {
-    const re = /^[a-zA-Z0-9]{5}$/;
-    return re.test(captcha);
-}
+
 
 /**
  * Capitalize the first letter of each word in a string.
@@ -111,18 +91,6 @@ export function formatDate(date) {
     return `${year}-${month}-${day}`;
 }
 
-/**
- * Add a specified number of days to a date.
- * 
- * @param {Date} date - The original date.
- * @param {number} days - The number of days to add.
- * @returns {Date} The new date.
- */
-export function addDays(date, days) {
-    const result = new Date(date);
-    result.setDate(result.getDate() + days);
-    return result;
-}
 
 /**
  * Check if a value is empty (null, undefined, or empty string).

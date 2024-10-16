@@ -1,5 +1,7 @@
 <?php
 
+require_once('models/Personnages.php');
+
 class PersonnageManager extends AbstractManager {
     
    public function __construct()
@@ -54,7 +56,10 @@ class PersonnageManager extends AbstractManager {
     }
 
     // Récupérer un personnage par son ID
-    public function getById(int $id): ?Personnages {
+    public function getById(int $id)  {
+        
+        //file_put_contents('text2.txt', $id);
+        
         $query = $this->db->prepare("
             SELECT * FROM personnages 
             WHERE id = :id
@@ -65,13 +70,13 @@ class PersonnageManager extends AbstractManager {
         ];
 
         $query->execute($parameters);
-        $data = $query->fetch();
-
+        return $query->fetch();
+/*
         if ($data) {
             return new Personnages($data['id'], $data['perso_name'], $data['perso_description']);
         }
 
-        return null;
+        return null;*/
     }
 
     // Récupérer tous les personnages

@@ -53,58 +53,10 @@
         </div>
     </article>
 </section>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const footer = document.getElementById('footer');
-    footer.addEventListener('click', function() {
-        if (footer.style.bottom === '-400px') {
-            footer.style.bottom = '0';
-        } else {
-            footer.style.bottom = '-400px';
-        }
-    });
-});
-</script>
-<script>
-function startTimer(startTime, display) {
-        setInterval(function () {
-            let now = Date.now();
-            let elapsed = Math.floor((now - startTime) / 1000);
-            let hours = Math.floor(elapsed / 3600);
-            let minutes = Math.floor((elapsed % 3600) / 60);
-            let seconds = elapsed % 60;
-
-            hours = hours < 10 ? "0" + hours : hours;
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-
-            display.textContent = hours + ":" + minutes + ":" + seconds;
-
-            if (elapsed === 600) { // 10 minutes
-                alert("Attention, il s'est écoulé 10 minutes");
-            } else if (elapsed === 900) { // 15 minutes
-                alert("Attention, il s'est écoulé 15 minutes");
-            } else if (elapsed === 1200) { // 20 minutes
-                alert("Attention, il s'est écoulé 20 minutes");
-            }
-        }, 1000);
-    }
-
-    window.onload = function () {
-        let startTime = localStorage.getItem('startTime');
-        if (!startTime) {
-            startTime = Date.now();
-            localStorage.setItem('startTime', startTime);
-        } else {
-            startTime = parseInt(startTime, 10);
-        }
-        let display = document.querySelector('#time');
-        startTimer(startTime, display);
-    };
-
-    document.getElementById('logout').addEventListener('click', function() {
-        localStorage.removeItem('startTime');
-        // Rediriger vers la page de déconnexion
-        window.location.href = '/logout';
-    });
-</script>
+{% block javascript %}
+    {% if scripts is defined %}
+          {% for script in scripts %}
+              <script src="{{ script }}"></script>
+          {% endfor %}
+    {% endif %}
+{% endblock %}

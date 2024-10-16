@@ -51,13 +51,13 @@ public function __construct()
      
     
     public function getAllColoriagesByCategorie(int $categorieId): array { 
-    $sql = $this->db->prepare('SELECT c.* FROM coloriage c
-    INNER JOIN coloriage_categories cc ON c.categorie_coloriage = cc.id
-    WHERE cc.id = :categorie_id');
-
-    $sql->execute(['categorie_id' => $categorieId]);
-    $coloriages = $sql->fetchAll(PDO::FETCH_ASSOC);
-    return $coloriages;
+        $sql = $this->db->prepare('SELECT c.* FROM coloriages c
+        INNER JOIN coloriage_categories cc ON c.categorie_coloriage = cc.id
+        WHERE cc.id = :categorie_id');
+    
+        $sql->execute(['categorie_id' => $categorieId]);
+        $coloriages = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $coloriages;
     }
     
     public function jSON($categorieId)

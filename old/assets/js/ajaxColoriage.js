@@ -23,40 +23,129 @@
     });
 });*/
 
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const selectElement = document.getElementById('categorie-select');
-    const fetchButton = document.getElementById('fetch-coloriages');
+    //const fetchButton = document.getElementById('fetch-coloriages');
     const coloriagesList = document.getElementById('coloriages-list');
     const previewSection = document.getElementById('preview-section');
+    const preview = document.getElementById('preview');
 
-    fetchButton.addEventListener('click', function() {
+    selectElement.addEventListener('change', function() {
+        
         const categorieId = selectElement.value;
-
-        fetch(`/index.php?route=coloriagesListe&categorie_id=${categorieId}`)
-            .then(response => response.json())
-            .then(coloriages => {
-                coloriagesList.innerHTML = ''; // Clear the list
-
-                coloriages.forEach(coloriage => {
-                    const coloriageElement = document.createElement('li');
-                    coloriageElement.textContent = coloriage.name;
-                    coloriageElement.setAttribute('data-url', coloriage.url);
-                    coloriageElement.setAttribute('data-id', coloriage.id);
-                    coloriageElement.addEventListener('click', function() {
-                        showPreview(coloriage.url, coloriage.id);
-                    });
-                    coloriagesList.appendChild(coloriageElement);
-                });
+        previewSection.innerHTML = "";
+        preview.innerHTML = "";
+        
+        let myRequest = new Request('?route=coloriagesListe', {
+            method: 'POST',
+            body: JSON.stringify({ 
+                id: categorieId
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        // On attend la réponse de PHP pour obtenir la liste des coloriages en fonction de la catégorie demandée
+        
+        fetch(myRequest)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ');
+                }
+                return response.json();
             })
-            .catch(error => console.error('Error:', error));
+            .then(data => {
+                //console.log("Fetched Data:", data);  
+                render(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        
+        
+       function render(data) {
+           
+            coloriagesList.innerHTML = ''; // Vider la liste
+            const listing = document.createElement('listing');
+            
+            // Créer un élément <li>        
+            const h3 = document.createElement('h3');
+            h3.textContent = "Choisis un coloriage pour pouvoir le télécharger et l'imprimer";
+            
+            // Ajouter le lien à l'élément <h3>
+            listing.appendChild(h3);
+             
+            data.forEach(element => {
+                
+                
+                
+                const coloriageElement = document.createElement('li');
+                
+                // Créer un élément <a>
+                const linkElement = document.createElement('a');
+                linkElement.textContent = element.name;             // Nom du lien
+                linkElement.href = "../" + element.url;             // URL du lien
+                linkElement.setAttribute('data-id', element.id);    // Ajouter l'ID en tant qu'attribut data
+                
+                // Ajouter l'événement 'click' pour prévisualiser
+                linkElement.addEventListener('click', function(e) {
+                    e.preventDefault(); // Empêcher la navigation par défaut
+                    showUpload(element.url, element.id);            // Appel de la fonction showUpload
+                    showPreview("../old/" + element.url, element.id);   // Appel de la fonction showPreview
+                });
+        
+                
+                // Ajouter le lien à l'élément <li>
+                coloriageElement.appendChild(linkElement);
+                
+                // Ajouter l'élément <li> à la liste
+                coloriagesList.appendChild(coloriageElement);
+            });
+        }      
     });
-
-    function showPreview(url, id) {
+    
+    
+    // Fonction permettant de créé un lien de téléchargement et de le mettre dans la div
+    function showUpload(url, id) {
         previewSection.innerHTML = `
             <a href="${url}" download>Télécharger</a>
             <div class="progress-bar" id="progress-bar"></div>
             <img src="path/to/thumbnails/${id}.jpg" alt="Aperçu du coloriage">
-        `;
+        `;        
+    }
+    
+    // Fonction permettant d'afficher la préview du document dans la div
+    function showPreview(url, id) {
+        // Sélectionner ou créer un conteneur pour la prévisualisation (par exemple un <div>)
+        const previewContainer = document.getElementById('preview'); // Assurez-vous d'avoir un div avec cet ID dans votre HTML
+        
+        // Si le conteneur n'existe pas encore, en créer un
+        if (!previewContainer) {
+            const newPreviewContainer = document.createElement('div');
+            newPreviewContainer.id = 'preview';
+            document.body.appendChild(newPreviewContainer); // Ajouter le conteneur à la fin du body (ou ailleurs)
+        }
+        
+        // Vider le contenu précédent
+        previewContainer.innerHTML = ''; 
+        
+        // Créer un élément iframe pour afficher le PDF
+        const iframe = document.createElement('iframe');
+        iframe.src = url; // URL du PDF
+        iframe.width = '600'; // Largeur de l'iframe
+        iframe.height = '400'; // Hauteur de l'iframe
+        iframe.setAttribute('frameborder', '0'); // Optionnel : supprimer la bordure
+        iframe.setAttribute('allowfullscreen', true); // Optionnel : autoriser le plein écran
+        
+        // Ajouter l'iframe au conteneur
+        previewContainer.appendChild(iframe);
+    }
+    
+    
+    /*
 
         const downloadLink = previewSection.querySelector('a');
         const progressBar = document.getElementById('progress-bar');
@@ -87,5 +176,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
             xhr.send();
         });
-    }
+    }*/
 });

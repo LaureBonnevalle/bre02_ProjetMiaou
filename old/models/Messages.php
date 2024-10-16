@@ -2,58 +2,77 @@
 
 class Messages {
     private ?int $id;
-    private string $message_prenom;
-    private string $message_sujet;
-    private string $message_content;
-    private DateTime $messageDateEnvoi;
+    private DateTime $receptedDate;
+    private string $firstname;
+    private string $email;
+    private string $subject;
+    private string $content;
+    private int    $statut;
+    
 
-    public function __construct(?int $id, string $message_prenom, string $message_sujet, string $message_content, DateTime $messageDateEnvoi) {
+    public function __construct(?int $id, DateTime $receptedDate; string $firstname, string $email, string $subject, string $content, int $statut) {
         $this->id = $id;
-        $this->message_prenom = $message_prenom;
-        $this->message_sujet = $message_sujet;
-        $this->message_content = $message_content;
-        $this->messageDateEnvoi = $messageDateEnvoi;
+        $this->receptedDate = $receptedDate;
+        $this->firstname = $firstname;
+        $this->email =$email;
+        $this->subject = $subject;
+        $this->content = $content;
+        $this->statut = $statut;
     }
 
     public function getId(): ?int {
         return $this->id;
     }
 
-    public function getMessagePrenom(): string {
-        return $this->message_prenom;
+    public function getfirstname(): string {
+        return $this->firstname;
     }
 
-    public function getMessageSujet(): string {
-        return $this->message_sujet;
+    public function getSubject(): string {
+        return $this->subject;
     }
 
-    public function getMessageContent(): string {
-        return $this->message_content;
+    public function getContent(): string {
+        return $this->content;
     }
 
-    public function getMessageDateEnvoi(): DateTime {
-        return $this->messageDateEnvoi;
+    public function getReceptedDate(): DateTime {
+        return $this->receptedDate;
+    }
+    public function getEmail(): string{
+        return $this->email;
+    }
+    public function getStatut(): int {
+        return $this->statut;
     }
 
     public function setId(?int $id): void {
         $this->id = $id;
     }
 
-    public function setMessagePrenom(string $message_prenom): void {
-        $this->message_prenom = $message_prenom;
+    public function setFirstname(string $firstname): void {
+        $this->firstname = $firstname;
     }
 
-    public function setMessageSujet(string $message_sujet): void {
-        $this->message_sujet = $message_sujet;
+    public function setSubject(string $subject): void {
+        $this->subject = $subject;
     }
 
-    public function setMessageContent(string $message_content): void {
-        $this->message_content = $message_content;
+    public function setContent(string $content): void {
+        $this->content = $content;
     }
 
-    public function setMessageDateEnvoi(DateTime $messageDateEnvoi): void {
-        $this->messageDateEnvoi = $messageDateEnvoi;
+    public function setReceptedDate(DateTime $receptedDate): void {
+        $this->receptedDate = $receptedDate;
     }
+    
+    public function setEmail(string $email): void{
+        $this->email = $email;
+    }
+    public function setStatut(int $statut): void{
+        $this->statut = $statut;
+    }
+    
 }
 ?>
 

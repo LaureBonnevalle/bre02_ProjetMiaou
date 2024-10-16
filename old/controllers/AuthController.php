@@ -18,15 +18,19 @@ class AuthController extends AbstractController {
 
     public function login() : void
     {  
-         $scripts = $this->addScripts(['assets/js/common.js','assets/js/formController.js','assets/js/formFunction.js']);
+         $scripts = $this->addScripts(['assets/js/formController.js']);
         
         //var_dump($avatars);
         // Générer le token pour le mettre dans le vue, dans l'input de type hidden
         $tm = new CSRFTokenManager();
         $am = new AvatarManager();
+        $token= $tm->generateCSRFToken();
+        
+        $timesModels = new TimesModels();
+        $elapsedTime = $timesModels->getElapsedTime();
         
         $_SESSION['error_message'] = "";      
-        $this->render("login.html.twig", ["token" => $tm->generateCSRFToken(),"avatar" => $am->getById(4)], $scripts);
+        $this->render("login.html.twig", [ "token" => $token, "avatar" => $am->getById(4), 'elapsed_time' =>$elapsedTime] , $scripts);
         return;
         // $template = "register";
         // require "templates/layout.phtml";
@@ -103,8 +107,12 @@ class AuthController extends AbstractController {
                                 unset($_SESSION["error-message"]);
                                 unset($_SESSION["success-message"]);
                                 unset($_SESSION["csrf_token"]);
+                                unset ($_SESSION['start_time']);
                                 
                                 //$this->createSessions($_SESSION['user']);
+                                $timesModels = new TimesModels();
+                                $elapsedTime = $timesModels->getElapsedTime();
+                                
                                 $_SESSION['start_time'] = time();
                                 
                                 $_SESSION["success_message"] = "Tu es connectés tu peux maintenant accéder aux jeux et activités";
@@ -120,7 +128,7 @@ class AuthController extends AbstractController {
                                //die;
                              
                                 //$this->redirectTo("homepageUser");
-                                $this->render("homepage-user.html.twig", ['session'=> $_SESSION,'success_message'=> $_SESSION['success_message'], "avatar" => $avatar],[$this->getDefaultScripts()]); // on redirige vers la page d'acceuil
+                                $this->render("homepage-user.html.twig", ['elapsed_time' =>$elapsedTime, 'session'=> $_SESSION,'success_message'=> $_SESSION['success_message'], "avatar" => $avatar],[$this->getDefaultScripts()]); // on redirige vers la page d'acceuil
                                 
                             } else if ($result['statut'] === 0) {
                                 
@@ -180,7 +188,8 @@ class AuthController extends AbstractController {
         $am = new AvatarManager();
         $avatars = $am->findAllAvatars();
         $scripts = $this->addScripts(['assets/js/formController.js','assets/js/formFunction.js', 'assets/js/formController.js']);
-        
+         $timesModels = new TimesModels();
+        $elapsedTime = $timesModels->getElapsedTime();
         //var_dump($avatars);
         // Générer le token pour le mettre dans le vue, dans l'input de type hidden
         $tm = new CSRFTokenManager();
@@ -189,7 +198,7 @@ class AuthController extends AbstractController {
             ]);
         
         $_SESSION['error_mesage'] = "";      
-        $this->render("register.html.twig", [ "avatars" => $avatars, "token" => $tm-> generateCSRFToken()],$scripts);
+        $this->render("register.html.twig", ["elapsed_time" => $elapsedTime, "avatars" => $avatars, "token" => $tm-> generateCSRFToken()],$scripts);
         // $template = "register";
         // require "templates/layout.phtml";
     }
@@ -337,13 +346,15 @@ class AuthController extends AbstractController {
                                 // Send confirmation email to the user
                                 $sendEmail = new SendEmail();
                                 $sendEmail->sendEmailConfirme($data['firstname'], $data['email'], $passwordView);
+                                $timesModels = new TimesModels();
+                                $elapsedTime = $timesModels->getElapsedTime();
         
                                 $_SESSION['success_message'] = "Un email de validation vient de vous être envoyé";
                                 //$this->redirectTo("homepage");
                                 
                                 $scripts= $this->addScripts(['assets/js/formController.js',]);
 
-                                $this->render("homepage.html.twig", ['success_message'=> $_SESSION['success_message']], $scripts);
+                                $this->render("homepage.html.twig", ['elapsed_time' => $elapsedTime, 'success_message'=> $_SESSION['success_message']], $scripts);
                                 exit();
                            
                             
@@ -384,7 +395,9 @@ class AuthController extends AbstractController {
                     else
                     {
                         $_SESSION['error_message'] = "Le jeton CSRF est invalide.";
-                        $this->render("homepage.html.twig", ['error_message'=> $_SESSION['error_message']],[$scripts]);
+                         $timesModels = new TimesModels();
+                        $elapsedTime = $timesModels->getElapsedTime();
+                        $this->render("homepage.html.twig", ['elapsed_time' => $elapsedTime, 'error_message'=> $_SESSION['error_message']],[$scripts]);
                                 exit();
                     }
                 }
@@ -408,16 +421,23 @@ class AuthController extends AbstractController {
     }
 
 
+    // Méhtode pour afficher le formulaire de modification du mot de passe
     public function displayModify() : void
     {
-        //TODO : récupération des données concernant les avatars (appel à AvatarManager)
-        $scripts= $this->addScripts([
-            'assets/js/formController.js', 'assets/formFunction.js'
-            ]);
-        //$am = new AvatarManager();
-       // $avatars = $am->findAllAvatars();
-        $scripts = $this->addScripts(['assets/js/common.js','assets/js/formController.js','assets/js/formFunction.js']);
         
+        $am = new avatarManager();
+        //TODO : récupération des données concernant les avatars (appel à AvatarManager)
+        if(isset($_SESSION['connected'])) {
+            $avatar = $avatarManager->getById($_SESSION['user']['avatar']);
+        }
+        else {
+            $avatar = $avatarManager->getById(4);
+        }
+        
+        
+        $scripts = $this->addScripts(['assets/js/common.js','assets/js/formController.js','assets/js/formFunction.js']);
+        $timesModels = new TimesModels();
+                                $elapsedTime = $timesModels->getElapsedTime();
         //var_dump($avatars);
         // Générer le token pour le mettre dans le vue, dans l'input de type hidden
         $tm = new CSRFTokenManager();
@@ -425,11 +445,13 @@ class AuthController extends AbstractController {
         $_SESSION['csrf_token'] = $token;
         
         $_SESSION['error_message'] = "Vous devez Modifier votre mot de passe";      
-        $this->render("modifypassword.html.twig", ["token" => $token, "error_message"=> $_SESSION['error_message']], [$scripts]);
+        $this->render("modifypassword.html.twig", ["elapsed_time" => $elapsedTime, "token" => $token, "error_message"=> $_SESSION['error_message']], [$scripts]);
         // $template = "register";
         // require "templates/layout.phtml";
     }
 
+
+    // Méhtode pour soumettre et traiter le formulaire de modification du mot de passe
     public function modifyPassword() { 
         
         if(isset($_SESSION['error_message'])) {
@@ -550,7 +572,7 @@ class AuthController extends AbstractController {
 
 
         
-        public function validateMail($email,$cle ) : void 
+       /* public function validateMail($email,$cle ) : void 
         {
             $um = new UserManager();
             
@@ -587,7 +609,7 @@ class AuthController extends AbstractController {
                       $this->render("homepage.html.twig", ['error_message'=> "Erreur ! Votre compte ne peut être activé..."]);
                     }
              }
-        }
+        }*/
     
     public function logout() : void
     {

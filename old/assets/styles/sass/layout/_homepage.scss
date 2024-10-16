@@ -1,0 +1,55 @@
+@import"../components/_header";
+@import"../components/_home";
+
+
+#header{
+    
+}
+
+#homepage-content{
+        
+       text-align: center;
+       font-family: "Jua", sans-serif;
+       
+       
+        h2 {
+          font-size : 2rem;
+          display: none;
+        }
+      
+        article {
+         
+         background-color: white;
+         opacity: 0.8;
+         height : 25vh;
+         width: 66vw;
+         margin-left: 3vW;
+         border-radius: 30px;
+         display : flex;
+         flex-direction: row;
+         
+        div{
+            justify-content: center;
+            display: flex;
+        }
+    
+        a{
+        
+        
+        }
+    
+        img {
+        height: 20vh;
+        opacity: 1;
+        
+        }
+    
+        p{
+    
+        }
+        }
+}
+
+#footer {
+    
+}

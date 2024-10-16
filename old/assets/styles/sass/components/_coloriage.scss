@@ -1,0 +1,42 @@
+#coloriage {
+    
+    
+    padding-top: 10px;
+    flex: 1;
+    overflow-y: auto; // Permet le défilement vertical
+    margin-top: 10vh; // Prend en compte la hauteur du header et de la nav
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin-left: -10px;
+    z-index: 980;
+
+    // Pseudo-élément pour l'image de fond
+    &::before {
+        content: "";
+        background-image: url("../../img/Miaou/backgroundMain.png");
+        background-size: cover; // Ajuste l'image à la taille de l'élément
+        opacity: 0.6;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; // Place l'image de fond derrière le contenu
+    }
+    
+    .coloriage-content {
+        text-align: center;
+        font-family: "Jua", sans-serif;
+        
+        h2 {
+            text-align: center;
+            font-family: "Jua", sans-serif;
+        }
+        
+        
+    }
+    
+
+    
+}

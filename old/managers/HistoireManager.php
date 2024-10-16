@@ -1,4 +1,7 @@
 <?php
+require_once('managers/LieuManager.php');
+require_once('managers/ObjetManager.php');
+require_once('managers/PersonnageManager.php');
 
 class HistoiresManager extends AbstractManager {
     
@@ -60,21 +63,24 @@ class HistoiresManager extends AbstractManager {
     
     public function getHistoiresByCriteria($personnageId, $lieuId, $objetId) {
         $query = $this->db->prepare(
-            "SELECT h.*, p.nom AS personnage, l.nom AS lieu, o.nom AS objet
+            "SELECT h.*, p.perso_name AS personnage, o.objet_name AS objet, l.lieu_name AS lieu
             FROM histoires h
-            JOIN personnages p ON h.personnage_id = p.id
-            JOIN lieux l ON h.lieu_id = l.id
-            JOIN objets o ON h.objet_id = o.id
-            WHERE h.personnage_id = :personnageId AND h.lieu_id = :lieuId AND h.objet_id = :objetId"
+            JOIN personnages p ON h.personnage = p.id
+            JOIN objets o ON h.objet = o.id
+            JOIN lieux l ON h.lieu  
+            
+            WHERE h.personnage = :personnage AND h.objet = :objet AND h.lieu = :lieu"
         );
        
         $query->execute([
-            ':personnageId' => $personnageId,
-            ':lieuId' => $lieuId,
-            ':objetId' => $objetId
+            ':personnage' => $personnage,
+            ':lieu' => $lieu,
+            ':objet' => $objet
         ]);
        
-        return $query->fetch(PDO::FETCH_ASSOC);
+        return $histoire = $query->fetch(PDO::FETCH_ASSOC);
+        var_dump($histoire);
+        die;
     }
     
     public function getImageUrl($personnageId, $lieuId, $objetId) {

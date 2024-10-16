@@ -29,8 +29,8 @@
 
 .cat {
   position: relative;
-  height: 65px;
-  width: 84.5px;
+  height: 10vh;
+  width: 13vh;
   margin-top: 2em;
   margin-left: 1em;
 }
@@ -210,10 +210,106 @@
   border-radius: 50% 50% 50% 50%/30% 30% 70% 70%;
 }
 
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 26vh;
+  width: 103%;
+  background-color: black;
+  margin-left: -10px;
+  margin-top: -10px;
+  padding-left: 0;
+  padding-right: 0;
+  z-index: 990;
+}
+#nav ul {
+  position: fixed;
+  top: 21vh;
+  left: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  vertical-align: center;
+  padding: 0;
+  background-color: #000;
+  height: 9vh;
+  width: 102vw;
+}
+#nav li {
+  margin: 1vh 1vh;
+}
+#nav .action-button {
+  width: 10vw;
+  height: 50%;
+  color: white;
+  padding: 1vh 2.5vh;
+  margin-bottom: auto;
+  margin-top: auto;
+  font-family: "Jua", sans-serif;
+  font-size: 3vh;
+  box-shadow: 0vh -2vh #000;
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  border-radius: 30px;
+}
+#nav .action-button:first-of-type {
+  background-color: #D998FA;
+  border-bottom: 1.2vh solid #B239ED;
+  border-left: 1.2vh solid #B239ED;
+}
+#nav .action-button:nth-of-type(2) {
+  background-color: #758BFF;
+  border-bottom: 1.2vh solid #5568CB;
+  border-left: 1.2vh solid #5568CB;
+}
+#nav .action-button:hover {
+  cursor: pointer;
+  transform: scale(1.5);
+  height: 9vh;
+  width: 9vw;
+  margin-bottom: auto;
+  margin-top: 0;
+}
+#nav .action-button:active {
+  transform: scale(1.5);
+  height: 9vh;
+  transform: translate(0, 12vh);
+  -webkit-transform: translate(0, 12vh);
+  border-bottom: 1vh;
+  border-left: 1vh;
+  float: left;
+  margin-bottom: 10vh;
+  margin-top: -2vh;
+  padding-top: 0;
+}
+#nav .action-button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 6vh;
+  text-decoration: none;
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+}
+#nav .action-button a:hover {
+  transform: scale(1.5);
+  cursor: pointer;
+  line-height: 9vh;
+}
+#nav .action-button:hover {
+  cursor: pointer;
+  transform: scale(1.5);
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
+}
+
 #header {
   position: fixed;
-  top: 2em;
-  left: 2em;
+  top: 2vh;
+  left: 1.5vw;
   width: 100%;
   z-index: 1000;
   /*.rectangle {
@@ -224,11 +320,12 @@
   }*/
   box-sizing: border-box;
   background-image: url("../../img/Miaou/backgroundHeader.jpg");
+  background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   margin: 1.5rem;
   display: flex;
-  height: 30vh;
+  height: 20vh;
   width: 97vw;
   margin: auto;
   justify-content: space-between;
@@ -252,58 +349,94 @@
 }
 #header h1 {
   font-family: "Jua", sans-serif;
-  font-size: 3.5em;
+  font-size: 4vw;
   font-weight: normal;
 }
 #header div {
   display: flex;
   flex-direction: column;
-  margin-right: 1.5rem;
+  margin-right: 2vw;
 }
 #header .action-button {
-  background-color: #d998fa;
+  text-align: center;
   color: white;
-  padding: 2px 25px;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
+  padding: 0.2vh 0.5vh 0.5vh 0.5vh;
+  margin-bottom: 1.5vh;
+  margin-top: 1.5vh;
   border-radius: 8px;
   font-family: "Jua", sans-serif;
-  font-size: 1.1em;
-  border: none;
-  border-bottom: 12px solid #B239ED;
-  border-left: 5px solid #B239ED;
-  text-shadow: 0px -2px #B239ED;
+  font-size: 3vh;
+  box-shadow: -2px 2px 1px rgba(50, 50, 50, 0.9);
   transition: all 0.1s;
   -webkit-transition: all 0.1s;
   border-radius: 30px;
 }
-#header .action-button a {
-  display: block;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  line-height: 40px;
-  text-decoration: none;
-  color: #fff;
-  border-radius: 30px;
+#header .action-button:first-of-type {
+  border: none;
+  background-color: #FD1616;
+  border-bottom: 1vh solid #B71B10;
+  border-left: 1vh solid #B71B10;
 }
-#header .action-button:hover {
+#header .action-button:first-of-type:hover {
   cursor: pointer;
 }
-#header .action-button:hover:active {
+#header .action-button:first-of-type:active {
   cursor: pointer;
   transform: translate(0, 12px);
   -webkit-transform: translate(0, 12px);
   border-bottom: 1px solid #B239ED;
   border-left: 1px;
   float: left;
-  margin-bottom: 1.8rem;
+  margin-bottom: 2vh;
+  box-shadow: none;
+}
+#header .action-button:nth-of-type(2) {
+  border: none;
+  background-color: #FF7438;
+  border-bottom: 1vh solid #DC6835;
+  border-left: 1vh solid #DC6835;
+}
+#header .action-button:nth-of-type(2):hover {
+  cursor: pointer;
+}
+#header .action-button:nth-of-type(2):active {
+  cursor: pointer;
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
+  border-bottom: 1px solid #B239ED;
+  border-left: 1px;
+  float: left;
+  margin-top: 1.75vh;
+  box-shadow: none;
+}
+#header .action-button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 5vh;
+  text-decoration: none;
+  color: #fff;
+  margin-top: 0.2vw;
+  padding-left: auto;
+  padding-right: auto;
+  border-radius: 30px;
+}
+#header .action-button .rect {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+#header .action-button #nav {
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 #footer {
   position: fixed;
   left: 0;
-  bottom: -400px;
+  bottom: -42.5vh;
   display: flex;
   flex-direction: column;
   background-color: black;
@@ -312,6 +445,7 @@
   margin-left: 0;
   margin-right: 0;
   transition: bottom 1s; /* Transition plus lente */
+  z-index: 1000;
 }
 #footer:hover {
   bottom: 0; /* Position lorsqu'on survole */
@@ -326,23 +460,23 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-bottom: 1.5em;
-  max-height: 110px;
+  padding-bottom: 1.5vh;
+  max-height: 13vh;
 }
 .foot-box .timer {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  font-size: 1.5rem;
+  font-size: 2.5vh;
 }
 .foot-box .timer p:first-of-type {
   color: white;
   font-weight: bold;
-  font-size: 4em;
-  margin-top: 2em;
-  padding: 0.8em;
-  margin-left: 1em;
+  font-size: 4vh;
+  margin-top: 2vh;
+  padding: 0.8vh;
+  margin-left: 1vh;
   box-shadow: 6px 8px 0px #37474f;
   border: white 2px solid;
   border-radius: 500px;
@@ -363,12 +497,12 @@
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  padding-top: 1.8em;
-  padding-right: 1em;
+  padding-top: 2vh;
+  padding-right: 3vh;
 }
 .foot-box .retour-haut img.topButton {
-  width: 65px;
-  height: 65px;
+  width: 8vh;
+  height: 8vh;
 }
 
 .foot-content {
@@ -452,7 +586,7 @@
   color: white !important;
   text-align: center !important;
   font-size: 10px;
-  z-index: 1001;
+  z-index: 1000;
 }
 .foot-content .footer-bottom .copyright > div {
   height: 20px;
@@ -493,7 +627,6 @@
     font-size: 3.7rem;
     margin: 0 2.8rem 2.8rem 0;
   }
-  .foot-content .footer-bottom .footer-bottom i,
   .foot-content .footer-bottom .footer-bottom li {
     padding: 0.5rem 0;
   }
@@ -559,75 +692,2617 @@
     padding: 0.5rem 0;
   }
 }
-#content {
-  padding-top: 0;
-}
-
-#nav {
-  padding-top: 310px;
+#navUser {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 26vh;
   width: 103%;
   background-color: black;
   margin-left: -10px;
   margin-top: -10px;
   padding-left: 0;
   padding-right: 0;
+  z-index: 990;
+  /*
+  &:hover {
+      cursor: pointer;
+      transform: scale(1.5); // Augmenter la taille sans déplacer les autres éléments
+      transform: translate(0, 12px);
+      -webkit-transform: translate(0, 12px);
+  }*/
 }
-#nav ul {
+#navUser ul {
+  position: fixed;
+  top: 21vh;
+  left: 0;
   list-style-type: none;
   display: flex;
   justify-content: space-around;
   vertical-align: center;
   padding: 0;
-  margin-left: -6px;
   background-color: #000;
-  height: 80px;
-  width: 100vw;
+  height: 9vh;
+  width: 102vw;
 }
-#nav li {
-  margin: 0 1rem;
+#navUser li {
+  margin: 1vh 1vh;
 }
-#nav .action-button {
-  background-color: #d998fa;
+#navUser .action-button {
+  width: 10vw;
+  height: 50%;
   color: white;
-  padding: 2px 25px;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
+  padding: 1vh 2.5vh;
+  margin-bottom: auto;
+  margin-top: auto;
+  border-radius: 30px;
+  font-family: "Jua", sans-serif;
+  font-size: 3vh;
+  border: none;
+  box-shadow: 0vh -2vh #000;
+  /* transition: all 0.1s;
+   -webkit-transition: all 0.1s;*/
+}
+#navUser .action-button:nth-of-type(1) {
+  background-color: #D998FA;
+  border-bottom: 1.2vh solid #CC7BF5;
+  border-left: 1.2vh solid #CC7BF5;
+}
+#navUser .action-button:nth-of-type(2) {
+  background-color: #758BFF;
+  border-bottom: 1.2vh solid #5568CB;
+  border-left: 1.2vh solid #5568CB;
+}
+#navUser .action-button:nth-of-type(3) {
+  background-color: #77CDFF;
+  border-bottom: 1.2vh solid #5AA1CA;
+  border-left: 1.2vh solid #5AA1CA;
+}
+#navUser .action-button:nth-of-type(4) {
+  background-color: #3FEB79;
+  border-bottom: 1.2vh solid #49D146;
+  border-left: 1.2vh solid #49D146;
+}
+#navUser .action-button:nth-of-type(5) {
+  background-color: #FFEF31;
+  border-bottom: 1.2vh solid #F2E554;
+  border-left: 1.2vh solid #F2E554;
+}
+#navUser .action-button:hover {
+  cursor: pointer;
+  /*transform: scale(1.5); */
+  height: 9vh;
+  width: 9vw;
+  margin-bottom: auto;
+  margin-top: 0;
+}
+#navUser .action-button:active {
+  /*transform: scale(1.5);*/
+  height: 9vh;
+  /*transform: translate(0, 12vh);
+  -webkit-transform: translate(0, 12vh);*/
+  border-bottom: 1vh;
+  border-left: 1vh;
+  float: left;
+  margin-bottom: 10vh;
+  margin-top: -2vh;
+  padding-top: 0;
+}
+#navUser .action-button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 6vh;
+  text-decoration: none;
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+}
+#navUser .action-button a:hover {
+  /*transform: scale(1.5);*/
+  cursor: pointer;
+  line-height: 9vh;
+}
+#headerUser {
+  position: fixed;
+  top: 2vh;
+  left: 1.5vw;
+  width: 100%;
+  z-index: 1000;
+  /*.rectangle {
+
+      background-color: coral;
+      height : 40vh;
+      width: 100vw;
+  }*/
+  box-sizing: border-box;
+  background-image: url("../../img/Miaou/backgroundHeader.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin: 1.5rem;
+  display: flex;
+  height: 20vh;
+  width: 97vw;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  cover: fit-cover;
+  border: 4px solid #FF33FF;
+  border-radius: 30px;
+}
+#headerUser .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+#headerUser article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#headerUser .avatar {
+  height: 90%;
+}
+#headerUser h1 {
+  font-family: "Jua", sans-serif;
+  font-size: 4vw;
+  font-weight: normal;
+}
+#headerUser div {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2vw;
+}
+#headerUser .action-button {
+  text-align: center;
+  color: white;
+  padding: 0.2vh 0.5vh 0.5vh 0.5vh;
+  margin-bottom: 1.5vh;
+  margin-top: 1.5vh;
   border-radius: 8px;
   font-family: "Jua", sans-serif;
-  font-size: 1.1em;
-  border: none;
-  border-bottom: 8px solid #B239ED;
-  border-left: 5px solid #B239ED;
-  text-shadow: 0px -2px #B239ED;
+  font-size: 3vh;
+  box-shadow: -2px 2px 1px rgba(50, 50, 50, 0.9);
   transition: all 0.1s;
   -webkit-transition: all 0.1s;
   border-radius: 30px;
+}
+#headerUser .action-button:first-of-type {
+  border: none;
+  background-color: #FD1616;
+  border-bottom: 1vh solid #B71B10;
+  border-left: 1vh solid #B71B10;
+}
+#headerUser .action-button:first-of-type:hover {
+  cursor: pointer;
+}
+#headerUser .action-button:first-of-type:active {
+  cursor: pointer;
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
+  border-bottom: 1px solid #B239ED;
+  border-left: 1px;
+  float: left;
+  margin-bottom: 2vh;
+  box-shadow: none;
+}
+#headerUser .action-button:nth-of-type(2) {
+  border: none;
+  background-color: #FF7438;
+  border-bottom: 1vh solid #DC6835;
+  border-left: 1vh solid #DC6835;
+}
+#headerUser .action-button:nth-of-type(2):hover {
+  cursor: pointer;
+}
+#headerUser .action-button:nth-of-type(2):active {
+  cursor: pointer;
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
+  border-bottom: 1px solid #B239ED;
+  border-left: 1px;
+  float: left;
+  margin-top: 1.75vh;
+  box-shadow: none;
+}
+#headerUser .action-button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 5vh;
+  text-decoration: none;
+  color: #fff;
+  margin-top: 0.2vw;
+  padding-left: auto;
+  padding-right: auto;
+  border-radius: 30px;
+}
+#headerUser .action-button .rect {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+#headerUser .action-button #navUser {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#navUser {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 26vh;
+  width: 103%;
+  background-color: black;
+  margin-left: -10px;
+  margin-top: -10px;
+  padding-left: 0;
+  padding-right: 0;
+  z-index: 990;
+  /*
+  &:hover {
+      cursor: pointer;
+      transform: scale(1.5); // Augmenter la taille sans déplacer les autres éléments
+      transform: translate(0, 12px);
+      -webkit-transform: translate(0, 12px);
+  }*/
+}
+#navUser ul {
+  position: fixed;
+  top: 21vh;
+  left: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  vertical-align: center;
+  padding: 0;
+  background-color: #000;
+  height: 9vh;
+  width: 102vw;
+}
+#navUser li {
+  margin: 1vh 1vh;
+}
+#navUser .action-button {
+  width: 10vw;
+  height: 50%;
+  color: white;
+  padding: 1vh 2.5vh;
+  margin-bottom: auto;
+  margin-top: auto;
+  border-radius: 30px;
+  font-family: "Jua", sans-serif;
+  font-size: 3vh;
+  border: none;
+  box-shadow: 0vh -2vh #000;
+  /* transition: all 0.1s;
+   -webkit-transition: all 0.1s;*/
+}
+#navUser .action-button:nth-of-type(1) {
+  background-color: #D998FA;
+  border-bottom: 1.2vh solid #CC7BF5;
+  border-left: 1.2vh solid #CC7BF5;
+}
+#navUser .action-button:nth-of-type(2) {
+  background-color: #758BFF;
+  border-bottom: 1.2vh solid #5568CB;
+  border-left: 1.2vh solid #5568CB;
+}
+#navUser .action-button:nth-of-type(3) {
+  background-color: #77CDFF;
+  border-bottom: 1.2vh solid #5AA1CA;
+  border-left: 1.2vh solid #5AA1CA;
+}
+#navUser .action-button:nth-of-type(4) {
+  background-color: #3FEB79;
+  border-bottom: 1.2vh solid #49D146;
+  border-left: 1.2vh solid #49D146;
+}
+#navUser .action-button:nth-of-type(5) {
+  background-color: #FFEF31;
+  border-bottom: 1.2vh solid #F2E554;
+  border-left: 1.2vh solid #F2E554;
+}
+#navUser .action-button:hover {
+  cursor: pointer;
+  /*transform: scale(1.5); */
+  height: 9vh;
+  width: 9vw;
+  margin-bottom: auto;
+  margin-top: 0;
+}
+#navUser .action-button:active {
+  /*transform: scale(1.5);*/
+  height: 9vh;
+  /*transform: translate(0, 12vh);
+  -webkit-transform: translate(0, 12vh);*/
+  border-bottom: 1vh;
+  border-left: 1vh;
+  float: left;
+  margin-bottom: 10vh;
+  margin-top: -2vh;
+  padding-top: 0;
+}
+#navUser .action-button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 6vh;
+  text-decoration: none;
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+}
+#navUser .action-button a:hover {
+  /*transform: scale(1.5);*/
+  cursor: pointer;
+  line-height: 9vh;
+}
+#homepage {
+  margin-top: 250px;
+  padding-top: 10px;
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 28vh;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin-left: -10px;
+  z-index: 980;
+}
+#homepage::before {
+  content: "";
+  background-image: url("../../img/Miaou/backgroundMain.png");
+  background-size: cover;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#homepage .homepage-content {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+}
+#homepage .homepage-content h2 {
+  font-size: 20vh;
+  display: none;
+}
+#homepage .homepage-content h3 {
+  font-size: 6vh;
+  font-weight: bold;
+}
+#homepage .homepage-content > p {
+  font-weight: normal;
+  font-size: 5vh;
+}
+#homepage .homepage-content p:nth-of-child(3) {
+  font-size: 3vh;
+}
+#homepage .homepage-content article {
+  background-color: #fff;
+  opacity: 0.8;
+  height: 27vh;
+  width: 80vw;
+  margin: auto;
+  border-radius: 30px;
+  display: flex;
+}
+#homepage .homepage-content article div {
+  margin: 3vh 3vw;
+  text-align: left;
+  font-size: 3vh;
+}
+#homepage .homepage-content article div:first-of-type {
+  display: flex;
+  flex-direction: row;
+}
+#homepage .homepage-content article img {
+  height: 20vh;
+  opacity: 1;
+}
+
+#homepageUser {
+  padding-top: 10px;
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 10vh;
+  position: relative;
+  width: 100vw;
+  height: 200vh;
+  margin-left: -10px;
+  z-index: 980;
+}
+#homepageUser::before {
+  content: "";
+  background-image: url("../../img/Miaou/backgroundMain.png");
+  background-size: cover;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#homepageUser .homepageUser-content {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+}
+#homepageUser .homepageUser-content h2 {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+}
+
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 26vh;
+  width: 103%;
+  background-color: black;
+  margin-left: -10px;
+  margin-top: -10px;
+  padding-left: 0;
+  padding-right: 0;
+  z-index: 990;
+}
+#nav ul {
+  position: fixed;
+  top: 21vh;
+  left: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  vertical-align: center;
+  padding: 0;
+  background-color: #000;
+  height: 9vh;
+  width: 102vw;
+}
+#nav li {
+  margin: 1vh 1vh;
+}
+#nav .action-button {
+  width: 10vw;
+  height: 50%;
+  color: white;
+  padding: 1vh 2.5vh;
+  margin-bottom: auto;
+  margin-top: auto;
+  font-family: "Jua", sans-serif;
+  font-size: 3vh;
+  box-shadow: 0vh -2vh #000;
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  border-radius: 30px;
+}
+#nav .action-button:first-of-type {
+  background-color: #D998FA;
+  border-bottom: 1.2vh solid #B239ED;
+  border-left: 1.2vh solid #B239ED;
+}
+#nav .action-button:nth-of-type(2) {
+  background-color: #758BFF;
+  border-bottom: 1.2vh solid #5568CB;
+  border-left: 1.2vh solid #5568CB;
+}
+#nav .action-button:hover {
+  cursor: pointer;
+  transform: scale(1.5);
+  height: 9vh;
+  width: 9vw;
+  margin-bottom: auto;
+  margin-top: 0;
+}
+#nav .action-button:active {
+  transform: scale(1.5);
+  height: 9vh;
+  transform: translate(0, 12vh);
+  -webkit-transform: translate(0, 12vh);
+  border-bottom: 1vh;
+  border-left: 1vh;
+  float: left;
+  margin-bottom: 10vh;
+  margin-top: -2vh;
+  padding-top: 0;
 }
 #nav .action-button a {
   display: block;
   width: 100%;
   height: 100%;
   text-align: center;
-  line-height: 40px;
+  line-height: 6vh;
   text-decoration: none;
   color: #fff;
-  border-radius: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#nav .action-button a:hover {
+  transform: scale(1.5);
+  cursor: pointer;
+  line-height: 9vh;
 }
 #nav .action-button:hover {
   cursor: pointer;
   transform: scale(1.5);
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
 }
-#nav .action-button:hover:active {
+
+#login {
+  margin-top: 250px;
+  padding-top: 10px;
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 28vh;
+  position: relative;
+  width: 100vw;
+  height: 200vh;
+  margin-left: -10px;
+  z-index: 980;
+}
+#login::before {
+  content: "";
+  background-image: url("../../img/Miaou/backgroundMain.png");
+  background-size: cover;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#login .login-content {
+  font-family: "Jua", sans-serif;
+}
+#login .login-content > h2 {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+}
+#login .login-content #login-form {
+  margin: auto;
+}
+#login .login-content #login-form h3 {
+  background-color: #5C5454;
+  color: white;
+  text-align: center;
+  border-radius: 20px 20px 0 0px;
+  font-size: 5vh;
+  width: 41vw;
+  height: 10vh;
+  margin: auto;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+}
+#login .login-content #login-form legend {
+  display: none;
+}
+#login .login-content #login-form .container-login {
+  background-image: url("../../img/Miaou/chatAuth.png");
+  background-size: cover;
+  width: 40vw;
+  height: 100vh;
+  margin: auto;
+  padding-top: -10vhvh;
+  text-align: center;
+  border: 5px solid #5C5454;
+  border-radius: 0px 0px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#login .login-content #login-form label {
+  display: none;
+}
+#login .login-content #login-form input {
+  align-item: center;
+  height: 6vh;
+  width: 30vw;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+#login .login-content #login-form #submit {
+  width: 20vw;
+  height: 10vh;
+  text-align: center;
+  color: white;
+  padding: 2vh 2vh 2vh 2vh;
+  margin-bottom: 1.5vh;
+  margin-top: 1.5vh;
+  border-radius: 8px;
+  font-family: "Jua", sans-serif;
+  font-size: 5vh;
+  box-shadow: -2px 2px 1px rgba(50, 50, 50, 0.9);
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  border-radius: 30px;
+  border: none;
+  background-color: #5C5454;
+  border-bottom: 1vh solid black;
+  border-left: 1vh solid black;
+}
+#login .login-content #login-form #submit:hover {
   cursor: pointer;
-  transform: scale(1.5);
+}
+#login .login-content #login-form #submit:active {
+  cursor: pointer;
   transform: translate(0, 12px);
   -webkit-transform: translate(0, 12px);
   border-bottom: 1px solid #B239ED;
   border-left: 1px;
   float: left;
-  margin-bottom: 1.8rem;
+  margin-bottom: 2vh;
+  box-shadow: none;
 }
 
+#modifyPassword {
+  margin-top: 250px;
+  padding-top: 10px;
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 28vh;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin-left: -10px;
+  z-index: 980;
+}
+#modifyPassword::before {
+  content: "";
+  background-image: url("../../img/Miaou/backgroundMain.png");
+  background-size: cover;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#modifyPassword #modifyPassword-content {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+}
+#modifyPassword #modifyPassword-content h2 {
+  font-size: 20vh;
+  display: none;
+}
+#modifyPassword #modifyPassword-content h3 {
+  font-size: 6vh;
+  font-weight: bold;
+}
+
+#coloriage {
+  padding-top: 10px;
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 10vh;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin-left: -10px;
+  z-index: 980;
+}
+#coloriage::before {
+  content: "";
+  background-image: url("../../img/Miaou/backgroundMain.png");
+  background-size: cover;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#coloriage .coloriage-content {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+}
+#coloriage .coloriage-content h2 {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+}
+
+#histoire {
+  padding-top: 10vh;
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 10vh;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin-left: -10px;
+  z-index: 980;
+}
+#histoire::before {
+  content: "";
+  background-image: url("../../img/Miaou/backgroundMain.png");
+  background-size: cover;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#histoire .histoire-content {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+#histoire .histoire-content h2, #histoire .histoire-content h3 {
+  text-align: left;
+  font-family: "Jua", sans-serif;
+}
+#histoire .histoire-content article {
+  display: flex;
+  flex-direction: row;
+}
+#histoire .histoire-content article .image-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#register#homepageUser {
+  padding-top: 10px;
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 10vh;
+  position: relative;
+  width: 100vw;
+  height: 200vh;
+  margin-left: -10px;
+  z-index: 980;
+}
+#register#homepageUser::before {
+  content: "";
+  background-image: url("../../img/Miaou/backgroundMain.png");
+  background-size: cover;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#register#homepageUser #register-form {
+  box-sizing: border-box;
+  margin: auto;
+  width: 510px;
+  height: 600px;
+  background-image: url("../assets/img/Miaou/ChatInscription.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-clip: content-box;
+  border: 8px solid #5C5454;
+  border-radius: 0 0 20px 20px;
+}
+#register#homepageUser fieldset {
+  border: 0px solid black;
+  margin: auto;
+}
+#register#homepageUser input {
+  margin: auto;
+  margin: auto;
+  padding: 0.5em;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 20px;
+  color: rgb(0, 0, 0);
+  border: 0.5px solid black;
+  width: 350px;
+  box-shadow: inset -5px -5px 5px grey;
+  text-align: center;
+}
+#register#homepageUser label {
+  font-size: 1.5em;
+  font-family: Inter;
+}
+#register#homepageUser .button {
+  padding: 2em;
+  position: center;
+  text-align: center;
+}
+#register#homepageUser .avatar {
+  border: 1px solid black;
+  border-radius: 20px;
+  box-shadow: inset -5px -5px 5px grey;
+  background: rgba(255, 255, 255, 0.75);
+  height: 5vh;
+  display: block;
+  width: 80%;
+}
+#register#homepageUser .avatar label {
+  font-size: 1.5em;
+  font-family: Inter;
+}
+#register#homepageUser .avatar input {
+  box-shadow: none;
+  text-align: center;
+}
+#register#homepageUser .avatars img {
+  opacity: 100%;
+  height: 10vh;
+  aspect-ratio: 1;
+}
+#register#homepageUser .radio {
+  flex-direction: row;
+}
+
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 26vh;
+  width: 103%;
+  background-color: black;
+  margin-left: -10px;
+  margin-top: -10px;
+  padding-left: 0;
+  padding-right: 0;
+  z-index: 990;
+}
+#nav ul {
+  position: fixed;
+  top: 21vh;
+  left: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  vertical-align: center;
+  padding: 0;
+  background-color: #000;
+  height: 9vh;
+  width: 102vw;
+}
+#nav li {
+  margin: 1vh 1vh;
+}
+#nav .action-button {
+  width: 10vw;
+  height: 50%;
+  color: white;
+  padding: 1vh 2.5vh;
+  margin-bottom: auto;
+  margin-top: auto;
+  font-family: "Jua", sans-serif;
+  font-size: 3vh;
+  box-shadow: 0vh -2vh #000;
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  border-radius: 30px;
+}
+#nav .action-button:first-of-type {
+  background-color: #D998FA;
+  border-bottom: 1.2vh solid #B239ED;
+  border-left: 1.2vh solid #B239ED;
+}
+#nav .action-button:nth-of-type(2) {
+  background-color: #758BFF;
+  border-bottom: 1.2vh solid #5568CB;
+  border-left: 1.2vh solid #5568CB;
+}
+#nav .action-button:hover {
+  cursor: pointer;
+  transform: scale(1.5);
+  height: 9vh;
+  width: 9vw;
+  margin-bottom: auto;
+  margin-top: 0;
+}
+#nav .action-button:active {
+  transform: scale(1.5);
+  height: 9vh;
+  transform: translate(0, 12vh);
+  -webkit-transform: translate(0, 12vh);
+  border-bottom: 1vh;
+  border-left: 1vh;
+  float: left;
+  margin-bottom: 10vh;
+  margin-top: -2vh;
+  padding-top: 0;
+}
+#nav .action-button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 6vh;
+  text-decoration: none;
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+}
+#nav .action-button a:hover {
+  transform: scale(1.5);
+  cursor: pointer;
+  line-height: 9vh;
+}
+#nav .action-button:hover {
+  cursor: pointer;
+  transform: scale(1.5);
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
+}
+
+#header {
+  position: fixed;
+  top: 2vh;
+  left: 1.5vw;
+  width: 100%;
+  z-index: 1000;
+  /*.rectangle {
+
+      background-color: coral;
+      height : 40vh;
+      width: 100vw;
+  }*/
+  box-sizing: border-box;
+  background-image: url("../../img/Miaou/backgroundHeader.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin: 1.5rem;
+  display: flex;
+  height: 20vh;
+  width: 97vw;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  cover: fit-cover;
+  border: 4px solid #FF33FF;
+  border-radius: 30px;
+}
+#header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+#header article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#header .avatar {
+  height: 90%;
+}
+#header h1 {
+  font-family: "Jua", sans-serif;
+  font-size: 4vw;
+  font-weight: normal;
+}
+#header div {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2vw;
+}
+#header .action-button {
+  text-align: center;
+  color: white;
+  padding: 0.2vh 0.5vh 0.5vh 0.5vh;
+  margin-bottom: 1.5vh;
+  margin-top: 1.5vh;
+  border-radius: 8px;
+  font-family: "Jua", sans-serif;
+  font-size: 3vh;
+  box-shadow: -2px 2px 1px rgba(50, 50, 50, 0.9);
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  border-radius: 30px;
+}
+#header .action-button:first-of-type {
+  border: none;
+  background-color: #FD1616;
+  border-bottom: 1vh solid #B71B10;
+  border-left: 1vh solid #B71B10;
+}
+#header .action-button:first-of-type:hover {
+  cursor: pointer;
+}
+#header .action-button:first-of-type:active {
+  cursor: pointer;
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
+  border-bottom: 1px solid #B239ED;
+  border-left: 1px;
+  float: left;
+  margin-bottom: 2vh;
+  box-shadow: none;
+}
+#header .action-button:nth-of-type(2) {
+  border: none;
+  background-color: #FF7438;
+  border-bottom: 1vh solid #DC6835;
+  border-left: 1vh solid #DC6835;
+}
+#header .action-button:nth-of-type(2):hover {
+  cursor: pointer;
+}
+#header .action-button:nth-of-type(2):active {
+  cursor: pointer;
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
+  border-bottom: 1px solid #B239ED;
+  border-left: 1px;
+  float: left;
+  margin-top: 1.75vh;
+  box-shadow: none;
+}
+#header .action-button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 5vh;
+  text-decoration: none;
+  color: #fff;
+  margin-top: 0.2vw;
+  padding-left: auto;
+  padding-right: auto;
+  border-radius: 30px;
+}
+#header .action-button .rect {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+#header .action-button #nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#homepage {
+  margin-top: 250px;
+  padding-top: 10px;
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 28vh;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin-left: -10px;
+  z-index: 980;
+}
+#homepage::before {
+  content: "";
+  background-image: url("../../img/Miaou/backgroundMain.png");
+  background-size: cover;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#homepage .homepage-content {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+}
+#homepage .homepage-content h2 {
+  font-size: 20vh;
+  display: none;
+}
+#homepage .homepage-content h3 {
+  font-size: 6vh;
+  font-weight: bold;
+}
+#homepage .homepage-content > p {
+  font-weight: normal;
+  font-size: 5vh;
+}
+#homepage .homepage-content p:nth-of-child(3) {
+  font-size: 3vh;
+}
+#homepage .homepage-content article {
+  background-color: #fff;
+  opacity: 0.8;
+  height: 27vh;
+  width: 80vw;
+  margin: auto;
+  border-radius: 30px;
+  display: flex;
+}
+#homepage .homepage-content article div {
+  margin: 3vh 3vw;
+  text-align: left;
+  font-size: 3vh;
+}
+#homepage .homepage-content article div:first-of-type {
+  display: flex;
+  flex-direction: row;
+}
+#homepage .homepage-content article img {
+  height: 20vh;
+  opacity: 1;
+}
+
+#homepage-content {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+}
+#homepage-content h2 {
+  font-size: 2rem;
+  display: none;
+}
+#homepage-content article {
+  background-color: white;
+  opacity: 0.8;
+  height: 25vh;
+  width: 66vw;
+  margin-left: 3vW;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+}
+#homepage-content article div {
+  justify-content: center;
+  display: flex;
+}
+#homepage-content article img {
+  height: 20vh;
+  opacity: 1;
+}
+#navUser {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 26vh;
+  width: 103%;
+  background-color: black;
+  margin-left: -10px;
+  margin-top: -10px;
+  padding-left: 0;
+  padding-right: 0;
+  z-index: 990;
+  /*
+  &:hover {
+      cursor: pointer;
+      transform: scale(1.5); // Augmenter la taille sans déplacer les autres éléments
+      transform: translate(0, 12px);
+      -webkit-transform: translate(0, 12px);
+  }*/
+}
+#navUser ul {
+  position: fixed;
+  top: 21vh;
+  left: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  vertical-align: center;
+  padding: 0;
+  background-color: #000;
+  height: 9vh;
+  width: 102vw;
+}
+#navUser li {
+  margin: 1vh 1vh;
+}
+#navUser .action-button {
+  width: 10vw;
+  height: 50%;
+  color: white;
+  padding: 1vh 2.5vh;
+  margin-bottom: auto;
+  margin-top: auto;
+  border-radius: 30px;
+  font-family: "Jua", sans-serif;
+  font-size: 3vh;
+  border: none;
+  box-shadow: 0vh -2vh #000;
+  /* transition: all 0.1s;
+   -webkit-transition: all 0.1s;*/
+}
+#navUser .action-button:nth-of-type(1) {
+  background-color: #D998FA;
+  border-bottom: 1.2vh solid #CC7BF5;
+  border-left: 1.2vh solid #CC7BF5;
+}
+#navUser .action-button:nth-of-type(2) {
+  background-color: #758BFF;
+  border-bottom: 1.2vh solid #5568CB;
+  border-left: 1.2vh solid #5568CB;
+}
+#navUser .action-button:nth-of-type(3) {
+  background-color: #77CDFF;
+  border-bottom: 1.2vh solid #5AA1CA;
+  border-left: 1.2vh solid #5AA1CA;
+}
+#navUser .action-button:nth-of-type(4) {
+  background-color: #3FEB79;
+  border-bottom: 1.2vh solid #49D146;
+  border-left: 1.2vh solid #49D146;
+}
+#navUser .action-button:nth-of-type(5) {
+  background-color: #FFEF31;
+  border-bottom: 1.2vh solid #F2E554;
+  border-left: 1.2vh solid #F2E554;
+}
+#navUser .action-button:hover {
+  cursor: pointer;
+  /*transform: scale(1.5); */
+  height: 9vh;
+  width: 9vw;
+  margin-bottom: auto;
+  margin-top: 0;
+}
+#navUser .action-button:active {
+  /*transform: scale(1.5);*/
+  height: 9vh;
+  /*transform: translate(0, 12vh);
+  -webkit-transform: translate(0, 12vh);*/
+  border-bottom: 1vh;
+  border-left: 1vh;
+  float: left;
+  margin-bottom: 10vh;
+  margin-top: -2vh;
+  padding-top: 0;
+}
+#navUser .action-button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 6vh;
+  text-decoration: none;
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+}
+#navUser .action-button a:hover {
+  /*transform: scale(1.5);*/
+  cursor: pointer;
+  line-height: 9vh;
+}
+#headerUser {
+  position: fixed;
+  top: 2vh;
+  left: 1.5vw;
+  width: 100%;
+  z-index: 1000;
+  /*.rectangle {
+
+      background-color: coral;
+      height : 40vh;
+      width: 100vw;
+  }*/
+  box-sizing: border-box;
+  background-image: url("../../img/Miaou/backgroundHeader.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin: 1.5rem;
+  display: flex;
+  height: 20vh;
+  width: 97vw;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  cover: fit-cover;
+  border: 4px solid #FF33FF;
+  border-radius: 30px;
+}
+#headerUser .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+#headerUser article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#headerUser .avatar {
+  height: 90%;
+}
+#headerUser h1 {
+  font-family: "Jua", sans-serif;
+  font-size: 4vw;
+  font-weight: normal;
+}
+#headerUser div {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2vw;
+}
+#headerUser .action-button {
+  text-align: center;
+  color: white;
+  padding: 0.2vh 0.5vh 0.5vh 0.5vh;
+  margin-bottom: 1.5vh;
+  margin-top: 1.5vh;
+  border-radius: 8px;
+  font-family: "Jua", sans-serif;
+  font-size: 3vh;
+  box-shadow: -2px 2px 1px rgba(50, 50, 50, 0.9);
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  border-radius: 30px;
+}
+#headerUser .action-button:first-of-type {
+  border: none;
+  background-color: #FD1616;
+  border-bottom: 1vh solid #B71B10;
+  border-left: 1vh solid #B71B10;
+}
+#headerUser .action-button:first-of-type:hover {
+  cursor: pointer;
+}
+#headerUser .action-button:first-of-type:active {
+  cursor: pointer;
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
+  border-bottom: 1px solid #B239ED;
+  border-left: 1px;
+  float: left;
+  margin-bottom: 2vh;
+  box-shadow: none;
+}
+#headerUser .action-button:nth-of-type(2) {
+  border: none;
+  background-color: #FF7438;
+  border-bottom: 1vh solid #DC6835;
+  border-left: 1vh solid #DC6835;
+}
+#headerUser .action-button:nth-of-type(2):hover {
+  cursor: pointer;
+}
+#headerUser .action-button:nth-of-type(2):active {
+  cursor: pointer;
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
+  border-bottom: 1px solid #B239ED;
+  border-left: 1px;
+  float: left;
+  margin-top: 1.75vh;
+  box-shadow: none;
+}
+#headerUser .action-button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 5vh;
+  text-decoration: none;
+  color: #fff;
+  margin-top: 0.2vw;
+  padding-left: auto;
+  padding-right: auto;
+  border-radius: 30px;
+}
+#headerUser .action-button .rect {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+#headerUser .action-button #navUser {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#homepageUser {
+  padding-top: 10px;
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 10vh;
+  position: relative;
+  width: 100vw;
+  height: 200vh;
+  margin-left: -10px;
+  z-index: 980;
+}
+#homepageUser::before {
+  content: "";
+  background-image: url("../../img/Miaou/backgroundMain.png");
+  background-size: cover;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#homepageUser .homepageUser-content {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+}
+#homepageUser .homepageUser-content h2 {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+}
+
+#homepageUser-content {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+}
+#homepageUser-content h2 {
+  font-size: 2rem;
+  display: none;
+}
+#homepageUser-content img {
+  height: 20vh;
+  opacity: 1;
+}
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 26vh;
+  width: 103%;
+  background-color: black;
+  margin-left: -10px;
+  margin-top: -10px;
+  padding-left: 0;
+  padding-right: 0;
+  z-index: 990;
+}
+#nav ul {
+  position: fixed;
+  top: 21vh;
+  left: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  vertical-align: center;
+  padding: 0;
+  background-color: #000;
+  height: 9vh;
+  width: 102vw;
+}
+#nav li {
+  margin: 1vh 1vh;
+}
+#nav .action-button {
+  width: 10vw;
+  height: 50%;
+  color: white;
+  padding: 1vh 2.5vh;
+  margin-bottom: auto;
+  margin-top: auto;
+  font-family: "Jua", sans-serif;
+  font-size: 3vh;
+  box-shadow: 0vh -2vh #000;
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  border-radius: 30px;
+}
+#nav .action-button:first-of-type {
+  background-color: #D998FA;
+  border-bottom: 1.2vh solid #B239ED;
+  border-left: 1.2vh solid #B239ED;
+}
+#nav .action-button:nth-of-type(2) {
+  background-color: #758BFF;
+  border-bottom: 1.2vh solid #5568CB;
+  border-left: 1.2vh solid #5568CB;
+}
+#nav .action-button:hover {
+  cursor: pointer;
+  transform: scale(1.5);
+  height: 9vh;
+  width: 9vw;
+  margin-bottom: auto;
+  margin-top: 0;
+}
+#nav .action-button:active {
+  transform: scale(1.5);
+  height: 9vh;
+  transform: translate(0, 12vh);
+  -webkit-transform: translate(0, 12vh);
+  border-bottom: 1vh;
+  border-left: 1vh;
+  float: left;
+  margin-bottom: 10vh;
+  margin-top: -2vh;
+  padding-top: 0;
+}
+#nav .action-button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 6vh;
+  text-decoration: none;
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+}
+#nav .action-button a:hover {
+  transform: scale(1.5);
+  cursor: pointer;
+  line-height: 9vh;
+}
+#nav .action-button:hover {
+  cursor: pointer;
+  transform: scale(1.5);
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
+}
+
+#header {
+  position: fixed;
+  top: 2vh;
+  left: 1.5vw;
+  width: 100%;
+  z-index: 1000;
+  /*.rectangle {
+
+      background-color: coral;
+      height : 40vh;
+      width: 100vw;
+  }*/
+  box-sizing: border-box;
+  background-image: url("../../img/Miaou/backgroundHeader.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin: 1.5rem;
+  display: flex;
+  height: 20vh;
+  width: 97vw;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  cover: fit-cover;
+  border: 4px solid #FF33FF;
+  border-radius: 30px;
+}
+#header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+#header article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#header .avatar {
+  height: 90%;
+}
+#header h1 {
+  font-family: "Jua", sans-serif;
+  font-size: 4vw;
+  font-weight: normal;
+}
+#header div {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2vw;
+}
+#header .action-button {
+  text-align: center;
+  color: white;
+  padding: 0.2vh 0.5vh 0.5vh 0.5vh;
+  margin-bottom: 1.5vh;
+  margin-top: 1.5vh;
+  border-radius: 8px;
+  font-family: "Jua", sans-serif;
+  font-size: 3vh;
+  box-shadow: -2px 2px 1px rgba(50, 50, 50, 0.9);
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  border-radius: 30px;
+}
+#header .action-button:first-of-type {
+  border: none;
+  background-color: #FD1616;
+  border-bottom: 1vh solid #B71B10;
+  border-left: 1vh solid #B71B10;
+}
+#header .action-button:first-of-type:hover {
+  cursor: pointer;
+}
+#header .action-button:first-of-type:active {
+  cursor: pointer;
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
+  border-bottom: 1px solid #B239ED;
+  border-left: 1px;
+  float: left;
+  margin-bottom: 2vh;
+  box-shadow: none;
+}
+#header .action-button:nth-of-type(2) {
+  border: none;
+  background-color: #FF7438;
+  border-bottom: 1vh solid #DC6835;
+  border-left: 1vh solid #DC6835;
+}
+#header .action-button:nth-of-type(2):hover {
+  cursor: pointer;
+}
+#header .action-button:nth-of-type(2):active {
+  cursor: pointer;
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
+  border-bottom: 1px solid #B239ED;
+  border-left: 1px;
+  float: left;
+  margin-top: 1.75vh;
+  box-shadow: none;
+}
+#header .action-button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 5vh;
+  text-decoration: none;
+  color: #fff;
+  margin-top: 0.2vw;
+  padding-left: auto;
+  padding-right: auto;
+  border-radius: 30px;
+}
+#header .action-button .rect {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+#header .action-button #nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#modifyPassword {
+  margin-top: 250px;
+  padding-top: 10px;
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 28vh;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin-left: -10px;
+  z-index: 980;
+}
+#modifyPassword::before {
+  content: "";
+  background-image: url("../../img/Miaou/backgroundMain.png");
+  background-size: cover;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#modifyPassword #modifyPassword-content {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+}
+#modifyPassword #modifyPassword-content h2 {
+  font-size: 20vh;
+  display: none;
+}
+#modifyPassword #modifyPassword-content h3 {
+  font-size: 6vh;
+  font-weight: bold;
+}
+
+#modifyPassword-content {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+}
+#modifyPassword-content h2 {
+  font-size: 2rem;
+  display: none;
+}
+#modifyPassword-content img {
+  height: 20vh;
+  opacity: 1;
+}
+#navUser {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 26vh;
+  width: 103%;
+  background-color: black;
+  margin-left: -10px;
+  margin-top: -10px;
+  padding-left: 0;
+  padding-right: 0;
+  z-index: 990;
+  /*
+  &:hover {
+      cursor: pointer;
+      transform: scale(1.5); // Augmenter la taille sans déplacer les autres éléments
+      transform: translate(0, 12px);
+      -webkit-transform: translate(0, 12px);
+  }*/
+}
+#navUser ul {
+  position: fixed;
+  top: 21vh;
+  left: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  vertical-align: center;
+  padding: 0;
+  background-color: #000;
+  height: 9vh;
+  width: 102vw;
+}
+#navUser li {
+  margin: 1vh 1vh;
+}
+#navUser .action-button {
+  width: 10vw;
+  height: 50%;
+  color: white;
+  padding: 1vh 2.5vh;
+  margin-bottom: auto;
+  margin-top: auto;
+  border-radius: 30px;
+  font-family: "Jua", sans-serif;
+  font-size: 3vh;
+  border: none;
+  box-shadow: 0vh -2vh #000;
+  /* transition: all 0.1s;
+   -webkit-transition: all 0.1s;*/
+}
+#navUser .action-button:nth-of-type(1) {
+  background-color: #D998FA;
+  border-bottom: 1.2vh solid #CC7BF5;
+  border-left: 1.2vh solid #CC7BF5;
+}
+#navUser .action-button:nth-of-type(2) {
+  background-color: #758BFF;
+  border-bottom: 1.2vh solid #5568CB;
+  border-left: 1.2vh solid #5568CB;
+}
+#navUser .action-button:nth-of-type(3) {
+  background-color: #77CDFF;
+  border-bottom: 1.2vh solid #5AA1CA;
+  border-left: 1.2vh solid #5AA1CA;
+}
+#navUser .action-button:nth-of-type(4) {
+  background-color: #3FEB79;
+  border-bottom: 1.2vh solid #49D146;
+  border-left: 1.2vh solid #49D146;
+}
+#navUser .action-button:nth-of-type(5) {
+  background-color: #FFEF31;
+  border-bottom: 1.2vh solid #F2E554;
+  border-left: 1.2vh solid #F2E554;
+}
+#navUser .action-button:hover {
+  cursor: pointer;
+  /*transform: scale(1.5); */
+  height: 9vh;
+  width: 9vw;
+  margin-bottom: auto;
+  margin-top: 0;
+}
+#navUser .action-button:active {
+  /*transform: scale(1.5);*/
+  height: 9vh;
+  /*transform: translate(0, 12vh);
+  -webkit-transform: translate(0, 12vh);*/
+  border-bottom: 1vh;
+  border-left: 1vh;
+  float: left;
+  margin-bottom: 10vh;
+  margin-top: -2vh;
+  padding-top: 0;
+}
+#navUser .action-button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 6vh;
+  text-decoration: none;
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+}
+#navUser .action-button a:hover {
+  /*transform: scale(1.5);*/
+  cursor: pointer;
+  line-height: 9vh;
+}
+#headerUser {
+  position: fixed;
+  top: 2vh;
+  left: 1.5vw;
+  width: 100%;
+  z-index: 1000;
+  /*.rectangle {
+
+      background-color: coral;
+      height : 40vh;
+      width: 100vw;
+  }*/
+  box-sizing: border-box;
+  background-image: url("../../img/Miaou/backgroundHeader.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin: 1.5rem;
+  display: flex;
+  height: 20vh;
+  width: 97vw;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  cover: fit-cover;
+  border: 4px solid #FF33FF;
+  border-radius: 30px;
+}
+#headerUser .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+#headerUser article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#headerUser .avatar {
+  height: 90%;
+}
+#headerUser h1 {
+  font-family: "Jua", sans-serif;
+  font-size: 4vw;
+  font-weight: normal;
+}
+#headerUser div {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2vw;
+}
+#headerUser .action-button {
+  text-align: center;
+  color: white;
+  padding: 0.2vh 0.5vh 0.5vh 0.5vh;
+  margin-bottom: 1.5vh;
+  margin-top: 1.5vh;
+  border-radius: 8px;
+  font-family: "Jua", sans-serif;
+  font-size: 3vh;
+  box-shadow: -2px 2px 1px rgba(50, 50, 50, 0.9);
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  border-radius: 30px;
+}
+#headerUser .action-button:first-of-type {
+  border: none;
+  background-color: #FD1616;
+  border-bottom: 1vh solid #B71B10;
+  border-left: 1vh solid #B71B10;
+}
+#headerUser .action-button:first-of-type:hover {
+  cursor: pointer;
+}
+#headerUser .action-button:first-of-type:active {
+  cursor: pointer;
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
+  border-bottom: 1px solid #B239ED;
+  border-left: 1px;
+  float: left;
+  margin-bottom: 2vh;
+  box-shadow: none;
+}
+#headerUser .action-button:nth-of-type(2) {
+  border: none;
+  background-color: #FF7438;
+  border-bottom: 1vh solid #DC6835;
+  border-left: 1vh solid #DC6835;
+}
+#headerUser .action-button:nth-of-type(2):hover {
+  cursor: pointer;
+}
+#headerUser .action-button:nth-of-type(2):active {
+  cursor: pointer;
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
+  border-bottom: 1px solid #B239ED;
+  border-left: 1px;
+  float: left;
+  margin-top: 1.75vh;
+  box-shadow: none;
+}
+#headerUser .action-button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 5vh;
+  text-decoration: none;
+  color: #fff;
+  margin-top: 0.2vw;
+  padding-left: auto;
+  padding-right: auto;
+  border-radius: 30px;
+}
+#headerUser .action-button .rect {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+#headerUser .action-button #navUser {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#coloriage {
+  padding-top: 10px;
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 10vh;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin-left: -10px;
+  z-index: 980;
+}
+#coloriage::before {
+  content: "";
+  background-image: url("../../img/Miaou/backgroundMain.png");
+  background-size: cover;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#coloriage .coloriage-content {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+}
+#coloriage .coloriage-content h2 {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+}
+
+#navUser {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 26vh;
+  width: 103%;
+  background-color: black;
+  margin-left: -10px;
+  margin-top: -10px;
+  padding-left: 0;
+  padding-right: 0;
+  z-index: 990;
+  /*
+  &:hover {
+      cursor: pointer;
+      transform: scale(1.5); // Augmenter la taille sans déplacer les autres éléments
+      transform: translate(0, 12px);
+      -webkit-transform: translate(0, 12px);
+  }*/
+}
+#navUser ul {
+  position: fixed;
+  top: 21vh;
+  left: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  vertical-align: center;
+  padding: 0;
+  background-color: #000;
+  height: 9vh;
+  width: 102vw;
+}
+#navUser li {
+  margin: 1vh 1vh;
+}
+#navUser .action-button {
+  width: 10vw;
+  height: 50%;
+  color: white;
+  padding: 1vh 2.5vh;
+  margin-bottom: auto;
+  margin-top: auto;
+  border-radius: 30px;
+  font-family: "Jua", sans-serif;
+  font-size: 3vh;
+  border: none;
+  box-shadow: 0vh -2vh #000;
+  /* transition: all 0.1s;
+   -webkit-transition: all 0.1s;*/
+}
+#navUser .action-button:nth-of-type(1) {
+  background-color: #D998FA;
+  border-bottom: 1.2vh solid #CC7BF5;
+  border-left: 1.2vh solid #CC7BF5;
+}
+#navUser .action-button:nth-of-type(2) {
+  background-color: #758BFF;
+  border-bottom: 1.2vh solid #5568CB;
+  border-left: 1.2vh solid #5568CB;
+}
+#navUser .action-button:nth-of-type(3) {
+  background-color: #77CDFF;
+  border-bottom: 1.2vh solid #5AA1CA;
+  border-left: 1.2vh solid #5AA1CA;
+}
+#navUser .action-button:nth-of-type(4) {
+  background-color: #3FEB79;
+  border-bottom: 1.2vh solid #49D146;
+  border-left: 1.2vh solid #49D146;
+}
+#navUser .action-button:nth-of-type(5) {
+  background-color: #FFEF31;
+  border-bottom: 1.2vh solid #F2E554;
+  border-left: 1.2vh solid #F2E554;
+}
+#navUser .action-button:hover {
+  cursor: pointer;
+  /*transform: scale(1.5); */
+  height: 9vh;
+  width: 9vw;
+  margin-bottom: auto;
+  margin-top: 0;
+}
+#navUser .action-button:active {
+  /*transform: scale(1.5);*/
+  height: 9vh;
+  /*transform: translate(0, 12vh);
+  -webkit-transform: translate(0, 12vh);*/
+  border-bottom: 1vh;
+  border-left: 1vh;
+  float: left;
+  margin-bottom: 10vh;
+  margin-top: -2vh;
+  padding-top: 0;
+}
+#navUser .action-button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 6vh;
+  text-decoration: none;
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+}
+#navUser .action-button a:hover {
+  /*transform: scale(1.5);*/
+  cursor: pointer;
+  line-height: 9vh;
+}
+#headerUser {
+  position: fixed;
+  top: 2vh;
+  left: 1.5vw;
+  width: 100%;
+  z-index: 1000;
+  /*.rectangle {
+
+      background-color: coral;
+      height : 40vh;
+      width: 100vw;
+  }*/
+  box-sizing: border-box;
+  background-image: url("../../img/Miaou/backgroundHeader.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin: 1.5rem;
+  display: flex;
+  height: 20vh;
+  width: 97vw;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  cover: fit-cover;
+  border: 4px solid #FF33FF;
+  border-radius: 30px;
+}
+#headerUser .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+#headerUser article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#headerUser .avatar {
+  height: 90%;
+}
+#headerUser h1 {
+  font-family: "Jua", sans-serif;
+  font-size: 4vw;
+  font-weight: normal;
+}
+#headerUser div {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2vw;
+}
+#headerUser .action-button {
+  text-align: center;
+  color: white;
+  padding: 0.2vh 0.5vh 0.5vh 0.5vh;
+  margin-bottom: 1.5vh;
+  margin-top: 1.5vh;
+  border-radius: 8px;
+  font-family: "Jua", sans-serif;
+  font-size: 3vh;
+  box-shadow: -2px 2px 1px rgba(50, 50, 50, 0.9);
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  border-radius: 30px;
+}
+#headerUser .action-button:first-of-type {
+  border: none;
+  background-color: #FD1616;
+  border-bottom: 1vh solid #B71B10;
+  border-left: 1vh solid #B71B10;
+}
+#headerUser .action-button:first-of-type:hover {
+  cursor: pointer;
+}
+#headerUser .action-button:first-of-type:active {
+  cursor: pointer;
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
+  border-bottom: 1px solid #B239ED;
+  border-left: 1px;
+  float: left;
+  margin-bottom: 2vh;
+  box-shadow: none;
+}
+#headerUser .action-button:nth-of-type(2) {
+  border: none;
+  background-color: #FF7438;
+  border-bottom: 1vh solid #DC6835;
+  border-left: 1vh solid #DC6835;
+}
+#headerUser .action-button:nth-of-type(2):hover {
+  cursor: pointer;
+}
+#headerUser .action-button:nth-of-type(2):active {
+  cursor: pointer;
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
+  border-bottom: 1px solid #B239ED;
+  border-left: 1px;
+  float: left;
+  margin-top: 1.75vh;
+  box-shadow: none;
+}
+#headerUser .action-button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 5vh;
+  text-decoration: none;
+  color: #fff;
+  margin-top: 0.2vw;
+  padding-left: auto;
+  padding-right: auto;
+  border-radius: 30px;
+}
+#headerUser .action-button .rect {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+#headerUser .action-button #navUser {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#histoire {
+  padding-top: 10vh;
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 10vh;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin-left: -10px;
+  z-index: 980;
+}
+#histoire::before {
+  content: "";
+  background-image: url("../../img/Miaou/backgroundMain.png");
+  background-size: cover;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#histoire .histoire-content {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+#histoire .histoire-content h2, #histoire .histoire-content h3 {
+  text-align: left;
+  font-family: "Jua", sans-serif;
+}
+#histoire .histoire-content article {
+  display: flex;
+  flex-direction: row;
+}
+#histoire .histoire-content article .image-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#histoire-content {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+}
+#histoire-content h2 {
+  font-size: 2rem;
+  display: none;
+}
+#histoire-content img {
+  height: 20vh;
+  opacity: 1;
+}
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 26vh;
+  width: 103%;
+  background-color: black;
+  margin-left: -10px;
+  margin-top: -10px;
+  padding-left: 0;
+  padding-right: 0;
+  z-index: 990;
+}
+#nav ul {
+  position: fixed;
+  top: 21vh;
+  left: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  vertical-align: center;
+  padding: 0;
+  background-color: #000;
+  height: 9vh;
+  width: 102vw;
+}
+#nav li {
+  margin: 1vh 1vh;
+}
+#nav .action-button {
+  width: 10vw;
+  height: 50%;
+  color: white;
+  padding: 1vh 2.5vh;
+  margin-bottom: auto;
+  margin-top: auto;
+  font-family: "Jua", sans-serif;
+  font-size: 3vh;
+  box-shadow: 0vh -2vh #000;
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  border-radius: 30px;
+}
+#nav .action-button:first-of-type {
+  background-color: #D998FA;
+  border-bottom: 1.2vh solid #B239ED;
+  border-left: 1.2vh solid #B239ED;
+}
+#nav .action-button:nth-of-type(2) {
+  background-color: #758BFF;
+  border-bottom: 1.2vh solid #5568CB;
+  border-left: 1.2vh solid #5568CB;
+}
+#nav .action-button:hover {
+  cursor: pointer;
+  transform: scale(1.5);
+  height: 9vh;
+  width: 9vw;
+  margin-bottom: auto;
+  margin-top: 0;
+}
+#nav .action-button:active {
+  transform: scale(1.5);
+  height: 9vh;
+  transform: translate(0, 12vh);
+  -webkit-transform: translate(0, 12vh);
+  border-bottom: 1vh;
+  border-left: 1vh;
+  float: left;
+  margin-bottom: 10vh;
+  margin-top: -2vh;
+  padding-top: 0;
+}
+#nav .action-button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 6vh;
+  text-decoration: none;
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+}
+#nav .action-button a:hover {
+  transform: scale(1.5);
+  cursor: pointer;
+  line-height: 9vh;
+}
+#nav .action-button:hover {
+  cursor: pointer;
+  transform: scale(1.5);
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
+}
+
+#header {
+  position: fixed;
+  top: 2vh;
+  left: 1.5vw;
+  width: 100%;
+  z-index: 1000;
+  /*.rectangle {
+
+      background-color: coral;
+      height : 40vh;
+      width: 100vw;
+  }*/
+  box-sizing: border-box;
+  background-image: url("../../img/Miaou/backgroundHeader.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin: 1.5rem;
+  display: flex;
+  height: 20vh;
+  width: 97vw;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  cover: fit-cover;
+  border: 4px solid #FF33FF;
+  border-radius: 30px;
+}
+#header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+#header article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#header .avatar {
+  height: 90%;
+}
+#header h1 {
+  font-family: "Jua", sans-serif;
+  font-size: 4vw;
+  font-weight: normal;
+}
+#header div {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2vw;
+}
+#header .action-button {
+  text-align: center;
+  color: white;
+  padding: 0.2vh 0.5vh 0.5vh 0.5vh;
+  margin-bottom: 1.5vh;
+  margin-top: 1.5vh;
+  border-radius: 8px;
+  font-family: "Jua", sans-serif;
+  font-size: 3vh;
+  box-shadow: -2px 2px 1px rgba(50, 50, 50, 0.9);
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  border-radius: 30px;
+}
+#header .action-button:first-of-type {
+  border: none;
+  background-color: #FD1616;
+  border-bottom: 1vh solid #B71B10;
+  border-left: 1vh solid #B71B10;
+}
+#header .action-button:first-of-type:hover {
+  cursor: pointer;
+}
+#header .action-button:first-of-type:active {
+  cursor: pointer;
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
+  border-bottom: 1px solid #B239ED;
+  border-left: 1px;
+  float: left;
+  margin-bottom: 2vh;
+  box-shadow: none;
+}
+#header .action-button:nth-of-type(2) {
+  border: none;
+  background-color: #FF7438;
+  border-bottom: 1vh solid #DC6835;
+  border-left: 1vh solid #DC6835;
+}
+#header .action-button:nth-of-type(2):hover {
+  cursor: pointer;
+}
+#header .action-button:nth-of-type(2):active {
+  cursor: pointer;
+  transform: translate(0, 12px);
+  -webkit-transform: translate(0, 12px);
+  border-bottom: 1px solid #B239ED;
+  border-left: 1px;
+  float: left;
+  margin-top: 1.75vh;
+  box-shadow: none;
+}
+#header .action-button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 5vh;
+  text-decoration: none;
+  color: #fff;
+  margin-top: 0.2vw;
+  padding-left: auto;
+  padding-right: auto;
+  border-radius: 30px;
+}
+#header .action-button .rect {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+#header .action-button #nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#register#homepageUser {
+  padding-top: 10px;
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 10vh;
+  position: relative;
+  width: 100vw;
+  height: 200vh;
+  margin-left: -10px;
+  z-index: 980;
+}
+#register#homepageUser::before {
+  content: "";
+  background-image: url("../../img/Miaou/backgroundMain.png");
+  background-size: cover;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#register#homepageUser #register-form {
+  box-sizing: border-box;
+  margin: auto;
+  width: 510px;
+  height: 600px;
+  background-image: url("../assets/img/Miaou/ChatInscription.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-clip: content-box;
+  border: 8px solid #5C5454;
+  border-radius: 0 0 20px 20px;
+}
+#register#homepageUser fieldset {
+  border: 0px solid black;
+  margin: auto;
+}
+#register#homepageUser input {
+  margin: auto;
+  margin: auto;
+  padding: 0.5em;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 20px;
+  color: rgb(0, 0, 0);
+  border: 0.5px solid black;
+  width: 350px;
+  box-shadow: inset -5px -5px 5px grey;
+  text-align: center;
+}
+#register#homepageUser label {
+  font-size: 1.5em;
+  font-family: Inter;
+}
+#register#homepageUser .button {
+  padding: 2em;
+  position: center;
+  text-align: center;
+}
+#register#homepageUser .avatar {
+  border: 1px solid black;
+  border-radius: 20px;
+  box-shadow: inset -5px -5px 5px grey;
+  background: rgba(255, 255, 255, 0.75);
+  height: 5vh;
+  display: block;
+  width: 80%;
+}
+#register#homepageUser .avatar label {
+  font-size: 1.5em;
+  font-family: Inter;
+}
+#register#homepageUser .avatar input {
+  box-shadow: none;
+  text-align: center;
+}
+#register#homepageUser .avatars img {
+  opacity: 100%;
+  height: 10vh;
+  aspect-ratio: 1;
+}
+#register#homepageUser .radio {
+  flex-direction: row;
+}
+
+#register-form {
+  text-align: center;
+  font-family: "Jua", sans-serif;
+}
+#register-form h2 {
+  font-size: 2rem;
+  display: none;
+}
+#register-form img {
+  height: 20vh;
+  opacity: 1;
+}
 .jua-regular {
   font-family: "Jua", sans-serif;
   font-weight: 400;
@@ -637,15 +3312,27 @@
 .custom-cursor {
   cursor: url('"../../img/Miaou/customCursor.png'), auto;
   height: 2rem;
-  font-size: 2rem;
 }
-.custom-cursor .rect {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 25%;
-  background-color: #000;
+
+#cat404 {
+  width: 120vh;
+  margin: auto;
+  margin-top: 7vh;
+  display: flex;
+  flex-direction: column;
+}
+#cat404 div {
+  flex-direction: column;
+  justify-content: center;
+}
+#cat404 img {
+  width: 100vh;
+  margin: auto;
+}
+#cat404 a {
+  font-size: 3vh;
+  text-align: center;
+  margin: auto;
 }
 
 /*# sourceMappingURL=style.css.map */
